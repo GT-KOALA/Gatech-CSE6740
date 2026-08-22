@@ -6,6 +6,7 @@ repository: GT-KOALA/CSE6740-Fall2026
 theme: null
 markdown: kramdown
 permalink: pretty
+future: true
 collections:
   lectures:
     output: true
@@ -21,4 +22,3 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - LICENSE
-

@@ -2,7 +2,7 @@
 title: Naive Bayes, KNN, and logistic regression
 number: "08"
 date: 2026-09-21
-summary: Three views of classification: probabilistic, neighborhood-based, and discriminative.
+summary: "Three views of classification: probabilistic, neighborhood-based, and discriminative."
 status: planned
 ---
 ## Learning goals
@@ -18,4 +18,3 @@ Materials will be added after class.
 ## Collaborative notes
 
 Build a comparison table, examples, and practical selection guide.
-
