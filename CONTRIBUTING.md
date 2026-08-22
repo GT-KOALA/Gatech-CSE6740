@@ -12,8 +12,8 @@ Thank you for helping make the course materials clearer and more useful. Student
 ## Make a change
 
 1. Fork this repository and create a descriptive branch such as `lecture-02-kmeans-example`.
-2. Edit the matching Markdown file in `_lectures/`.
-3. Put images in `assets/lectures/NN/` and use descriptive filenames and alt text.
+2. Edit the matching Markdown file in `_lectures/<semester>/`.
+3. Put images in `assets/semesters/<semester>/lectures/NN/` and use descriptive filenames and alt text.
 4. Preview the site locally if possible, then open a pull request using the template and link the assigned issue.
 
 Small, focused pull requests are easier to review. Do not commit generated site files.

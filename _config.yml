@@ -1,8 +1,9 @@
 title: CSE 6740 · Computational Data Analysis
-description: Fall 2026 lecture hub for CSE 6740 at Georgia Tech
+description: Lecture materials for CSE 6740 at Georgia Tech
 url: "https://gt-koala.github.io"
-baseurl: "/CSE6740-Fall2026"
-repository: GT-KOALA/CSE6740-Fall2026
+baseurl: "/Gatech-CSE6740"
+repository: GT-KOALA/Gatech-CSE6740
+current_semester: fall-2026
 theme: null
 markdown: kramdown
 permalink: pretty
@@ -10,13 +11,16 @@ future: true
 collections:
   lectures:
     output: true
-    permalink: /lectures/:name/
 defaults:
   - scope:
-      path: ""
+      path: "_lectures/fall-2026"
       type: lectures
     values:
       layout: lecture
+      semester: fall-2026
+      semester_label: Fall 2026
+      semester_url: /fall-2026/
+      permalink: /fall-2026/lectures/:name/
 exclude:
   - README.md
   - CONTRIBUTING.md

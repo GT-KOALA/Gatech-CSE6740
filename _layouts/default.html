@@ -15,17 +15,19 @@
     <header class="site-header">
       <a class="brand" href="{{ '/' | relative_url }}" aria-label="CSE 6740 home">
         <span class="brand-mark">GT</span>
-        <span>CSE 6740 <small>Fall 2026</small></span>
+        <span>CSE 6740 <small>Course hub</small></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="{{ '/schedule/' | relative_url }}">Lectures</a>
+        <a href="{{ '/' | relative_url }}">Course</a>
+        <a href="{{ '/fall-2026/' | relative_url }}">Fall 2026</a>
+        <a href="{{ '/semesters/' | relative_url }}">Semesters</a>
         <a class="github-link" href="https://github.com/{{ site.repository }}">GitHub ↗</a>
       </nav>
     </header>
     <main>{{ content }}</main>
     <footer>
       <p>Georgia Institute of Technology · College of Computing</p>
-      <p>Lecture notes, examples, code, and references for Fall 2026.</p>
+      <p>Lecture notes, examples, code, and references across course offerings.</p>
     </footer>
   </body>
 </html>
