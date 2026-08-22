@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a gridworld walkthrough, algorithm comparison, and convergence intuition.
-
+A gridworld walkthrough, algorithm comparison, and convergence intuition will be added here.

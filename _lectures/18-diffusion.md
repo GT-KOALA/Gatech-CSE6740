@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a process diagram, sampling pseudocode, and terminology guide.
-
+A process diagram, sampling pseudocode, and terminology guide will be added here.

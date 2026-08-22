@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an architecture diagram, loss breakdown, and latent-space example.
-
+An architecture diagram, loss breakdown, and latent-space example will be added here.

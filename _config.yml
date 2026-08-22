@@ -17,7 +17,6 @@ defaults:
       type: lectures
     values:
       layout: lecture
-      contributors: ["Open", "Open", "Open", "Open"]
 exclude:
   - README.md
   - CONTRIBUTING.md

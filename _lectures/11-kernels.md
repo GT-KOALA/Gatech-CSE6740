@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add feature-map intuition, kernel examples, and selection cautions.
-
+Feature-map intuition, kernel examples, and selection cautions will be added here.

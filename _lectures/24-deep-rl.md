@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an architecture overview, training loop, and stability checklist.
-
+An architecture overview, training loop, and stability checklist will be added here.

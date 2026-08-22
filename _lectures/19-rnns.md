@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an unrolled network visual, sequence example, and limitations.
-
+An unrolled network visual, sequence example, and limitations will be added here.

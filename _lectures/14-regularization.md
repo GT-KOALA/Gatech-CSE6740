@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a bias–variance visual, regularization comparison, and examples.
-
+A bias–variance visual, regularization comparison, and examples will be added here.

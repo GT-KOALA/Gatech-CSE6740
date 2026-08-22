@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a function-space visual, prediction walkthrough, and reference list.
-
+A function-space visual, prediction walkthrough, and reference list will be added here.

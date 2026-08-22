@@ -9,13 +9,12 @@ status: planned
 
 - Frame machine learning as learning from experience.
 - Identify the major themes and expectations of the course.
-- Set up the collaborative lecture-note workflow.
+- Understand how lecture materials will be organized and updated.
 
 ## Materials
 
 Lecture materials will be added here after class.
 
-## Collaborative notes
+## Lecture notes
 
-The four-student team will turn the lecture into a concise explanation, worked example, visual, and checked reference list.
-
+Concise notes, worked examples, visuals, and references will be added after class.

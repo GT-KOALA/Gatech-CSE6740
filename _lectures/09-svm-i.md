@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a margin diagram, notation guide, and small optimization example.
-
+A margin diagram, notation guide, and small optimization example will be added here.

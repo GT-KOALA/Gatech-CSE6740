@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an update example, algorithm comparison, and exploration notes.
-
+An update example, algorithm comparison, and exploration notes will be added here.

@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an MDP example, terminology map, and key assumptions.
-
+An MDP example, terminology map, and key assumptions will be added here.

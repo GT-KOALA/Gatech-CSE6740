@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an optimization trajectory, code example, and troubleshooting guide.
-
+An optimization trajectory, code example, and troubleshooting guide will be added here.

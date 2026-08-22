@@ -15,7 +15,6 @@ status: planned
 
 Slides, code, examples, and references will be linked here.
 
-## Collaborative notes
+## Lecture notes
 
-Add intuition, a derivation outline, a visualization, and common pitfalls.
-
+Intuition, a derivation outline, a visualization, and common pitfalls will be added here.

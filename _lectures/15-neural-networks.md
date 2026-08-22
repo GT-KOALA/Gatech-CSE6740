@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a computation graph, backpropagation walkthrough, and code example.
-
+A computation graph, backpropagation walkthrough, and code example will be added here.

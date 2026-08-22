@@ -1,0 +1,40 @@
+name: Lecture material assignment
+description: Track a lecture-note section assigned by the course team.
+title: "[Lecture NN] Material — Short description"
+labels: ["lecture-material"]
+body:
+  - type: markdown
+    attributes:
+      value: "The course team assigns this issue after note-taking sign-ups are finalized in the course Google Sheet."
+  - type: input
+    id: lecture
+    attributes:
+      label: Lecture
+      placeholder: "Lecture 02 — Clustering and K-means"
+    validations:
+      required: true
+  - type: input
+    id: section
+    attributes:
+      label: Assigned section
+      placeholder: "Worked K-means example"
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Requested material
+      description: Describe the notes, example, code, visual, or reference work expected in the pull request.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Review checklist
+      value: |
+        - [ ] Technically accurate and written in the student's own words
+        - [ ] Sources and reused assets are cited
+        - [ ] Images include descriptive alt text
+        - [ ] No homework, exam, grading, solution, or private information
+        - [ ] Pull request links this issue
+

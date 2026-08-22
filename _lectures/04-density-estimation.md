@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a bandwidth comparison, one numerical example, and a reference check.
-
+A bandwidth comparison, numerical example, and references will be added here.

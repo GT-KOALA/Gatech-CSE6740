@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add shape calculations, a filter visualization, and implementation notes.
-
+Shape calculations, a filter visualization, and implementation notes will be added here.

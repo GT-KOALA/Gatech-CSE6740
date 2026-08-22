@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a visual explanation, worked likelihood example, and modeling cautions.
-
+A visual explanation, worked likelihood example, and modeling cautions will be added here.

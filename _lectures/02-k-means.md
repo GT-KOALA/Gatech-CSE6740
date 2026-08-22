@@ -15,7 +15,6 @@ status: planned
 
 Slides, code, examples, and references will be linked here.
 
-## Collaborative notes
+## Lecture notes
 
-Add a geometric explanation, a small worked example, and practical implementation notes.
-
+A geometric explanation, small worked example, and practical implementation notes will be added here.

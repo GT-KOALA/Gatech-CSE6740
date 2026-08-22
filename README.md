@@ -1,6 +1,6 @@
 # CSE 6740: Computational Data Analysis · Fall 2026
 
-The public, collaborative lecture hub for CSE 6740 at Georgia Tech.
+The public lecture-material hub for CSE 6740 at Georgia Tech.
 
 **Website:** <https://gt-koala.github.io/CSE6740-Fall2026/>
 
@@ -10,8 +10,7 @@ The public, collaborative lecture hub for CSE 6740 at Georgia Tech.
 - `_layouts/` — shared page templates
 - `assets/` — styles and lecture media
 - `schedule.md` — generated lecture index
-- `contribute.md` — student-facing contribution workflow
-- `CONTRIBUTING.md` — detailed GitHub instructions
+- `CONTRIBUTING.md` — pull-request instructions for assigned student work
 
 ## Preview locally
 
@@ -27,4 +26,3 @@ Then open <http://localhost:4000>. Publishing is automatic after a change is mer
 ## Content boundary
 
 This repository is for public lecture materials only. Homework, exams, grades, solutions, and private student information must not be committed.
-

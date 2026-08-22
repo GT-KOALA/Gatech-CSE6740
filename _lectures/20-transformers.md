@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add an attention walkthrough, architecture map, and shape annotations.
-
+An attention walkthrough, architecture map, and shape annotations will be added here.

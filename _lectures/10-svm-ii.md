@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a soft-margin example, parameter intuition, and derivation checkpoints.
-
+A soft-margin example, parameter intuition, and derivation checkpoints will be added here.

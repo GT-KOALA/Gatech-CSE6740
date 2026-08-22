@@ -12,26 +12,5 @@ layout: default
     <span class="status status-{{ page.status | default: 'planned' }}">{{ page.status | default: "planned" }}</span>
   </header>
 
-  <section class="contributor-panel" aria-labelledby="contributors-title">
-    <div>
-      <p class="eyebrow">Student team</p>
-      <h2 id="contributors-title">Four collaborators</h2>
-      <p>Claim an open role, then improve this page after the lecture.</p>
-    </div>
-    <ol class="contributor-list">
-      {% for person in page.contributors %}
-      <li><span>{{ forloop.index | prepend: "0" }}</span>{{ person }}</li>
-      {% endfor %}
-    </ol>
-  </section>
-
   <div class="lecture-content prose">{{ content }}</div>
-
-  <aside class="edit-callout">
-    <p class="eyebrow">Help improve this lecture</p>
-    <h2>Found a clearer explanation?</h2>
-    <p>Fix a typo, add a worked example, improve the notes, or contribute a visual. Every change is reviewed before it appears here.</p>
-    <a class="button" href="https://github.com/{{ site.repository }}/edit/main/{{ page.path }}">Edit this page on GitHub ↗</a>
-  </aside>
 </article>
-

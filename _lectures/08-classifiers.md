@@ -15,6 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Build a comparison table, examples, and practical selection guide.
+A comparison table, worked examples, and practical selection guide will be added here.

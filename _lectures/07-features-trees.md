@@ -15,7 +15,6 @@ status: planned
 
 Materials will be added after class.
 
-## Collaborative notes
+## Lecture notes
 
-Add a split example, an interpretation guide, and references.
-
+A split example, interpretation guide, and references will be added here.
