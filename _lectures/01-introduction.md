@@ -2,7 +2,7 @@
 title: Introduction and logistics
 number: "01"
 date: 2026-08-24
-summary: What computational data analysis asks, how the course fits together, and how we will build in public.
+summary: What computational data analysis asks, how the course fits together, and what students will learn this semester.
 status: planned
 ---
 ## Learning goals
