@@ -1,0 +1,35 @@
+name: Lecture team sign-up
+description: Claim one of four student contributor roles for a lecture.
+title: "[Lecture team] Lecture NN — Topic"
+labels: ["lecture-team"]
+body:
+  - type: markdown
+    attributes:
+      value: "Each lecture has four roles. Please claim one open role and coordinate in this issue."
+  - type: input
+    id: lecture
+    attributes:
+      label: Lecture
+      description: Provide the lecture number and title.
+      placeholder: "Lecture 02 — Clustering and K-means"
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Preferred role
+      options:
+        - Notes editor
+        - Example builder
+        - Visual explainer
+        - Reference checker
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: Contribution idea
+      description: In one or two sentences, what would you like to add or improve?
+    validations:
+      required: true
+

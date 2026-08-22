@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#003057">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="CSE 6740 home">
+        <span class="brand-mark">GT</span>
+        <span>CSE 6740 <small>Fall 2026</small></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="{{ '/schedule/' | relative_url }}">Lectures</a>
+        <a href="{{ '/contribute/' | relative_url }}">Contribute</a>
+        <a class="github-link" href="https://github.com/{{ site.repository }}">GitHub ↗</a>
+      </nav>
+    </header>
+    <main>{{ content }}</main>
+    <footer>
+      <p>Georgia Institute of Technology · College of Computing</p>
+      <p>Course materials evolve through instructor and student collaboration.</p>
+    </footer>
+  </body>
+</html>
+
