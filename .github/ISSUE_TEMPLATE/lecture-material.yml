@@ -13,11 +13,16 @@ body:
       placeholder: "Lecture 02 — Clustering and K-means"
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: section
     attributes:
       label: Assigned section
-      placeholder: "Worked K-means example"
+      description: Select the exact file slot this issue will own.
+      options:
+        - Course materials 1 (course-1.md)
+        - Course materials 2 (course-2.md)
+        - Optional topic 1 (optional-1.md)
+        - Optional topic 2 (optional-2.md)
     validations:
       required: true
   - type: textarea
@@ -32,9 +37,18 @@ body:
     attributes:
       label: Review checklist
       value: |
+        - [ ] Course team set `assignee` and `issue` in the assigned file on `main`
         - [ ] Technically accurate and written in the student's own words
         - [ ] Sources and reused assets are cited
         - [ ] Images include descriptive alt text
         - [ ] No homework, exam, grading, solution, or private information
         - [ ] Pull request links this issue
 
+  - type: input
+    id: file
+    attributes:
+      label: Exact assigned file
+      description: Copy the full path from `_contributions/fall-2026/NN/`.
+      placeholder: "_contributions/fall-2026/02/course-1.md"
+    validations:
+      required: true

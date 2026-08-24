@@ -13,4 +13,31 @@ layout: default
   </header>
 
   <div class="lecture-content prose">{{ content }}</div>
+
+  {% assign lecture_contributions = site.contributions | where: "semester", page.semester | where: "lecture_number", page.number | sort: "slot_order" %}
+  {% if lecture_contributions.size > 0 %}
+  <section class="student-materials" aria-labelledby="student-materials-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Lecture extensions</p>
+        <h2 id="student-materials-title">Course materials and optional topics</h2>
+      </div>
+      <p>Four independently reviewed sections</p>
+    </div>
+    <div class="material-tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Lecture extension sections">
+        {% for contribution in lecture_contributions %}
+        <button id="tab-{{ contribution.slot }}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="panel-{{ contribution.slot }}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+          <span>{{ contribution.role_label }}</span>{{ contribution.tab_title }}
+        </button>
+        {% endfor %}
+      </div>
+      {% for contribution in lecture_contributions %}
+      <section id="panel-{{ contribution.slot }}" class="tab-panel prose" role="tabpanel" aria-labelledby="tab-{{ contribution.slot }}" {% unless forloop.first %}hidden{% endunless %}>
+        {{ contribution.content | markdownify }}
+      </section>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 </article>

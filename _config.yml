@@ -11,6 +11,8 @@ future: true
 collections:
   lectures:
     output: true
+  contributions:
+    output: false
 defaults:
   - scope:
       path: "_lectures/fall-2026"

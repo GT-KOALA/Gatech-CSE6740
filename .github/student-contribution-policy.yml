@@ -1,0 +1,10 @@
+staff:
+  - guaguakai
+allowed_collection: _contributions
+required_slots:
+  course-1: course_material
+  course-2: course_material
+  optional-1: optional_topic
+  optional-2: optional_topic
+maximum_changed_files_per_student_pr: 1
+
