@@ -1,7 +1,7 @@
 ---
 title: Introduction to reinforcement learning
-number: "21"
-date: 2026-11-18
+number: "18"
+date: 2026-11-09
 summary: Learning behavior through interaction, reward, and delayed consequences.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An MDP example, terminology map, and key assumptions will be added here.
+

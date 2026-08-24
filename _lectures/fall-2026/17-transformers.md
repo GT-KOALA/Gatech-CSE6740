@@ -1,7 +1,7 @@
 ---
 title: Transformers
-number: "20"
-date: 2026-11-16
+number: "17"
+date: 2026-11-04
 summary: Learning contextual representations through attention and parallel sequence processing.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An attention walkthrough, architecture map, and shape annotations will be added here.
+

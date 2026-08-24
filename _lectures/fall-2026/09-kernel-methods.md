@@ -1,7 +1,7 @@
 ---
 title: Kernel methods
-number: "11"
-date: 2026-09-30
+number: "09"
+date: 2026-09-23
 summary: Learning nonlinear patterns through implicit feature spaces.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 Feature-map intuition, kernel examples, and selection cautions will be added here.
+

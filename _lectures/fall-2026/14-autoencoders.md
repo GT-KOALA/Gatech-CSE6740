@@ -1,7 +1,7 @@
 ---
 title: Autoencoders and variational autoencoders
-number: "17"
-date: 2026-11-04
+number: "14"
+date: 2026-10-21
 summary: Learning latent representations through reconstruction and probabilistic encoding.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An architecture diagram, loss breakdown, and latent-space example will be added here.
+

@@ -1,7 +1,7 @@
 ---
 title: Policy iteration and value iteration
-number: "22"
-date: 2026-11-23
+number: "19"
+date: 2026-11-11
 summary: Solving known Markov decision processes through Bellman updates.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
-A gridworld walkthrough, algorithm comparison, and convergence intuition will be added here.
+A gridworld walkthrough and convergence intuition will be added here.
+

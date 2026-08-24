@@ -1,7 +1,7 @@
 ---
 title: Expectation maximization
-number: "06"
-date: 2026-09-14
+number: "05"
+date: 2026-09-09
 summary: Alternating between latent-variable inference and parameter updates.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An algorithm walkthrough, derivation map, and debugging checklist will be added here.
+

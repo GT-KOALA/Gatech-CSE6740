@@ -1,7 +1,7 @@
 ---
 title: Gradient descent
-number: "13"
-date: 2026-10-19
+number: "12"
+date: 2026-10-07
 summary: Optimizing models through local slope information and iterative updates.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An optimization trajectory, code example, and troubleshooting guide will be added here.
+

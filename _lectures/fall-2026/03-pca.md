@@ -1,5 +1,5 @@
 ---
-title: Dimensionality reduction and PCA
+title: Principal component analysis
 number: "03"
 date: 2026-08-31
 summary: Finding low-dimensional structure by projecting data onto directions of maximum variation.

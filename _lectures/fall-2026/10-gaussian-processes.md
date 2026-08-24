@@ -1,20 +1,21 @@
 ---
 title: Gaussian process regression
-number: "12"
-date: 2026-10-07
+number: "10"
+date: 2026-09-28
 summary: Bayesian prediction over functions with kernels and calibrated uncertainty.
 status: planned
 ---
 ## Learning goals
 
 - Define a Gaussian process through mean and covariance functions.
-- Compute a predictive distribution conceptually.
+- Describe the predictive distribution.
 - Interpret posterior mean and uncertainty.
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
-A function-space visual, prediction walkthrough, and reference list will be added here.
+A function-space visual and prediction walkthrough will be added here.
+

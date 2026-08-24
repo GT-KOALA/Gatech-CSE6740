@@ -1,7 +1,7 @@
 ---
 title: Diffusion models
-number: "18"
-date: 2026-11-09
+number: "15"
+date: 2026-10-26
 summary: Generating data by learning to reverse a gradual noising process.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 A process diagram, sampling pseudocode, and terminology guide will be added here.
+

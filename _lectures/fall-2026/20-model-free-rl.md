@@ -1,7 +1,7 @@
 ---
 title: Model-free reinforcement learning
-number: "23"
-date: 2026-11-30
+number: "20"
+date: 2026-11-16
 summary: Estimating value and improving behavior without a known environment model.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An update example, algorithm comparison, and exploration notes will be added here.
+

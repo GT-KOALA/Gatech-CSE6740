@@ -1,7 +1,7 @@
 ---
 title: Recurrent neural networks
-number: "19"
-date: 2026-11-11
+number: "16"
+date: 2026-10-28
 summary: Modeling sequences with shared state and recurrent computation.
 status: planned
 ---
@@ -13,8 +13,9 @@ status: planned
 
 ## Materials
 
-Materials will be added after class.
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
 An unrolled network visual, sequence example, and limitations will be added here.
+
