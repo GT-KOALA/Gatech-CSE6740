@@ -3,7 +3,7 @@ title: Introduction and logistics
 number: "01"
 date: 2026-08-24
 summary: What computational data analysis asks, how the course fits together, and what students will learn this semester.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Lecture materials will be added here after class.
+- [Lecture 1 slides (PDF, 55 pages)]({{ '/assets/semesters/fall-2026/lectures/01/lecture-01-introduction.pdf' | relative_url }})
 
 ## Lecture notes
 
