@@ -3,7 +3,7 @@ title: Clustering and K-means
 number: "02"
 date: 2026-08-26
 summary: Discovering groups in unlabeled data through distance, assignment, and iterative refinement.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be linked here.
+- [Lecture 2 slides (PDF, 38 pages)]({{ '/assets/semesters/fall-2026/lectures/02/lecture-02-clustering-k-means.pdf' | relative_url }})
 
 ## Lecture notes
 
