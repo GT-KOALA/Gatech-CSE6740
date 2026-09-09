@@ -16,20 +16,20 @@ issue: 5
 - Reconstruction
 
 # 2. Matrix and Vector Conventions
-- A **data point** or **feature** is always a column vector in $R^d$ with dimension $d$.
-- A **feature matrix** is an $n\times d$ matrix concatenating $n$ data points as rows.
+- A **data point** or **feature** is always a column vector in $$\mathbb{R}^d$$ with dimension $$d$$.
+- A **feature matrix** is an $$n\times d$$ matrix concatenating $$n$$ data points as rows.
 $$
 \underbrace{x^i = \begin{bmatrix}
     x^i_1 \\
     x^i_2 \\
     \vdots \\
     x^i_d
-\end{bmatrix} \in {R}^d}_{\text{\large data point/feature}} \qquad \underbrace{X = [x^1, x^2, \ldots, x^n]^\top = \begin{bmatrix}
+\end{bmatrix} \in \mathbb{R}^d}_{\text{data point/feature}} \qquad \underbrace{X = [x^1, x^2, \ldots, x^n]^\top = \begin{bmatrix}
                 (x^1)^\top  \\
                 (x^2)^\top  \\
                 \vdots \\
                 (x^n)^\top 
-            \end{bmatrix} \in {R}^{n\times d}}_{\text{\large feature matrix}}
+            \end{bmatrix} \in \mathbb{R}^{n\times d}}_{\text{feature matrix}}
 $$
 
 # 3 Introduction to Dimensionality Reduction
@@ -49,16 +49,16 @@ Dimension reduced data can be used for:
 # 4 Principle Component Analysis (PCA)
 **Algorithm:**
 
-**Input:** Given $n$ data points $\{x^1,x^2,\ldots,x^n\}$ in $\mathbb{R}^d$.
+**Input:** Given $$n$$ data points $$\{x^1,x^2,\ldots,x^n\}$$ in $$\mathbb{R}^d$$.
 
 - **Step 1:** Estimate the mean and covariance of the dataset.
 $$
-    \underbrace{\mu = \frac{1}{n}\sum_{i=1}^{n}x^i}_{\text{\large mean vector}} \in {R}^d \qquad \underbrace{C = \frac{1}{n}\sum_{i=1}^{n}(x^i - \mu)(x^i - \mu)^\top }_{\text{\large covariance matrix}} \in {R}^{d\times d}
+    \underbrace{\mu = \frac{1}{n}\sum_{i=1}^{n}x^i}_{\text{mean vector}} \in \mathbb{R}^d \qquad \underbrace{C = \frac{1}{n}\sum_{i=1}^{n}(x^i - \mu)(x^i - \mu)^\top }_{\text{covariance matrix}} \in \mathbb{R}^{d\times d}
 $$
 
-- **Step 2:** Compute eigenvectors $w^1,w^2,\ldots,w^d$ of $C$ and their corresponding eigenvalues $\lambda_1,\lambda_2,\ldots,\lambda_d$ such that $\lambda_1$ is the largest eigenvalue, $\lambda_2$ is the second largest eigenvalue, and so on.
+- **Step 2:** Compute eigenvectors $$w^1,w^2,\ldots,w^d$$ of $$C$$ and their corresponding eigenvalues $$\lambda_1,\lambda_2,\ldots,\lambda_d$$ such that $$\lambda_1$$ is the largest eigenvalue, $$\lambda_2$$ is the second largest eigenvalue, and so on.
 
-- **Step 3:** Compute reduced representation with $\Lambda_k = \text{diag}(\lambda_1,\lambda_2,\ldots,\lambda_k)$ and $W_k = [w^1,w^2,\ldots,w^k]^\top$:
+- **Step 3:** Compute reduced representation with $$\Lambda_k = \text{diag}(\lambda_1,\lambda_2,\ldots,\lambda_k)$$ and $$W_k = [w^1,w^2,\ldots,w^k]^\top$$:
 $$
     z^i = \begin{bmatrix}
         (w^1)^\top (x^i - \mu) / \sqrt{\lambda_1} \\
@@ -72,9 +72,9 @@ One criterion we can use for dimensionality reduction is capture the variation o
     
 
 ## 4.1 Reduction Problem Formulation
-**Input:** Given $n$ data points $\{x^1,x^2,\ldots,x^n\}$ in $\mathbb{R}^d$ with mean $\mu$.
+**Input:** Given $$n$$ data points $$\{x^1,x^2,\ldots,x^n\}$$ in $$\mathbb{R}^d$$ with mean $$\mu$$.
 
-**Find:** Direction unit vector $w \in \mathbb{R}^d$ such that the variance of the projected data points is maximized.
+**Find:** Direction unit vector $$w \in \mathbb{R}^d$$ such that the variance of the projected data points is maximized.
 $$
     \max_{w :\|w\|_2 = 1} \frac{1}{n}\sum_{i=1}^{n}(w^\top (x^i - \mu))^2
 $$
@@ -88,7 +88,7 @@ $$
     && \text{Transpose} \\[6pt]
     &= \max_{w:\|w\|_2=1} w^\top
     \underbrace{\left(\frac{1}{n}\sum_{i=1}^{n}(x^i-\mu)(x^i-\mu)^\top\right)}
-    _{\text{\large covariance matrix }C} \\[6pt]
+    _{\text{covariance matrix }C} w \\[6pt]
     &= \max_{w:\|w\|_2=1} w^\top Cw
     && \text{Substitute }C
 \end{aligned}
@@ -117,17 +117,17 @@ $$
 $$
 
 ## 4.3 Eigenvalue Problem
-**Definition:** Given a symmetric matrix $C \in \mathbb{R}^{d\times d}$, find a vector $w\in \mathbb{R}^d$ such that $\|w\|_2 = 1$ and:
+**Definition:** Given a symmetric matrix $$C \in \mathbb{R}^{d\times d}$$, find a vector $$w\in \mathbb{R}^d$$ such that $$\|w\|_2 = 1$$ and:
 $$
     Cw = \lambda w
 $$
-Note: There will be multiple solutions to this problem with different eigenvectors $w^1,w^2,\ldots,w^d$ and their corresponding eigenvalues $\lambda_1,\lambda_2,\ldots,\lambda_d$. Here we will use the notion where all of the eigenvectors are orthogonal (i.e. $(w^i)^\top w^j = 0$ for $i\neq j$).
+Note: There will be multiple solutions to this problem with different eigenvectors $$w^1,w^2,\ldots,w^d$$ and their corresponding eigenvalues $$\lambda_1,\lambda_2,\ldots,\lambda_d$$. Here we will use the notion where all of the eigenvectors are orthogonal (i.e. $$(w^i)^\top w^j = 0$$ for $$i\neq j$$).
 
 ## 4.4 Equivalent to Eigenvalue Problem
 
 **Claim:** The following maximization problem is equivalent to the eigenvalue problem defined above:
 $$
-    \max_{w : \|w\|_2 = 1} w^\top Cw \iff Cw = \lambda w
+    w \in \operatorname*{arg\,max}_{\|u\|_2 = 1} u^\top Cu \iff Cw = \lambda_{\max}w,\quad \|w\|_2=1
 $$
 **Proof:** We can solve the maximiation problem by setting the gradient of the Lagrangian to zero:
 $$
@@ -137,14 +137,14 @@ $$
     Cw &= \lambda w && \text{Rearrange. Note: w is eigenvector of C} \\
 \end{aligned}
 $$
-Note (*): If $w$ is maximum of original problem, then there must exist a $\lambda$ such that $w$ is a stationary point of the Lagrangian.
+Note (*): If $$w$$ is maximum of original problem, then there must exist a $$\lambda$$ such that $$w$$ is a stationary point of the Lagrangian.
 
 We can compute the variance in the principal direction:
 $$
     w^\top Cw = w^\top \lambda w = \lambda w^\top w = \lambda
 $$
 
-Therefore, the principal direction $w$ that maximizes variance is the eigenvector of $C$ with the largest eigenvalue $\lambda$. In fact, the ordering of the eigenvalues $\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_d$ corresponds to the ordering of the variance captured by each principal direction $w^1,w^2,\ldots,w^d$.
+Therefore, the principal direction $$w$$ that maximizes variance is the eigenvector of $$C$$ with the largest eigenvalue $$\lambda$$. In fact, the ordering of the eigenvalues $$\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_d$$ corresponds to the ordering of the variance captured by each principal direction $$w^1,w^2,\ldots,w^d$$.
 
 # Classroom Dialog
 - **Question:** Is or when is PCA best used for classification task?
@@ -168,9 +168,9 @@ Therefore, the principal direction $w$ that maximizes variance is the eigenvecto
 
 ## 4.6 PCA Reconstruction
 
-**Input:** Given $n$ data points $\{x^1,x^2,\ldots,x^n\}$ in $\mathbb{R}^d$ with mean $\mu$ and the first $k$ principal directions $w^1,w^2,\ldots,w^k$ and their corresponding eigenvalues $\lambda_1,\lambda_2,\ldots,\lambda_k$. Define their matrices like so: $W_k = [w^1,w^2,\ldots,w^k]^\top \in \mathbb{R}^{k\times d}$ and $\Lambda_k = \text{diag}(\lambda_1,\lambda_2,\ldots,\lambda_k) \in \mathbb{R}^{k\times k}$.
+**Input:** Given $$n$$ data points $$\{x^1,x^2,\ldots,x^n\}$$ in $$\mathbb{R}^d$$ with mean $$\mu$$ and the first $$k$$ principal directions $$w^1,w^2,\ldots,w^k$$ and their corresponding eigenvalues $$\lambda_1,\lambda_2,\ldots,\lambda_k$$. Define their matrices like so: $$W_k = [w^1,w^2,\ldots,w^k]^\top \in \mathbb{R}^{k\times d}$$ and $$\Lambda_k = \text{diag}(\lambda_1,\lambda_2,\ldots,\lambda_k) \in \mathbb{R}^{k\times k}$$.
 
-**Goal:** Recover $x^i$ from its reduced representation $z^i$.
+**Goal:** Recover $$x^i$$ from its reduced representation $$z^i$$.
 $$
 \begin{align*}
     z^i &= \begin{bmatrix} 
@@ -184,7 +184,7 @@ $$
         \vdots \\
         (w^k)^\top (x^i - \mu) / \sqrt{\lambda_k}
     \end{bmatrix} = \Lambda_k^{-\frac{1}{2}} W_k (x^i - \mu) \in \mathbb{R}^k && \text{Definition of reduced representation} \\
-    x^i &\simeq \mu + \sum_{j=1}^{k} z^i_j w^j \sqrt{\lambda_j} && \text{Approximation if not all $w^i$ are used (i.e. if k $<$ d)} \\
+    x^i &\simeq \mu + \sum_{j=1}^{k} z^i_j w^j \sqrt{\lambda_j} && \text{Approximation when } k < d \\
     &= \mu + W_k^\top \Lambda_k^{\frac{1}{2}} z^i && \text{Matrix form}
 \end{align*}
 $$
