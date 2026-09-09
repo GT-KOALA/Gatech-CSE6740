@@ -3,7 +3,7 @@ title: Expectation maximization
 number: "05"
 date: 2026-09-09
 summary: Alternating between latent-variable inference and parameter updates.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 5 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/05/lecture-05-expectation-maximization.pdf' | relative_url }})
 
 ## Lecture notes
 
