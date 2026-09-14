@@ -3,7 +3,7 @@ title: Feature selection and decision trees
 number: "06"
 date: 2026-09-14
 summary: Choosing useful variables and constructing interpretable prediction rules.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 6 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/06/lecture-06-feature-selection-trees.pdf' | relative_url }})
 
 ## Lecture notes
 
