@@ -6,12 +6,11 @@ slot_order: 1
 role: course_material
 role_label: Course materials
 tab_title: Core explanation I
-assignee: unassigned
-issue: null
+assignee: yjz0206168-alt
+issue: 8
 ---
 ## Assignment pending
 
 Develop the assigned part of the lecture's core course materials.
 
 The course team will assign this section through a GitHub issue.
-
