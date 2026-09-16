@@ -3,7 +3,7 @@ title: Logistic regression
 number: "07"
 date: 2026-09-16
 summary: Modeling class probabilities through linear predictors and the logistic function.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 7 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/07/lecture-07-logistic-regression.pdf' | relative_url }})
 
 ## Lecture notes
 
