@@ -6,12 +6,11 @@ slot_order: 3
 role: optional_topic
 role_label: Optional topic
 tab_title: Extension I
-assignee: unassigned
-issue: null
+assignee: Akul-Chordia
+issue: 20
 ---
 ## Assignment pending
 
 Develop an optional extension, application, or related topic assigned for this lecture.
 
 The course team will assign this section through a GitHub issue.
-
