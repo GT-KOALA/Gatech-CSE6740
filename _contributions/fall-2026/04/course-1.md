@@ -92,6 +92,17 @@ n_{\text{head}}(1-\theta) &= (n - n_{\text{head}})\,\theta && \text{Multiply bot
 
 The second derivative \(-\frac{n_{\text{head}}}{\theta^2} - \frac{n - n_{\text{head}}}{(1-\theta)^2}\) is negative, so this is a maximum.
 
+**Boundary Cases:**
+
+The derivative and second-derivative argument assumes that both outcomes are observed, meaning $0 < n_{\text{head}} < n$, which ensures the optimum lies in the open interval $(0, 1)$.
+
+If the sample contains all heads ($n_{\text{head}} = n$) or all tails ($n_{\text{head}} = 0$), the stationary-point condition $\frac{\partial l}{\partial \theta} = 0$ has no solution in $(0, 1)$:
+
+- When $n_{\text{head}} = n$, the likelihood is $\theta^n$, strictly increasing on $[0, 1]$, so the maximum occurs on the boundary at $\hat{\theta}_{\text{MLE}} = 1$.
+- When $n_{\text{head}} = 0$, the likelihood is $(1-\theta)^n$, strictly decreasing on $[0, 1]$, so the maximum occurs on the boundary at $\hat{\theta}_{\text{MLE}} = 0$.
+
+In both boundary cases, the result still aligns with the general formula $\hat{\theta}_{\text{MLE}} = \frac{n_{\text{head}}}{n}$.
+
 **Intuition:** The estimate is just the fraction of heads. For example, 7 heads out of 10 flips gives \(\hat{\theta}_{\text{MLE}} = 0.7\), which matches our intuition.
 
 ## 4.3 Example: Univariate Gaussian
