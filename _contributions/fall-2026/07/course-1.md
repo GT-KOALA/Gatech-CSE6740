@@ -11,12 +11,11 @@ issue: 18
 ---
 # Lecture 7 — Classification: decision boundaries, $k$-nearest neighbours, and logistic regression
 
-These notes cover the first in-class section of Lecture 7, through slide 18. The
-thread runs: what a classifier actually produces, how $k$-nearest neighbours
-answers the question using nothing but stored data, what breaks when you change
-$k$ or the distance function, why we eventually stop storing data and start
-fitting coefficients, and how logistic regression turns a linear score into a
-probability and then into a decision.
+These notes cover the first in-class section of Lecture 7, through slide 18.
+They build up to one question: how do you turn labelled examples into a rule
+that answers everywhere? $k$-nearest neighbours answers it with stored data and
+no model at all. Logistic regression answers it with a handful of coefficients.
+Getting from the first to the second is most of the lecture.
 
 ---
 
@@ -72,8 +71,7 @@ produces exactly one straight cut. Hand all three the same 85 points and you
 get three different pictures.
 
 > **Where students trip: "a good boundary gets every training point right."**
-> Several iced orders in Figure 1 sit on the hot side, and that is not a defect
-> to be engineered away. The classes genuinely overlap, because somebody does
+> Several iced orders in Figure 1 sit on the hot side, and that is not a mistake to fix. The classes genuinely overlap, because somebody does
 > order iced coffee in November. When two classes overlap, no classifier can be
 > right everywhere, and the lowest error rate any classifier could ever reach is
 > called the **Bayes error**. It is strictly positive whenever the classes
@@ -153,9 +151,9 @@ both of class 1, which is enough to flip the answer back.*
 >
 > *Distance ties* happen when two training points sit at exactly the same
 > distance from the query, so "the $k$ nearest" is not well defined. An odd $k$
-> does nothing about this. Libraries settle it by whichever point appears
-> earlier in the array, which means the row order of your CSV file can change a
-> prediction.
+> does nothing about this. The rule itself does not say who wins, so the answer
+> comes down to an implementation detail of the search, and reordering the rows
+> of your data can change a prediction.
 >
 > Conventions also differ between implementations. Our rule
 > $\mathbf{1}\lbrace \hat p_k \ge \frac{1}{2}\rbrace$ sends a vote tie to class $1$,
@@ -236,7 +234,7 @@ memorising.
 > shuffled every label first. Training error does not rank the candidate values
 > of $k$; it crowns $k = 1$ every time.
 >
-> Two footnotes. If two identical inputs carry conflicting labels, one of them
+> Two caveats. If two identical inputs carry conflicting labels, one of them
 > must be wrong and the error is no longer zero. And leave-one-out evaluation
 > removes the shortcut by construction, since it forbids a point from being its
 > own neighbour.
@@ -251,7 +249,7 @@ candidate models.
 > growing until it reaches across a real class boundary and averages the two
 > classes together, which smooths away structure that was genuinely there. At
 > the extreme $k = n$ every query uses all $n$ training points, so every input
-> in the universe receives the training set's majority label and the classifier
+> receives the training set's majority label and the classifier
 > is a constant.
 
 ### 3.2 An experiment
@@ -437,7 +435,7 @@ information about the label.
 
 ## 5. What KNN buys you, and what it costs
 
-Collecting the picture so far:
+The whole trade in one place:
 
 | | Strengths | Limitations |
 |---|---|---|
@@ -546,7 +544,7 @@ where $\sigma$ is the **sigmoid** (or logistic) function.
 > fitting it to the log-odds rather than to the label. Nobody is predicting a
 > continuous $y$.
 
-For the café, the fitted model is $s(T, M) = 0.30\,T + 0.06\,M - 7.5$, with $T$
+The café model we will work with is $s(T, M) = 0.30\,T + 0.06\,M - 7.5$, with $T$
 the temperature in degrees Celsius and $M$ the walking time in minutes.
 
 ![Two panels. The left panel plots the sigmoid function, an S-shaped teal curve rising from near 0 at score minus 5 to near 1 at score plus 5, crossing 0.5 at score 0; three points are marked on it, A at 0.142, B at 0.500 and C at 0.917. The right panel shows the café feature space with temperature on the horizontal axis and walking time on the vertical axis, filled with a smooth colour gradient from blue at low probability to orange at high probability; a solid straight dark line marks the p = 0.5 contour and a dashed teal straight line marks the p = 0.8 contour, with the three points A, B and C marked as white dots.](figures/logistic.png)
@@ -653,7 +651,7 @@ $\sigma(4.8) = 0.992$.
 > by $1^{\circ}\mathrm{C}$ adds $0.30$ to the *log-odds*, which **multiplies the
 > odds** by $e^{0.30} \approx 1.35$. It does not add a fixed amount to the
 > probability. From $18^{\circ}$ to $19^{\circ}$ the probability moves
-> $0.142 \to 0.184$, a jump of $0.042$; from $30^{\circ}$ to $31^{\circ}$ the
+> $0.142 \to 0.182$, a jump of $0.041$; from $30^{\circ}$ to $31^{\circ}$ the
 > same coefficient moves it $0.917 \to 0.937$, a jump of only $0.020$. The odds
 > scale by a constant factor, the probability does not.
 
@@ -822,3 +820,5 @@ College of Engineering, 2024. Lecture slides and course notes.
 [2] K. Wang, *CSE/ISyE 6740: Computational Data Analysis*, Lecture 7,
 "Logistic Regression and Support Vector Machine". Georgia Institute of
 Technology, 16 September 2026.
+
+*English is not my first language; Claude was used to polish the wording.*
