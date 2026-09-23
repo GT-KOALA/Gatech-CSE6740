@@ -3,7 +3,7 @@ title: Kernel methods
 number: "09"
 date: 2026-09-23
 summary: Learning nonlinear patterns through implicit feature spaces.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 9 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/09/lecture-09-kernel-methods.pdf' | relative_url }})
 
 ## Lecture notes
 
