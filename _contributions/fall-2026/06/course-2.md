@@ -6,7 +6,7 @@ slot_order: 2
 role: course_material
 role_label: Course materials
 tab_title: Core explanation II
-assignee: unassigned
+assignee: kalsoomtariq
 issue: null
 ---
 ## Assignment pending
