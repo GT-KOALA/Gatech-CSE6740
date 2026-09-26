@@ -465,9 +465,10 @@ so does not change the order.
 distance to every training point, because a point you never measured could
 always have been the closest. Each distance $D_2(x, x_i)$ touches all $d$
 coordinates, costing $O(d)$. Doing that $n$ times costs $O(nd)$. Picking the $k$
-smallest of those $n$ distances costs a further $O(n)$ using selection, or
-$O(n \log n)$ if you sort the whole list when you did not need to, and either
-way $O(nd)$ dominates for $d \ge 1$.
+smallest of those $n$ distances costs a further $O(n)$ using linear-time
+selection, giving a total of $O(nd + n) = O(nd)$ for $d \ge 1$. If you sort the
+whole list instead, the total is $O(nd + n \log n)$; the sorting term can
+dominate when $d$ is small.
 
 Put numbers on it. At $n = 10^{6}$ and $d = 100$, a *single* prediction touches
 $10^{8}$ feature coordinates, and the entire training set has to be deployed
@@ -716,8 +717,11 @@ $10\%$.
 **One flipped label, $k = 3$.** For any $q$ in $(-3.5, -2.5)$, the three nearest
 training inputs are $-4$, $-3$ and $-2$, whose labels are $0$, $1$, $0$. The
 majority is $0$, which is correct, and the corrupted point is outvoted two to
-one. Outside that interval the neighbourhood does not even contain $-3$. The
-error is $0\%$, and the same argument works for $k = 5$.
+one. Outside that interval, $-3$ can still be among the three nearest inputs:
+near $q = -4$, for example, they are $-4$, $-5$ and $-3$. Whenever $-3$ is
+included, the other two neighbours have label $0$ and outvote it; when it is
+absent, the prediction is unchanged from the clean-label case. The error is
+$0\%$, and the same argument works for $k = 5$.
 
 **Two adjacent flips, $k = 3$.** Now the labels at $-3$ and $-2$ are both $1$.
 For $q$ just left of $-3$ the three nearest inputs are $-3, -4, -2$ with labels
