@@ -32,7 +32,7 @@ answer at *every* point of the input space, not only at the points we happened
 to observe. Producing an answer everywhere is the same thing as cutting the
 space into regions and putting one label on each region.
 
-![Two scatter plots of 85 simulated coffee orders, with outside temperature in degrees Celsius on the horizontal axis and walking time in minutes on the vertical axis. Blue circles mark hot orders and orange triangles mark iced orders. The left panel shows the raw points, with hot orders concentrated at lower temperatures and iced orders at higher ones, but with substantial overlap in the middle. The right panel adds a straight dark boundary running from the upper left to the lower right; the region left of it is shaded pale blue and labelled "predict hot", the region right of it is shaded pale orange and labelled "predict iced". Several orange triangles fall on the blue side and several blue circles on the orange side.](figures/coffee_classification.png)
+![Two scatter plots of 85 simulated coffee orders, with outside temperature in degrees Celsius on the horizontal axis and walking time in minutes on the vertical axis. Blue circles mark hot orders and orange triangles mark iced orders. The left panel shows the raw points, with hot orders concentrated at lower temperatures and iced orders at higher ones, but with substantial overlap in the middle. The right panel adds a straight dark boundary running from the upper left to the lower right; the region left of it is shaded pale blue and labelled "predict hot", the region right of it is shaded pale orange and labelled "predict iced". Several orange triangles fall on the blue side and several blue circles on the orange side.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/coffee_classification.png)
 
 *Figure 1. The same 85 orders, shown twice. On the right, every point of the
 plane has been coloured with the label the rule would assign it, which is what
@@ -137,7 +137,7 @@ $1, 0, 0, 1, 1$.
 The prediction goes $1 \to 0 \to 1$ on a fixed query and a fixed dataset. The
 only thing that moved is $k$.
 
-![Three side-by-side scatter plots showing the same five labelled points and a black star at the origin marking the query. A dashed teal circle centred on the star grows from left to right. In the first panel, headed "k = 1, predict 1", the circle encloses only point A, an orange triangle. In the second, headed "k = 3, predict 0", the circle encloses A along with the blue circles B and C. In the third, headed "k = 5, predict 1", the circle encloses all five points, adding the orange triangles D and E.](figures/knn_vote.png)
+![Three side-by-side scatter plots showing the same five labelled points and a black star at the origin marking the query. A dashed teal circle centred on the star grows from left to right. In the first panel, headed "k = 1, predict 1", the circle encloses only point A, an orange triangle. In the second, headed "k = 3, predict 0", the circle encloses A along with the blue circles B and C. In the third, headed "k = 5, predict 1", the circle encloses all five points, adding the orange triangles D and E.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/knn_vote.png)
 
 *Figure 2. Widening the neighbourhood from $k=3$ to $k=5$ admits $D$ and $E$,
 both of class 1, which is enough to flip the answer back.*
@@ -179,7 +179,7 @@ are visible in the prediction. A wall between two cells that happen to share a
 label is invisible: crossing it changes which point is nearest but not what that
 point says.
 
-![A two-dimensional plot with seven training points, three blue circles on the left and four orange triangles on the right. Thin grey lines divide the plane into seven polygonal Voronoi cells, one per point. The cells are shaded pale blue or pale orange according to their point's label, and a thick dark line traces the border between the blue-shaded group and the orange-shaded group. That dark line is made of several straight segments meeting at angles.](figures/voronoi.png)
+![A two-dimensional plot with seven training points, three blue circles on the left and four orange triangles on the right. Thin grey lines divide the plane into seven polygonal Voronoi cells, one per point. The cells are shaded pale blue or pale orange according to their point's label, and a thick dark line traces the border between the blue-shaded group and the orange-shaded group. That dark line is made of several straight segments meeting at angles.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/voronoi.png)
 
 *Figure 3. Thin grey lines separate Voronoi cells; the thick dark line is the
 decision boundary. It runs along grey lines, but only along those that separate
@@ -259,7 +259,7 @@ The dataset is 360 points in two interleaved arcs. The split into 216 training,
 features were standardised using training statistics only, for reasons covered
 in Section 4.2.
 
-![Three side-by-side plots of the same 216 training points, arranged in two interleaved crescent shapes, blue circles above and orange triangles below. Each plot shows the KNN decision regions shaded pale blue and pale orange with a dark boundary curve. The first, k = 1, has a very jagged boundary with small isolated islands, and reports 2 validation errors out of 72. The second, k = 5, has a smooth boundary that follows the gap between the two crescents, and reports 1 error out of 72. The third, k = 101, has an almost straight boundary that cuts across both crescents, and reports 6 errors out of 72.](figures/knn_boundaries.png)
+![Three side-by-side plots of the same 216 training points, arranged in two interleaved crescent shapes, blue circles above and orange triangles below. Each plot shows the KNN decision regions shaded pale blue and pale orange with a dark boundary curve. The first, k = 1, has a very jagged boundary with small isolated islands, and reports 2 validation errors out of 72. The second, k = 5, has a smooth boundary that follows the gap between the two crescents, and reports 1 error out of 72. The third, k = 101, has an almost straight boundary that cuts across both crescents, and reports 6 errors out of 72.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/knn_boundaries.png)
 
 *Figure 4. At $k=1$ a single oddly placed label carves out its own island. At
 $k=101$ the neighbourhood is wide enough to average the two arcs into a nearly
@@ -268,7 +268,7 @@ straight cut, which no longer follows the shape of either one.*
 Sweeping $k$ over the odd numbers from 1 to 101 gives the two curves below. Odd
 values avoid vote ties.
 
-![A line chart with the number of neighbours k from 1 to 101 on the horizontal axis and classification error as a percentage on the vertical axis. A blue training-error curve starts at 0 percent at k = 1 and rises steadily to about 18 percent by k = 100. An orange validation-error curve starts near 3 percent, dips to its minimum of about 1.4 percent at k = 5, which is marked with a teal dot and a dashed vertical line, then rises in steps to about 8 percent. A note at the upper right reads that both curves climb because the neighbourhood is swallowing the boundary.](figures/knn_errors.png)
+![A line chart with the number of neighbours k from 1 to 101 on the horizontal axis and classification error as a percentage on the vertical axis. A blue training-error curve starts at 0 percent at k = 1 and rises steadily to about 18 percent by k = 100. An orange validation-error curve starts near 3 percent, dips to its minimum of about 1.4 percent at k = 5, which is marked with a teal dot and a dashed vertical line, then rises in steps to about 8 percent. A note at the upper right reads that both curves climb because the neighbourhood is swallowing the boundary.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/knn_errors.png)
 
 *Figure 5. Training and validation error against $k$. Note the left edge:
 training error is $0\%$ at $k=1$ by construction, which is precisely why the
@@ -331,7 +331,7 @@ along each axis separately instead of cutting across.
 >
 > Same points, same labels, same $k$, opposite prediction.
 
-![Two small diagrams side by side, each with a black star at the origin, a blue circle labelled a = (2, 2) and an orange triangle labelled b = (3, 0). On the left, headed "Euclidean, picks a", a dashed teal circle of radius about 2.83 passes through point a, leaving b outside. On the right, headed "Manhattan, picks b", a dashed teal diamond with vertices three units along each axis passes through point b, leaving a outside.](figures/metrics.png)
+![Two small diagrams side by side, each with a black star at the origin, a blue circle labelled a = (2, 2) and an orange triangle labelled b = (3, 0). On the left, headed "Euclidean, picks a", a dashed teal circle of radius about 2.83 passes through point a, leaving b outside. On the right, headed "Manhattan, picks b", a dashed teal diamond with vertices three units along each axis passes through point b, leaving a outside.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/metrics.png)
 
 *Figure 6. The shaded region holds every point within the nearest-neighbour
 distance of the query. The Euclidean ball is round and reaches the diagonal
@@ -356,7 +356,7 @@ Choosing a metric is at least a deliberate act. The next failure is not.
 > Row two describes the same café, the same customers and the same arithmetic as
 > row one. We multiplied one column by 60 and the prediction changed.
 
-![Three side-by-side plots showing the two neighbours as arrows from the query at the origin. In the first, headed "Minutes, nearest is A", the vertical axis spans 0 to 3 minutes and A sits at distance 3.16 while B sits at 5.00. In the second, headed "Seconds, nearest is B", the vertical axis now spans 0 to 200 seconds, A stretches far up the page at distance 180.00 while B stays near the origin at 13.00. In the third, headed "Standardized, nearest is A", both axes are rescaled and A is at 0.36 while B is at 1.00.](figures/scaling.png)
+![Three side-by-side plots showing the two neighbours as arrows from the query at the origin. In the first, headed "Minutes, nearest is A", the vertical axis spans 0 to 3 minutes and A sits at distance 3.16 while B sits at 5.00. In the second, headed "Seconds, nearest is B", the vertical axis now spans 0 to 200 seconds, A stretches far up the page at distance 180.00 while B stays near the origin at 13.00. In the third, headed "Standardized, nearest is A", both axes are rescaled and A is at 0.36 while B is at 1.00.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/scaling.png)
 
 *Figure 7. In minutes, the 3-minute gap to $A$ and the 5-degree gap to $B$ are
 comparable quantities. In seconds that same gap becomes 180 and swamps
@@ -548,7 +548,7 @@ where $\sigma$ is the **sigmoid** (or logistic) function.
 The café model we will work with is $s(T, M) = 0.30\,T + 0.06\,M - 7.5$, with $T$
 the temperature in degrees Celsius and $M$ the walking time in minutes.
 
-![Two panels. The left panel plots the sigmoid function, an S-shaped teal curve rising from near 0 at score minus 5 to near 1 at score plus 5, crossing 0.5 at score 0; three points are marked on it, A at 0.142, B at 0.500 and C at 0.917. The right panel shows the café feature space with temperature on the horizontal axis and walking time on the vertical axis, filled with a smooth colour gradient from blue at low probability to orange at high probability; a solid straight dark line marks the p = 0.5 contour and a dashed teal straight line marks the p = 0.8 contour, with the three points A, B and C marked as white dots.](figures/logistic.png)
+![Two panels. The left panel plots the sigmoid function, an S-shaped teal curve rising from near 0 at score minus 5 to near 1 at score plus 5, crossing 0.5 at score 0; three points are marked on it, A at 0.142, B at 0.500 and C at 0.917. The right panel shows the café feature space with temperature on the horizontal axis and walking time on the vertical axis, filled with a smooth colour gradient from blue at low probability to orange at high probability; a solid straight dark line marks the p = 0.5 contour and a dashed teal straight line marks the p = 0.8 contour, with the three points A, B and C marked as white dots.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/logistic.png)
 
 *Figure 8. The colour on the right varies smoothly across the plane, yet the
 solid $p = 0.5$ contour, which is the decision boundary, is perfectly straight.
@@ -629,7 +629,7 @@ we demand before acting, not what the model believes.
 
 ### 6.5 The same boundary can carry very different confidence
 
-![A line chart of the probability of iced coffee against outside temperature with walking time fixed at 10 minutes. Two S-shaped curves are drawn: a teal one for the original coefficients and an orange one for coefficients that have been doubled. The orange curve is visibly steeper, staying closer to 0 at low temperatures and closer to 1 at high ones, but both curves pass through exactly the same point where the probability equals 0.5 at 23 degrees, marked by a dotted vertical line.](figures/confidence.png)
+![A line chart of the probability of iced coffee against outside temperature with walking time fixed at 10 minutes. Two S-shaped curves are drawn: a teal one for the original coefficients and an orange one for coefficients that have been doubled. The orange curve is visibly steeper, staying closer to 0 at low temperatures and closer to 1 at high ones, but both curves pass through exactly the same point where the probability equals 0.5 at 23 degrees, marked by a dotted vertical line.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/confidence.png)
 
 *Figure 9. Doubling the coefficients leaves the crossing at $p = 0.5$ exactly
 where it was, so both models predict identically on every input. The orange
@@ -693,7 +693,7 @@ across $[-5, 5]$, placed at midpoints so that no test point is ever exactly
 tied between two training inputs. Three runs: clean labels, one flipped label at
 $x = -3$, and two adjacent flips at $x = -3$ and $x = -2$.
 
-![A three-by-three grid of small plots. Rows are the three label sets: clean, one flipped, and two adjacent flipped. Columns are k = 1, 3 and 5. Each plot shows the input x from minus 5 to 5 on the horizontal axis and the label 0 or 1 on the vertical axis, with blue circles for label 0 and orange triangles for label 1, corrupted labels ringed in orange, a dashed teal vertical line at the true boundary 0.5, and a shaded step function showing the prediction. The top row is correct everywhere. In the middle row, k = 1 shows a narrow wrong orange block around x = minus 3 while k = 3 and k = 5 are clean. In the bottom row, k = 1 and k = 3 show a wide wrong block from about minus 3.5 to minus 1.5, while k = 5 shows a wrong block shifted right, from about minus 1.5 up to the true boundary.](figures/label_noise.png)
+![A three-by-three grid of small plots. Rows are the three label sets: clean, one flipped, and two adjacent flipped. Columns are k = 1, 3 and 5. Each plot shows the input x from minus 5 to 5 on the horizontal axis and the label 0 or 1 on the vertical axis, with blue circles for label 0 and orange triangles for label 1, corrupted labels ringed in orange, a dashed teal vertical line at the true boundary 0.5, and a shaded step function showing the prediction. The top row is correct everywhere. In the middle row, k = 1 shows a narrow wrong orange block around x = minus 3 while k = 3 and k = 5 are clean. In the bottom row, k = 1 and k = 3 show a wide wrong block from about minus 3.5 to minus 1.5, while k = 5 shows a wrong block shifted right, from about minus 1.5 up to the true boundary.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/07/figures/label_noise.png)
 
 *Figure 10. Circled markers are the corrupted labels. The shaded step function
 is the prediction; the dashed line is the true boundary at $0.5$.*
@@ -804,7 +804,7 @@ for flips in ([], [-3], [-3, -2]):
 | $\tilde y_i$, $\mathrm{sign}$ | labels rescaled to $\lbrace -1,+1\rbrace$, the sign function | §2.1 |
 | $\lVert u \rVert_2^2$ | squared Euclidean length, $\sum_j u_j^2$ | §2.3 |
 | $\hat R_n(f)$ | training error of $f$ | §3.1 |
-| $\mu_j$, $s_j$, $x'_{ij}$ | training mean, training standard deviation, standardised value | §4.2 |
+| $\mu_j$, $s_j$, $$x'_{ij}$$ | training mean, training standard deviation, standardised value | §4.2 |
 | $O(\cdot)$ | order of growth, ignoring constants | §5 |
 | $X$, $Y$ | the random feature vector and random label | §6.1 |
 | $p(x)$ | $P(Y = 1 \mid X = x)$ | §6.1 |
