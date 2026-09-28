@@ -3,7 +3,7 @@ title: Gaussian process regression
 number: "10"
 date: 2026-09-28
 summary: Bayesian prediction over functions with kernels and calibrated uncertainty.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 10 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/10/lecture-10-gaussian-processes.pdf' | relative_url }})
 
 ## Lecture notes
 
