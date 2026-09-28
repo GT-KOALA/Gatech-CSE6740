@@ -13,7 +13,7 @@ issue: 8
 
 A single Gaussian distribution is unimodal, so it may not be flexible enough when the data has several clusters or several peaks. A Gaussian mixture model (GMM) handles this by modeling the density as a weighted combination of multiple Gaussian components.
 
-Let \(x\in\mathbb{R}^d\), where \(d\) is the dimension of the data. For Gaussian component \(k\), let \(\mu_k\in\mathbb{R}^d\) be its mean and let \(\Sigma_k\) be its covariance matrix. Then
+Let \(x\in\mathbb{R}^d\), where \(d\) is the dimension of the data. For Gaussian component \(k\), let \(\mu_k\in\mathbb{R}^d\) be its mean and let \(\Sigma_k\) be a symmetric positive-definite covariance matrix. Then
 
 \[
 \mathcal{N}(x \mid \mu_k,\Sigma_k)
@@ -24,7 +24,7 @@ Let \(x\in\mathbb{R}^d\), where \(d\) is the dimension of the data. For Gaussian
 \right).
 \]
 
-Here, \(|\Sigma_k|\) denotes the determinant of the covariance matrix.
+Here, \(|\Sigma_k|\) denotes the determinant of the covariance matrix. The positive-definite assumption ensures that \(\Sigma_k^{-1}\) exists and that \(|\Sigma_k|>0\). If \(\Sigma_k\) is singular, the Gaussian is degenerate and does not define an ordinary density over all of \(\mathbb{R}^d\).
 
 A mixture of \(K\) Gaussian components is
 
@@ -209,7 +209,7 @@ B(x_c,r)
 
 ### Ellipsoids
 
-An ellipsoid can be written as
+Let \(P\) be symmetric positive definite. An ellipsoid can be written as
 
 \[
 E
@@ -221,7 +221,7 @@ x
 \right\}.
 \]
 
-The eigenvectors and eigenvalues determine the directions and lengths of the semi-axes.
+The positive-definite condition ensures that \(P^{-1}\) exists and that the quadratic form defines a bounded ellipsoid. The eigenvectors and eigenvalues of \(P\) determine the directions and lengths of the semi-axes.
 
 ### Polyhedra
 
