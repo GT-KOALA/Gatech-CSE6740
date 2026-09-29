@@ -59,7 +59,7 @@ The decision boundary has margin boundaries, which are parallel lines on each si
 
 - The margin boundary for class -1 is $w^\top x + b = -1$
 
-- The margin boundary for class -1 is $w^\top x + b = 1$
+- The margin boundary for class +1 is $w^\top x + b = 1$
 
 $$y(w^\top x + b)$$
 
@@ -121,6 +121,7 @@ $\alpha_i \ge 0$ and $\beta_i$ are called the Lagrangian multipliers.
 Given the Lagrangian function
 $$L(w, \alpha, \beta) = f(w) + \sum_i \alpha_i\, g_i(w) + \sum_i \beta_i\, h_i(w).$$
 
+Suppose the primal problem is convex and differentiable and satisfies a constraint qualification such as Slater's condition (there is a point where every inequality constraint holds strictly).
 If w is an optimal solution to the primal problem, then there are multipliers $\alpha, \beta$ that satisfy the following conditions (called the Karush-Kuhn-Tucker conditions):
 
 1. **Stationarity:** 
@@ -137,11 +138,11 @@ The multipliers on inequality constraints are non-negative.
 
 4. **Complementary slackness:**
 $\alpha_i\, g_i(w) = 0$
-Either \alpha_i\ or g_i(w) must equal 0.
+At least one of \alpha_i\ or g_i(w) must equal 0.
 - If $g_i(w) < 0$, then $\alpha_i = 0$.
-- If $g_i(w) = 0$, then $\alpha_i > 0$.
+- If $\alpha_i > 0$, then $g_i(w) = 0$. 
 
-For SVM, any point that satisfies all 4 constraints is optimal.
+For SVM, any point that satisfies all 4 conditions is optimal.
 
 ### The Dual Problem
 The goal of the dual problem is to find the prices that give the highest lower bound.
