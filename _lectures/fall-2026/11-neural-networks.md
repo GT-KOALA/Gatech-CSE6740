@@ -3,7 +3,7 @@ title: Neural networks
 number: "11"
 date: 2026-09-30
 summary: Composing linear transformations and nonlinearities into trainable models.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,9 +13,13 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Backpropagation Lab — interactive visualization]({{ '/demos/backpropagation/' | relative_url }})
+
+Trace a two-hidden-layer network forward and backward, click a weight to inspect its chain-rule factors, and compare analytical gradients with finite differences. Change inputs, weights, biases, or activations, then apply gradient descent and watch the loss change.
+
+Slides will be added after they are updated.
 
 ## Lecture notes
 
-A computation graph, backpropagation walkthrough, and code example will be added here.
+The lab uses sigmoid outputs and squared loss, matching the lecture’s backpropagation setup. Its guided walkthrough highlights how gradients multiply along a path and add across branches. Try the saturated-sigmoid and inactive-ReLU examples to see why gradients can become small or zero.
 

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#003057">
+  <meta name="description" content="Trace forward values, follow the chain rule through two hidden layers, and check every gradient in an interactive neural network.">
+  <title>Backpropagation Lab · CSE 6740</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="model.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="../../"><span class="gt">GT</span> CSE 6740 <span class="muted">/ Interactive labs</span></a><a href="../../fall-2026/lectures/11-neural-networks/">← Lecture 11</a></header>
+<main>
+  <div class="intro"><div><p class="eyebrow">NEURAL NETWORKS · LECTURE 11</p><h1>Backpropagation, <em>one step at a time.</em></h1><p class="lede">Follow the values forward. Send the gradients backward. See the chain rule at every connection.</p></div><button id="reset" class="quiet">Reset lab ↺</button></div>
+  <section class="controls" aria-label="Experiment controls">
+    <label>Example<select id="preset"><option value="standard">A small sigmoid network</option><option value="saturation">Saturated sigmoid units</option><option value="relu">An inactive ReLU unit</option></select></label>
+    <label>Hidden activation<select id="activation"><option value="sigmoid">Sigmoid</option><option value="tanh">Tanh</option><option value="relu">ReLU</option></select></label>
+    <label class="slider-label">Input x₁ <output id="x1-value"></output><input id="x1" type="range" min="-2" max="2" step="0.05" value="0.8"></label>
+    <label class="slider-label">Input x₂ <output id="x2-value"></output><input id="x2" type="range" min="-2" max="2" step="0.05" value="0.4"></label>
+    <label>Target y<input id="target" type="number" min="0" max="1" step="0.1" value="1"></label>
+  </section>
+  <div class="workspace">
+    <section class="network-panel" aria-labelledby="network-title">
+      <div class="panel-heading"><div><p class="eyebrow">01 / COMPUTATION GRAPH</p><h2 id="network-title">A tiny network. The full algorithm.</h2></div><div class="legend"><span class="forward-dot">Forward values</span><span class="backward-dot">Backward gradients</span></div></div>
+      <p class="hint">Click a connection or neuron to inspect it. Keyboard: Tab to select, Enter to inspect.</p>
+      <div class="graph-scroll" tabindex="0" aria-label="Network diagram; scroll horizontally on small screens"><svg id="network" viewBox="0 0 940 400" aria-labelledby="graph-title graph-description"><title id="graph-title">Two inputs, two hidden layers of two neurons, one output and squared loss</title><desc id="graph-description">Each weight and neuron is an interactive button. Select one for its computation and derivative.</desc></svg></div>
+      <div class="metrics"><div><span>Prediction y′</span><strong id="prediction"></strong></div><div><span>Target y</span><strong id="target-display"></strong></div><div><span>Squared loss L = (y′ − y)²</span><strong id="loss"></strong></div></div>
+      <div class="walkthrough"><div class="step-buttons" id="steps" aria-label="Walkthrough steps"></div><div class="step-copy" aria-live="polite"><span id="step-count" class="eyebrow"></span><h3 id="step-title"></h3><p id="step-description"></p></div><div class="walk-actions"><button id="previous">← Back</button><button id="next" class="primary">Next step →</button><button id="play" class="quiet" aria-pressed="false">▶ Play walkthrough</button></div></div>
+    </section>
+    <aside class="inspector" aria-labelledby="inspect-title"><p class="eyebrow">02 / FOLLOW THE CHAIN RULE</p><h2 id="inspect-title"></h2><p id="inspect-context" class="muted"></p><div id="inspection"></div></aside>
+  </div>
+  <section class="training" aria-labelledby="training-title"><div><p class="eyebrow">03 / TURN GRADIENTS INTO LEARNING</p><h2 id="training-title">Take a step downhill.</h2><p>Update <strong>all 15 weights and biases simultaneously</strong> using the same backward pass. This experiment fits one input–target pair; it does not train a classifier on a dataset.</p><div class="train-actions"><label>Learning rate η<select id="rate"><option value="0.05">0.05</option><option value="0.5" selected>0.5</option><option value="2">2</option><option value="10">10</option></select></label><button id="train-one" class="primary">Apply 1 update</button><button id="train-many">Apply 20 updates</button><button id="undo" class="quiet" disabled>Undo</button></div><p id="train-message" role="status">No updates yet. Backpropagation computes gradients; gradient descent changes the parameters.</p></div><div class="loss-history"><div class="chart-heading"><h3>Loss on this example</h3><span id="update-count">0 updates</span></div><svg id="loss-chart" viewBox="0 0 440 185" role="img" aria-label="Loss versus gradient descent updates"></svg></div></section>
+  <details class="parameters"><summary>Edit every weight and bias <span class="muted">/ inspect their current gradients</span></summary><p>W<sup>ℓ</sup><sub>j,i</sub> connects source i to destination j. Biases act like weights on a constant input of 1. Editing values starts a new loss history. Manual parameter edits are limited to [−20, 20].</p><div id="parameter-tables"></div></details>
+  <section class="reading"><div><p class="eyebrow">THE RULE THAT DOES ALL THE WORK</p><h2>Multiply along a path.<br>Add across paths.</h2><p>A neuron saves its forward value. On the way back, it multiplies the gradient arriving from the loss by its own local derivative. If its output feeds several neurons, add their contributions before continuing backward.</p><div class="math-line">∂L/∂z = Σ<sub>children c</sub> (∂L/∂u<sub>c</sub>)(∂u<sub>c</sub>/∂z)</div><p>Here u is the weighted sum before an activation, and z is its output. The backward signal δ = ∂L/∂u gives ∂L/∂w = δ × input and ∂L/∂b = δ.</p></div><div><h3>Try these in class</h3><ol><li>Select <strong>W⁰₁,₁</strong>. Why are there two downstream contributions?</li><li>Set x₁ to <strong>0</strong>. What happens to the gradients of weights leaving x₁?</li><li>Choose <strong>Saturated sigmoid units</strong>. Compare a first-layer gradient with an output-layer gradient.</li><li>Choose <strong>An inactive ReLU unit</strong>. Why does a nonzero loss produce a zero gradient at that neuron?</li><li>Change the target and predict the sign of the output gradient before advancing the walkthrough.</li></ol><p class="convention">Lecture connection: sigmoid units, squared loss, two hidden layers, and the computation graph in Lecture 11, slides 28–34. We use L = (y′ − y)² with no ½ factor, so ∂L/∂y′ = 2(y′ − y). The output always uses sigmoid; the activation selector changes the hidden layers only. For ReLU at zero, the demo chooses derivative 0.</p></div></section>
+  <footer>Built for CSE 6740 at Georgia Tech. Interaction inspired by <a href="https://poloclub.github.io/transformer-explainer/">Polo Club’s Transformer Explainer</a>. All calculations run in your browser.</footer>
+</main>
+<noscript>This interactive lab requires JavaScript. Enable JavaScript to explore the forward and backward passes.</noscript>
+</body>
+</html>

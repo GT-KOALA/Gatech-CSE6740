@@ -47,3 +47,15 @@ Keep shared layouts and styles at the repository root. Keep offering-specific im
 ## Content boundary
 
 This repository is for public lecture materials only. Homework, exams, grades, solutions, and private student information must not be committed.
+
+## Backpropagation Lab
+
+Lecture 11 links to `demos/backpropagation/`, a standalone browser demo with no build step or external JavaScript dependencies. `model.js` implements an explicit 2 → 2 → 2 → 1 forward/backward pass; `app.js` renders its values and chain-rule factors. Hidden activations can be sigmoid, tanh, or ReLU. The output uses sigmoid and the single-example loss is `(prediction - target)^2`.
+
+Preview with `python3 -m http.server 8000`, then visit `/demos/backpropagation/`. Check analytical gradients against finite differences with:
+
+```bash
+node scripts/tests/backprop-model.test.cjs
+```
+
+The tests also cover branch accumulation, input sensitivities, simultaneous parameter updates, sigmoid saturation, and the ReLU convention at zero.
