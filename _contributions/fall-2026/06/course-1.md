@@ -381,7 +381,7 @@ $$
 
 Because these probabilities depend only on the labels, the same estimates are used for every feature and need to be computed only once.
 
-**Step 2. Estimate the feature distributions.** For feature $i$, we use all observations to estimate $f_i$, then restrict the data to observations satisfying $y^{(r)}=k$ to estimate $f_{i\mid k}$. The lecture allows either parametric or nonparametric density estimation [2]. For discrete features, we can use relative frequencies; for continuous features, we can use histograms or kernel density estimation.
+**Step 2. Estimate the feature distributions.** For feature $i$, we use all observations to estimate $f_i$, then restrict the data to observations satisfying $y^{(r)}=k$ to estimate $f_{i\mid k}$. The lecture allows either parametric or nonparametric density estimation. For discrete features, we can use relative frequencies; for continuous features, we can use histograms or kernel density estimation.
 
 For example, suppose a histogram bin $B_j$ has width $\Delta_j$ and contains $n_j$ samples, of which class $k$ contributes $n_{jk}$. If all classes use the same bins, the density estimates for $x\in B_j$ are
 
@@ -489,7 +489,7 @@ $$
 
 The inner integral computes the target's differential entropy at a fixed $x$, and the outer integral averages that quantity over $x$ using its density.
 
-Unlike discrete entropy, differential entropy depends on the measurement scale and can be negative. For example, if $Z$ is uniform on $[0,a]$, then
+Unlike discrete entropy, differential entropy depends on the measurement scale and can be negative [2]. For example, if $Z$ is uniform on $[0,a]$, then
 
 $$
 h(Z)=-\int_0^a\frac1a\log_2\frac1a\,dz=\log_2 a,
@@ -524,3 +524,4 @@ This is the relationship obtained by the count estimates in Section 8 when all c
 ## References
 1. Kai Wang. *CSE/ISyE 6740 Lecture 06: Feature Selection and Decision Tree*, September 14, 2026, slides 1–18. The coin and joint-distribution examples above are adapted from slides 11 and 13–14. [Course slides](https://github.com/GT-KOALA/Gatech-CSE6740/blob/main/assets/semesters/fall-2026/lectures/06/lecture-06-feature-selection-trees.pdf).
 2. Tsachy Weissman, with lecture notes by Hanchel Cheng, Kyle Chiang, and Ashwin Siripurapu. *EE376A Information Theory, Lecture 9*, February 5, 2015, Section 3.1. Supplementary reference for the distinction between discrete and differential entropy. [Stanford lecture notes](https://web.stanford.edu/class/ee376a/files/scribes/lecture9.pdf).
+3. Tsachy Weissman, with teaching assistants Idoia Ochoa and Kedar Tatwawadi. *EE376A: Information Theory — Lecture Notes*, Stanford University, February 25, 2016, Chapter 2, especially Sections 2.2–2.3, pp. 10–11 and Eq. (2.44). [Lecture notes](https://web.stanford.edu/class/ee376a/files/lecture_notes.pdf).
