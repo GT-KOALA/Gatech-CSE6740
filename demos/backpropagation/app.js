@@ -14,7 +14,7 @@
   let history = [M.evaluate(state).loss], undo = [];
   const titles = ['Forward', 'Loss', 'Backward', 'Update'];
   const mainPhases = [0, 1, 2, 5];
-  const mainStep = () => phase < 2 ? phase : phase < 5 ? 2 : 3;
+  const mainStep = () => phase===0 ? 0 : phase===1&&lossStage===0 ? 1 : phase<5 ? 2 : 3;
   const forwardLabels = ['Whole pass', 'Hidden 1', 'Hidden 2', 'Prediction'];
   const svgNS = 'http://www.w3.org/2000/svg';
   function el(tag, attrs, text) {
@@ -125,7 +125,7 @@
       '<p class="notation-note">x: input · w: weight · b: bias<br>s: weighted sum · a: neuron output.</p>';
   }
   function inspectLoss(){
-    $('inspect-title').textContent=lossStage===0?'Compare with the target':'Start the backward pass';
+    $('inspect-title').textContent=lossStage===0?'Compare with the target':'Loss gradient';
     $('inspection').innerHTML=lossStage===0?
       concept('Measure the mismatch','A closer prediction gives a smaller loss. A perfect match gives zero loss.')+concept('Prepare to work backward','Next, ask how changing the prediction would change the loss.'):
       box('Output gradient · arrives from the loss',derivative('L','y′'))+concept('Read the direction','Its sign tells us whether increasing the prediction would increase or decrease the loss.')+concept('Pass it backward','Multiply this gradient by the output neuron’s local derivative.');
@@ -187,14 +187,21 @@
   }
   function drawProgress(){
     const container=$('pass-progress');container.replaceChildren();
-    const labels=phase===0?forwardLabels:phase===1?['Measure error','Differentiate loss']:phase<5?['Output','Hidden 2','Hidden 1']:['Weights','Biases'];
-    const current=phase===0?forwardStage:phase===1?lossStage:phase<5?phase-2:updateStage;
+    const step=mainStep();
+    const labels=step===0?forwardLabels:step===1?['Measure error']:step===2?['Loss gradient','Output','Hidden 2','Hidden 1']:['Weights','Biases'];
+    const current=step===0?forwardStage:step===1?0:step===2?(phase===1?0:phase-1):updateStage;
     labels.forEach((label,i)=>{
       const b=document.createElement('button');b.textContent=label;
       if(i===current)b.setAttribute('aria-current','step');
       if(i<current)b.classList.add('completed');
       b.onclick=()=>{
-        stop();if(phase===0)forwardStage=i;else if(phase===1)lossStage=i;else if(phase<5){phase=i+2;selected={type:'w',l:4-phase,j:0,i:0};}else updateStage=i;
+        stop();
+        if(step===0)forwardStage=i;
+        else if(step===1)lossStage=0;
+        else if(step===2){
+          phase=i+1;
+          if(i===0)lossStage=1;else selected={type:'w',l:4-phase,j:0,i:0};
+        }else updateStage=i;
         render();$('pass-progress').children[i].focus({preventScroll:true});
       };
       container.append(b);
@@ -209,7 +216,7 @@
     [...$('steps').children].forEach((e,i)=>{if(i===mainStep())e.setAttribute('aria-current','step');else e.removeAttribute('aria-current');});
     $('previous').disabled=phase===0&&forwardStage===0;$('next').disabled=phase===5&&updateStage===1;
     $('next').textContent=phase===0?['Inspect first layer →','Compute hidden 2 →','Compute prediction →','Compute loss →'][forwardStage]:
-      phase===1?(lossStage===0?'Differentiate loss ←':'Through output ←'):phase===4?'Review update →':phase===5?(updateStage===0?'Review biases →':'Complete'):'Next layer ←';
+      phase===1?(lossStage===0?'Start backward ←':'Through output ←'):phase===4?'Review update →':phase===5?(updateStage===0?'Review biases →':'Complete'):'Next layer ←';
     const remaining=MAX_UPDATES-history.length+1;
     $('train-one').disabled=remaining===0;$('train-many').disabled=remaining===0;
     const batch=Math.max(1,Math.min(20,remaining));$('train-many').textContent=`Apply ${batch} update${batch===1?'':'s'}`;
@@ -253,7 +260,7 @@
     phase=5;forwardStage=3;
     const after=history[history.length-1];$('train-message').textContent=`Applied ${n} simultaneous update${n===1?'':'s'}. Loss: ${fmt(before,6)} → ${fmt(after,6)}. ${after>before?'Loss increased; try a smaller learning rate.':'The graph shows the updated prediction and loss.'}`;render();
   }
-  titles.forEach((title,i)=>{const b=document.createElement('button');b.textContent=`${i+1}. ${title}`;b.onclick=()=>{stop();setPhase(mainPhases[i]);};$('steps').append(b);});
+  titles.forEach((title,i)=>{const b=document.createElement('button');b.textContent=`${i+1}. ${title}`;b.onclick=()=>{stop();if(i===2){phase=1;lossStage=1;render();}else setPhase(mainPhases[i]);};$('steps').append(b);});
   $('previous').onclick=()=>{stop();retreat();};$('next').onclick=()=>{stop();advance();};
   function play(forwardOnly=false){
     stop();
