@@ -59,3 +59,5 @@ node scripts/tests/backprop-model.test.cjs
 ```
 
 The tests also cover branch accumulation, input sensitivities, simultaneous parameter updates, sigmoid saturation, and the ReLU convention at zero.
+
+The lab fits a desktop browser viewport. Its forward route is highlighted immediately; numerical values are optional. Weight editing opens in a dialog. When editing `app.js` or `style.css`, refresh their content-hash query strings in `index.html` so returning visitors receive matching assets. Interaction design was inspired by [Transformer Explainer](https://poloclub.github.io/transformer-explainer/).
