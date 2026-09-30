@@ -17,7 +17,7 @@ status: published
 
 Trace a two-hidden-layer network forward and backward, reveal the forward pass one layer at a time, and click a weight to inspect the symbolic gradients in its chain rule. Change inputs, weights, biases, or activations, then apply gradient descent and watch the loss change.
 
-Slides will be added after they are updated.
+- [Lecture 11 slides (PDF, 39 pages)]({{ '/assets/semesters/fall-2026/lectures/11/lecture-11-neural-networks.pdf' | relative_url }})
 
 ## Lecture notes
 
