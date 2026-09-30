@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#003057">
   <meta name="description" content="Explore forward propagation and the chain rule in an interactive neural network.">
   <title>Backpropagation Lab · CSE 6740</title>
-  <link rel="stylesheet" href="style.css?v=d8529cace51c">
+  <link rel="stylesheet" href="style.css?v=d807cc116a7d">
   <script defer src="model.js"></script>
-  <script defer src="app.js?v=00e16f1bc761"></script>
+  <script defer src="app.js?v=c45f0448f11c"></script>
 </head>
 <body>
 <header class="topbar">
@@ -28,7 +28,7 @@
     <section class="network-panel" aria-label="Network visualization">
       <div class="graph-toolbar"><span id="graph-mode" class="graph-mode"></span><span class="hint">Select a weight or neuron</span><button id="panel-toggle" aria-expanded="false">Chain rule</button></div>
       <div class="graph-scroll" tabindex="0" aria-label="Network diagram"><svg id="network" viewBox="0 0 940 400" aria-label="Interactive network with two hidden layers" aria-describedby="graph-description"><desc id="graph-description">Select a weight or neuron to trace its gradient. Blue arrows point forward; orange arrows point backward.</desc></svg></div>
-      <div id="metrics" class="metrics" hidden><span>Prediction <strong id="prediction"></strong></span><span>Target <strong id="target-display"></strong></span><span>Loss <strong id="loss"></strong></span></div>
+      <div id="metrics" class="metrics" data-visible="false" aria-hidden="true"><span>Prediction <strong id="prediction"></strong></span><span>Target <strong id="target-display"></strong></span><span>Loss <strong id="loss"></strong></span></div>
       <div class="walkthrough">
         <div class="step-buttons" id="steps" aria-label="Walkthrough steps"></div>
         <div id="pass-progress" class="pass-progress" aria-label="Substeps"></div>
