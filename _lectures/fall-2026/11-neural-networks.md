@@ -15,7 +15,7 @@ status: published
 
 - [Backpropagation Lab — interactive visualization]({{ '/demos/backpropagation/' | relative_url }})
 
-Trace a two-hidden-layer network forward and backward, click a weight to inspect its chain-rule factors, and compare analytical gradients with finite differences. Change inputs, weights, biases, or activations, then apply gradient descent and watch the loss change.
+Trace a two-hidden-layer network forward and backward, reveal the forward pass one layer at a time, and click a weight to inspect the symbolic gradients in its chain rule. Change inputs, weights, biases, or activations, then apply gradient descent and watch the loss change.
 
 Slides will be added after they are updated.
 
