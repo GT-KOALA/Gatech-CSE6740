@@ -165,16 +165,20 @@
   function drawHistory(){
     const svg=$('loss-chart'), width=Math.max(200,svg.clientWidth), height=Math.max(55,svg.clientHeight);
     svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.replaceChildren();
-    svg.dataset.xMax=MAX_UPDATES;svg.dataset.yMax=1;
+    const yMax=0.5;
+    svg.dataset.xMax=MAX_UPDATES;svg.dataset.yMax=yMax;
     const left=38,right=width-12,top=8,bottom=height-29;
-    for(const value of [0,0.5,1]){
-      const y=bottom-value*(bottom-top);
+    for(const value of [0,0.25,yMax]){
+      const y=bottom-value/yMax*(bottom-top);
       svg.append(el('line',{x1:left,y1:y,x2:right,y2:y,stroke:'#dee4e3'}));
       svg.append(el('text',{x:left-7,y:y+3,'text-anchor':'end',class:'chart-text y-tick'},String(value)));
     }
-    const points=history.map((v,i)=>`${left+i/MAX_UPDATES*(right-left)},${bottom-v*(bottom-top)}`);
-    svg.append(el('polyline',{points:points.join(' '),fill:'none',stroke:'#087c83','stroke-width':2.5}));
-    const [cx,cy]=points[points.length-1].split(',');svg.append(el('circle',{cx,cy,r:3,fill:'#087c83'}));
+    const points=history.map((v,i)=>`${left+i/MAX_UPDATES*(right-left)},${bottom-v/yMax*(bottom-top)}`);
+    const defs=el('defs'),clip=el('clipPath',{id:'loss-plot-bounds'});
+    clip.append(el('rect',{x:left-3,y:top,width:right-left+6,height:bottom-top+3}));defs.append(clip);svg.append(defs);
+    const curve=el('g',{'clip-path':'url(#loss-plot-bounds)'});
+    curve.append(el('polyline',{points:points.join(' '),fill:'none',stroke:'#087c83','stroke-width':2.5}));
+    const [cx,cy]=points[points.length-1].split(',');curve.append(el('circle',{cx,cy,r:3,fill:'#087c83'}));svg.append(curve);
     const ticks=width<450?[0,250,500]:[0,100,200,300,400,500];
     for(const n of ticks)svg.append(el('text',{x:left+n/MAX_UPDATES*(right-left),y:height-15,'text-anchor':'middle',class:'chart-text x-tick'},String(n)));
     svg.append(el('text',{x:(left+right)/2,y:height-2,'text-anchor':'middle',class:'chart-text'},'Updates'));
