@@ -47,3 +47,17 @@ Keep shared layouts and styles at the repository root. Keep offering-specific im
 ## Content boundary
 
 This repository is for public lecture materials only. Homework, exams, grades, solutions, and private student information must not be committed.
+
+## Backpropagation Lab
+
+Lecture 11 links to `demos/backpropagation/`, a standalone browser demo with no build step or external JavaScript dependencies. `model.js` implements an explicit 2 → 2 → 2 → 1 forward/backward pass; `app.js` progressively reveals the forward pass and explains backward gradients with symbolic chain-rule factors. Hidden activations can be sigmoid, tanh, or ReLU. The output uses sigmoid and the single-example loss is `(prediction - target)^2`.
+
+Preview with `python3 -m http.server 8000`, then visit `/demos/backpropagation/`. Check analytical gradients against finite differences with:
+
+```bash
+node scripts/tests/backprop-model.test.cjs
+```
+
+The tests also cover branch accumulation, input sensitivities, simultaneous parameter updates, sigmoid saturation, and the ReLU convention at zero.
+
+The lab fits a desktop browser viewport. Forward, Loss, Backward, and Update each have a fixed-height subtab row, keeping the network diagram the same size throughout. Its forward route is highlighted immediately; numerical values are optional. Native MathML renders indexed symbols and chain-rule factors. Backward explanations distinguish the incoming output gradient, each input-gradient contribution, and the saved parameter gradient; contributions sum at branches. The loss chart uses fixed axes (0–500 updates and 0–0.5 loss), and training stops at 500 updates until reset or undone. Weight editing opens in a dialog. When editing `app.js` or `style.css`, refresh their content-hash query strings in `index.html` so returning visitors receive matching assets. Interaction design was inspired by [Transformer Explainer](https://poloclub.github.io/transformer-explainer/).

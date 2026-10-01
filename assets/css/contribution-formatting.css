@@ -1,0 +1,19 @@
+/* Preserve the original lecture 07 figures and equations at narrow widths. */
+.lecture-07 .student-materials img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+.lecture-07 .student-materials mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+.lecture-07 .student-materials pre {
+  max-width: 100%;
+  overflow-x: auto;
+}

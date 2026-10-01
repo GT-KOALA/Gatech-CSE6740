@@ -3,7 +3,7 @@ title: Support vector machines
 number: "08"
 date: 2026-09-21
 summary: Maximum-margin classification for separable and nonseparable data.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 8 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/08/lecture-08-support-vector-machines.pdf' | relative_url }})
 
 ## Lecture notes
 

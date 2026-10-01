@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#003057">
+  <meta name="description" content="Explore forward propagation and the chain rule in an interactive neural network.">
+  <title>Backpropagation Lab · CSE 6740</title>
+  <link rel="stylesheet" href="style.css?v=d807cc116a7d">
+  <script defer src="model.js"></script>
+  <script defer src="app.js?v=caaeb4a12be4"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="../../fall-2026/lectures/11-neural-networks/">CSE 6740 · Lecture 11</a><h1>Backpropagation Lab</h1></div>
+  <div class="top-actions"><button id="edit-weights">Edit weights</button><button id="reset">Reset</button><button id="fullscreen">Full screen</button></div>
+</header>
+<main>
+  <section class="controls" aria-label="Experiment controls">
+    <label>Example<select id="preset"><option value="standard">Sigmoid network</option><option value="saturation">Saturated sigmoid</option><option value="relu">Inactive ReLU</option></select></label>
+    <label>Activation<select id="activation"><option value="sigmoid">Sigmoid</option><option value="tanh">Tanh</option><option value="relu">ReLU</option></select></label>
+    <label class="slider-label">Input x₁ <output id="x1-value"></output><input id="x1" type="range" min="-2" max="2" step="0.05" value="0.8"></label>
+    <label class="slider-label">Input x₂ <output id="x2-value"></output><input id="x2" type="range" min="-2" max="2" step="0.05" value="0.4"></label>
+    <label>Target<input id="target" type="number" min="0" max="1" step="0.1" value="1"></label>
+    <label class="value-toggle"><input id="show-values" type="checkbox"> Show values</label>
+  </section>
+  <div class="workspace">
+    <section class="network-panel" aria-label="Network visualization">
+      <div class="graph-toolbar"><span id="graph-mode" class="graph-mode"></span><span class="hint">Select a weight or neuron</span><button id="panel-toggle" aria-expanded="false">Chain rule</button></div>
+      <div class="graph-scroll" tabindex="0" aria-label="Network diagram"><svg id="network" viewBox="0 0 940 400" aria-label="Interactive network with two hidden layers" aria-describedby="graph-description"><desc id="graph-description">Select a weight or neuron to trace its gradient. Blue arrows point forward; orange arrows point backward.</desc></svg></div>
+      <div id="metrics" class="metrics" data-visible="false" aria-hidden="true"><span>Prediction <strong id="prediction"></strong></span><span>Target <strong id="target-display"></strong></span><span>Loss <strong id="loss"></strong></span></div>
+      <div class="walkthrough">
+        <div class="step-buttons" id="steps" aria-label="Walkthrough steps"></div>
+        <div id="pass-progress" class="pass-progress" aria-label="Substeps"></div>
+        <div class="walk-actions"><button id="previous">← Back</button><button id="next" class="primary">Next →</button><button id="replay-forward">↻ Replay</button><button id="play" aria-pressed="false">▶ Play</button></div>
+      </div>
+    </section>
+    <aside class="inspector" aria-labelledby="inspect-title"><div class="inspector-top"><h2 id="inspect-title"></h2><button id="close-panel" aria-label="Return to network">×</button></div><div id="inspection"></div></aside>
+  </div>
+  <section class="training" aria-label="Gradient descent controls and loss convergence">
+    <div class="train-actions"><label>Learning rate<select id="rate"><option value="0.05">0.05</option><option value="0.5" selected>0.5</option><option value="2">2</option><option value="10">10</option></select></label><button id="train-one" class="primary">Apply 1 update</button><button id="train-many">Apply 20 updates</button><button id="undo" disabled>Undo</button><output id="loss-current"></output></div>
+    <div class="loss-history"><div class="chart-heading"><h2>Loss convergence <small>· single example</small></h2><span id="update-count"></span></div><svg id="loss-chart" role="img" aria-label="Loss versus gradient descent updates"></svg></div>
+  </section>
+  <p id="train-message" class="sr-only" role="status"></p>
+</main>
+<dialog id="weights-dialog" aria-labelledby="weights-title"><div class="dialog-heading"><h2 id="weights-title">Weights &amp; biases</h2><button id="close-weights">Done</button></div><p>W connects source i to destination j. Manual edits start a new loss history.</p><div id="parameter-tables"></div></dialog>
+<noscript>This interactive lab requires JavaScript.</noscript>
+</body>
+</html>
