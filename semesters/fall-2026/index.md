@@ -18,11 +18,6 @@ semester: fall-2026
   <div><span>Drop-in hours</span><strong>{{ term.instructor_hours }}</strong></div>
 </section>
 
-<section class="prose" aria-labelledby="midterm-review-title">
-  <h2 id="midterm-review-title">Midterm review</h2>
-  <p><a href="{{ '/assets/semesters/fall-2026/review/midterm-review.pdf' | relative_url }}">Midterm review slides (PDF)</a> · October 12, 2026</p>
-</section>
-
 <section class="lecture-index">
 {% assign semester_lectures = site.lectures | where: "semester", page.semester %}
 {% assign sorted_lectures = semester_lectures | sort: "date" %}
