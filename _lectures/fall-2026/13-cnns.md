@@ -1,21 +1,20 @@
 ---
-title: Convolutional neural networks
+title: Bias-variance tradeoff
 number: "13"
-date: 2026-10-19
-summary: Learning spatial features with convolution, sharing, and hierarchical representations.
-status: planned
+date: 2026-10-12
+summary: Understanding generalization through bias, variance, and noise, and mitigating overfitting.
+status: published
 ---
 ## Learning goals
 
-- Explain convolution and parameter sharing.
-- Compute output shapes through convolution and pooling.
-- Describe hierarchical feature learning in CNNs.
+- Distinguish empirical risk from expected prediction loss.
+- Explain the bias-variance decomposition and its connection to model complexity.
+- Describe methods to detect and mitigate overfitting.
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 13 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/13/lecture-13-bias-variance-tradeoff.pdf' | relative_url }})
 
 ## Lecture notes
 
-Shape calculations, a filter visualization, and implementation notes will be added here.
-
+Additional notes and examples will be added here.
