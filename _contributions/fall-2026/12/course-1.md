@@ -144,7 +144,7 @@ A descent direction, $g_k^\top p_k<0$, guarantees decrease only for sufficiently
 
 ![Three learning-rate diagrams: an excessive step zigzags across a valley, a tiny step makes slow progress, and loss curves compare convergent and divergent rates.][learning-rate-image]
 
-*Figure 1. Effect of the learning rate on the optimization path and loss. Reused from Kai Wang's [Lecture 12 slides, slide 9][lecture-slides].*
+*Figure 1. Effect of the learning rate on the optimization path and loss.
 
 ### A safe learning rate.
 
