@@ -85,7 +85,7 @@ $$
 Given a differentiable objective $f$, starting point $\theta_0$, and stopping tolerance $\varepsilon_{\mathrm{stop}}>0$:
 
 1. Initialize $k=0$ and $g_0=\nabla f(\theta_0)$.
-2. While $`\lVert g_k \rVert_2 > \varepsilon_{\mathrm{stop}}`$:
+2. While $\lVert g_k \rVert_2 > \varepsilon_{\mathrm{stop}}$:
    - Choose a direction $p_k$ satisfying $g_k^\top p_k<0$.
    - Choose $\eta_k>0$ so the update decreases $f$.
    - Update $\theta_{k+1}=\theta_k+\eta_kp_k$.
@@ -144,7 +144,7 @@ A descent direction, $g_k^\top p_k<0$, guarantees decrease only for sufficiently
 
 ![Three learning-rate diagrams: an excessive step zigzags across a valley, a tiny step makes slow progress, and loss curves compare convergent and divergent rates.][learning-rate-image]
 
-*Figure 1. Effect of the learning rate on the optimization path and loss.
+*Figure 1. Effect of the learning rate on the optimization path and loss.*
 
 ### A safe learning rate.
 
@@ -300,7 +300,7 @@ f(\theta)=\frac12(\theta_1^2+20\theta_2^2)+\frac1{20}\theta_1^4,
 \qquad \theta_0=(4,2)^\top.
 $$
 
-*Each method takes 80 updates. Fixed learning rates: GD $`0.09`$, Newton $`1`$, AdaGrad $`0.7`$, momentum $`0.06`$, and Adam $`0.15`$. Momentum uses $`\beta=0.8`$; Adam uses $`(\beta_1,\beta_2)=(0.9,0.99)`$. Adaptive states start at zero with $`\delta=10^{-8}`$. The log plot has a display floor of $`10^{-12}`$. Settings are illustrative, and costs per update differ.*
+*Each method takes 80 updates. Fixed learning rates: GD $0.09$, Newton $1$, AdaGrad $0.7$, momentum $0.06$, and Adam $0.15$. Momentum uses $\beta=0.8$; Adam uses $(\beta_1,\beta_2)=(0.9,0.99)$. Adaptive states start at zero with $\delta=10^{-8}$. The log plot has a display floor of $10^{-12}$. Settings are illustrative, and costs per update differ.*
 
 ### The optimizer comparison on slide 21
 
@@ -316,7 +316,7 @@ f(\theta)=\frac1N\sum_{j=1}^N\ell_j(\theta)
           [\ell(h_\theta(x),y)].
 $$
 
-Computing the full gradient requires all $N$ examples. Instead, sample indices $B_k\subseteq\{1,\ldots,N\}$ with $b=|B_k|$: 
+Computing the full gradient requires all $N$ examples. Instead, sample indices $B_k\subseteq\{1,\ldots,N\}$ with $b=\lvert B_k\rvert$: 
 
 $$
 g_k=\frac1N\sum_{j=1}^N\nabla\ell_j(\theta_k),
