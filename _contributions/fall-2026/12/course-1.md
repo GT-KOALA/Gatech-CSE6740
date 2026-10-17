@@ -308,7 +308,7 @@ The lecture also compares optimizer trajectories and training cost for an MNIST 
 
 ## Batching: Full-batch, Mini-batch, and Stochastic Updates
 
-Batching determines how we estimate gradients and can be combined with different optimizers. For training data $\mathcal D_{\mathrm{train}}=\{(x_j,y_j)\}_{j=1}^N$, let $\ell_j(\theta)=\ell(h_\theta(x_j),y_j)$ be the loss of the model’s prediction on example $j$. The objective is 
+Batching determines how we estimate gradients and can be combined with different optimizers. For training data $\mathcal D\_{\mathrm{train}} = \lbrace (x\_j, y\_j) \rbrace\_{j=1}^N$, let $\ell\_j(\theta) = \ell(h\_\theta(x\_j), y\_j)$ be the loss of the model’s prediction on example $j$. The objective is 
 
 $$
 f(\theta)=\frac1N\sum_{j=1}^N\ell_j(\theta)
