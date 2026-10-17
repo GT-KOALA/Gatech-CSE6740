@@ -11,7 +11,7 @@ issue: 34
 ---
 ## Gradient Descent and Optimization Methods
 
-These notes cover **Lecture 12, slides 1-21** of CSE 6740 (Fall 2026). The lecture is the main source; the mathematical clarifications and original simulation explain the same optimization ideas.
+These notes cover **Lecture 12, slides 1-21** of CSE 6740 (Fall 2026). 
 
 ## Motivation for Gradient Descent
 
@@ -312,7 +312,7 @@ Batching determines how we estimate gradients and can be combined with different
 
 $$
 f(\theta)=\frac1N\sum_{j=1}^N\ell_j(\theta)
-       =\mathbb E_{(x,y)\sim\operatorname{Unif}(\mathcal D_{\mathrm{train}})}
+       =\mathbb E_{(x,y)\sim\mathrm{Unif}(\mathcal D_{\mathrm{train}})}
           [\ell(h_\theta(x),y)].
 $$
 
@@ -341,7 +341,7 @@ Smaller batches give cheaper, more frequent updates but noisier directions. Larg
 - Diederik P. Kingma and Jimmy Ba, [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980), ICLR, 2015. Reference for Adam's moment estimates, bias corrections, and update.
 - Stephen Boyd and Lieven Vandenberghe, [Convex Optimization, Chapter 9](https://web.stanford.edu/~boyd/cvxbook/), 2004. Reference for descent directions, backtracking, and the GD/Newton comparison.
 
-**AI assistance:** ChatGPT assisted with editing, notation checks, Markdown conversion, and the Python simulation. The equations, derivatives, and simulation were checked against the lecture and the cited references.
+**AI assistance:** Used AI for assistance with editing, notation checks, Markdown conversion, and the Python simulation. The equations, derivatives, and simulation were checked against the lecture and the cited references.
 
 [lecture-slides]: https://github.com/GT-KOALA/Gatech-CSE6740/blob/main/assets/semesters/fall-2026/lectures/12/lecture-12-gradient-descent.pdf
 
