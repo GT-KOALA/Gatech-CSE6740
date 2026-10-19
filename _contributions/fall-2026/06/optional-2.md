@@ -288,4 +288,4 @@ Both models fit the training observations perfectly, while their held-out behavi
 
 ### Preparation disclosure
 
-This draft was prepared with assistance from OpenAI Codex for organization, explanations, equations, and the example code. The example was executed and its reported results checked during preparation. The student contributor should independently review and revise the note before submission; this disclosure does not claim that such review has already occurred.
+This draft was prepared with assistance from OpenAI Codex for organization, explanations, equations, and the example code. The example was executed and its reported results checked during preparation.
