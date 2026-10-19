@@ -1,21 +1,20 @@
 ---
-title: Autoencoders and variational autoencoders
+title: Convolutional neural networks
 number: "14"
-date: 2026-10-21
-summary: Learning latent representations through reconstruction and probabilistic encoding.
-status: planned
+date: 2026-10-19
+summary: Learning image representations with convolutional layers and convolutional neural networks.
+status: published
 ---
 ## Learning goals
 
-- Explain encoder, latent space, and decoder roles.
-- Contrast deterministic autoencoders with VAEs.
-- Interpret reconstruction and regularization terms.
+- Explain how convolutional layers process image inputs.
+- Describe weight sharing and local receptive fields.
+- Understand the structure of convolutional neural networks.
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 14 slides (PDF, 27 pages)]({{ '/assets/semesters/fall-2026/lectures/14/lecture-14-convolutional-neural-networks.pdf' | relative_url }})
 
 ## Lecture notes
 
-An architecture diagram, loss breakdown, and latent-space example will be added here.
-
+Additional notes and examples will be added here.
