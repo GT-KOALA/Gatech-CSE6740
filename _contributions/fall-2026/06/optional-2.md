@@ -6,8 +6,8 @@ slot_order: 4
 role: optional_topic
 role_label: Optional topic
 tab_title: Extension II
-assignee: unassigned
-issue: null
+assignee: joecalbarboza
+issue: 16
 ---
 ## Assignment pending
 
