@@ -6,8 +6,8 @@ slot_order: 3
 role: optional_topic
 role_label: Optional topic
 tab_title: Extension I
-assignee: unassigned
-issue: null
+assignee: kichappa
+issue: 39
 ---
 ## Assignment pending
 
