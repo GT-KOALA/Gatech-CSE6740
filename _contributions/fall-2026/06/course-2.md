@@ -7,7 +7,7 @@ role: course_material
 role_label: Course materials
 tab_title: Core explanation II
 assignee: kalsoomtariq
-issue: null
+issue: 14
 ---
 ## Assignment pending
 
