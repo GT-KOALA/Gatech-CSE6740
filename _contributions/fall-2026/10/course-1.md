@@ -333,7 +333,7 @@ The figure below shows this with the RBF kernel. Each dashed curve is one random
 *Gaussian process regression with an RBF kernel: prior (top) and posterior (bottom) samples. Figure from the Lecture 10 slides (slide 21), K. Wang, CSE 6740. Image credit: scikit-learn.*
 
 - **Top (prior):** before seeing data, the samples wander freely. The mean is zero everywhere, and the band has constant width $\pm\sqrt{k(x,x)}$, so the model is equally uncertain at every $x$.
-- **Bottom (posterior):** after conditioning on the observations, every sampled function passes through the red points, so the samples agree with each other there and the band pinches. In the gaps between points, such as around $x=2.5$ and $x=4$, the samples disagree and the band widens.
+- **Bottom (posterior):** after conditioning on the observations, the sampled functions are pulled toward the red points, so the samples agree with each other there and the band pinches. In this figure the observation noise is negligible (scikit-learn's default adds only a tiny $10^{-10}$ to the diagonal), so the samples pass essentially through the points and the band nearly vanishes there. With noise $\sigma^2>0$, as in the formulas of Section 4, the samples need not pass exactly through the observed targets, and the variance at a training input, $k_{xx}-k_x^\top(K+\sigma^2I)^{-1}k_x$, stays above zero. In the gaps between points, such as around $x=2.5$ and $x=4$, the samples disagree and the band widens.
 
 This is why a GP is useful when we need to measure uncertainty: it gives not only a curve but also where that curve can be trusted.
 
