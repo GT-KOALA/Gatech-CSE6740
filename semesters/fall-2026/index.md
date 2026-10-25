@@ -18,9 +18,31 @@ semester: fall-2026
   <div><span>Drop-in hours</span><strong>{{ term.instructor_hours }}</strong></div>
 </section>
 
-<section class="lecture-index">
+<nav class="schedule-modules" aria-label="Jump to a learning area">
+{% for module in site.data.fall_2026_modules %}
+  {% unless module.id == "introduction" %}
+  <a href="#{{ module.id }}">
+    <span>{{ module.range }}</span>
+    <strong>{{ module.title }}</strong>
+    <span class="module-jump" aria-hidden="true">↓</span>
+  </a>
+  {% endunless %}
+{% endfor %}
+</nav>
+
+<section class="lecture-index" aria-label="Schedule by learning area">
 {% assign semester_lectures = site.lectures | where: "semester", page.semester %}
-{% for session in site.data.fall_2026_schedule %}
+{% for module in site.data.fall_2026_modules %}
+<section class="schedule-module" id="{{ module.id }}" aria-labelledby="{{ module.id }}-title">
+  <header class="schedule-module-heading">
+    <div>
+      <p class="eyebrow">{{ module.range }}</p>
+      <h2 id="{{ module.id }}-title">{{ module.title }}</h2>
+    </div>
+    {% if module.description %}<p>{{ module.description }}</p>{% endif %}
+  </header>
+{% assign sessions = site.data.fall_2026_schedule | where: "group", module.id %}
+{% for session in sessions %}
   {% assign lecture = nil %}
   {% if session.lecture %}
     {% assign lecture = semester_lectures | where: "slug", session.lecture | first %}
@@ -40,6 +62,8 @@ semester: fall-2026
     <span class="lecture-title">{{ session.title }}</span>
   </div>
   {% endif %}
+{% endfor %}
+</section>
 {% endfor %}
 </section>
 

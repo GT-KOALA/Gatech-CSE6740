@@ -1,0 +1,15 @@
+- id: introduction
+  title: Introduction
+  range: Lecture 1
+- id: unsupervised
+  title: Unsupervised learning
+  range: Lectures 2–5
+  description: Discover structure in data through clustering, dimensionality reduction, and density estimation.
+- id: supervised
+  title: Supervised learning
+  range: Lectures 6–13
+  description: Learn predictive models from labeled data, from decision trees to neural networks.
+- id: advanced
+  title: Advanced topics
+  range: Lectures 14–24
+  description: Explore generative models, sequence models, attention, and reinforcement learning.

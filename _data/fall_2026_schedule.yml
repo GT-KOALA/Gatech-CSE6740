@@ -1,51 +1,76 @@
 # Public schedule; lecture values refer to filenames in _lectures/fall-2026.
 - date: "2026-08-24"
   lecture: 01-introduction
+  group: introduction
 - date: "2026-08-26"
   lecture: 02-k-means
+  group: unsupervised
 - date: "2026-08-31"
   lecture: 03-pca
+  group: unsupervised
 - date: "2026-09-02"
   lecture: 04-density-mixtures
+  group: unsupervised
 - date: "2026-09-09"
   lecture: 05-expectation-maximization
+  group: unsupervised
 - date: "2026-09-14"
   lecture: 06-feature-selection-trees
+  group: supervised
 - date: "2026-09-16"
   lecture: 07-logistic-regression
+  group: supervised
 - date: "2026-09-21"
   lecture: 08-support-vector-machines
+  group: supervised
 - date: "2026-09-23"
   lecture: 09-kernel-methods
+  group: supervised
 - date: "2026-09-28"
   lecture: 10-gaussian-processes
+  group: supervised
 - date: "2026-09-30"
   lecture: 11-neural-networks
+  group: supervised
 - date: "2026-10-07"
   lecture: 12-gradient-descent
+  group: supervised
 - date: "2026-10-12"
   lecture: 13-cnns
+  group: supervised
 - date: "2026-10-19"
   lecture: 14-autoencoders
+  group: advanced
 - date: "2026-10-21"
   lecture: 15-diffusion
+  group: advanced
 - date: "2026-10-26"
   title: "Diffusion models"
+  group: advanced
 - date: "2026-10-28"
   title: "Diffusion models"
+  group: advanced
 - date: "2026-11-04"
   lecture: 16-rnns
+  group: advanced
 - date: "2026-11-09"
   lecture: 17-transformers
+  group: advanced
 - date: "2026-11-11"
   title: ""
+  group: advanced
 - date: "2026-11-16"
   title: ""
+  group: advanced
 - date: "2026-11-18"
   lecture: 21-deep-rl
+  group: advanced
 - date: "2026-11-23"
   lecture: 22-topic-tbd
+  group: advanced
 - date: "2026-11-30"
   lecture: 23-topic-tbd
+  group: advanced
 - date: "2026-12-02"
   lecture: 24-topic-tbd
+  group: advanced
