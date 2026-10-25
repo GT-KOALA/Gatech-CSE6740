@@ -1,7 +1,7 @@
 ---
-title: Recurrent neural networks
+title: RNN, LSTM
 number: "16"
-date: 2026-10-28
+date: 2026-11-04
 summary: Modeling sequences with shared state and recurrent computation.
 status: planned
 ---

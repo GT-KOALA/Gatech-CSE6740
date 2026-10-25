@@ -20,19 +20,30 @@ semester: fall-2026
 
 <section class="lecture-index">
 {% assign semester_lectures = site.lectures | where: "semester", page.semester %}
-{% assign sorted_lectures = semester_lectures | sort: "date" %}
-{% for lecture in sorted_lectures %}
+{% for session in site.data.fall_2026_schedule %}
+  {% assign lecture = nil %}
+  {% if session.lecture %}
+    {% assign lecture = semester_lectures | where: "slug", session.lecture | first %}
+  {% endif %}
+  {% if lecture %}
   <a class="lecture-row" href="{{ lecture.url | relative_url }}">
     <span class="lecture-number">{{ lecture.number }}</span>
-    <span class="lecture-date">{{ lecture.date | date: "%b %-d" }}</span>
+    <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
     <span class="lecture-title">{{ lecture.title }}</span>
     <span class="lecture-team">Materials</span>
     <span class="arrow">↗</span>
   </a>
+  {% else %}
+  <div class="lecture-row">
+    <span class="lecture-number"></span>
+    <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
+    <span class="lecture-title">{{ session.title }}</span>
+  </div>
+  {% endif %}
 {% endfor %}
 </section>
 
-<p class="schedule-note">No-class dates and assessment information are communicated separately.</p>
+<p class="schedule-note">Blank schedule entries indicate topics to be announced. Assessment information is communicated separately.</p>
 
 <section class="intro-grid teaching-team">
   <div>

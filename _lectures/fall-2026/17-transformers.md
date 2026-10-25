@@ -1,7 +1,7 @@
 ---
-title: Transformers
+title: Transformer
 number: "17"
-date: 2026-11-04
+date: 2026-11-09
 summary: Learning contextual representations through attention and parallel sequence processing.
 status: planned
 ---
