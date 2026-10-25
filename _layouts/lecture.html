@@ -1,11 +1,19 @@
 ---
 layout: default
 ---
+{% assign display_number = page.number %}
+{% assign schedule_key = page.semester | replace: "-", "_" | append: "_schedule" %}
+{% for session in site.data[schedule_key] %}
+  {% if session.lecture == page.slug %}
+    {% assign display_number = forloop.index %}
+    {% break %}
+  {% endif %}
+{% endfor %}
 <article class="lecture-page lecture-{{ page.number }}">
   <a class="back-link" href="{{ page.semester_url | relative_url }}">← {{ page.semester_label }} lectures</a>
   <header class="lecture-heading">
     <div>
-      <p class="eyebrow">{{ page.semester_label }} · Lecture {{ page.number }} · {{ page.date | date: "%B %-d, %Y" }}</p>
+      <p class="eyebrow">{{ page.semester_label }} · Lecture {{ display_number }} · {{ page.date | date: "%B %-d, %Y" }}</p>
       <h1>{{ page.title }}</h1>
       {% if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
     </div>

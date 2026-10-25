@@ -32,6 +32,7 @@ semester: fall-2026
 
 <section class="lecture-index" aria-label="Schedule by learning area">
 {% assign semester_lectures = site.lectures | where: "semester", page.semester %}
+{% assign session_number = 0 %}
 {% for module in site.data.fall_2026_modules %}
 <section class="schedule-module" id="{{ module.id }}" aria-labelledby="{{ module.id }}-title">
   <header class="schedule-module-heading">
@@ -43,13 +44,14 @@ semester: fall-2026
   </header>
 {% assign sessions = site.data.fall_2026_schedule | where: "group", module.id %}
 {% for session in sessions %}
+  {% assign session_number = session_number | plus: 1 %}
   {% assign lecture = nil %}
   {% if session.lecture %}
     {% assign lecture = semester_lectures | where: "slug", session.lecture | first %}
   {% endif %}
   {% if lecture %}
   <a class="lecture-row" href="{{ lecture.url | relative_url }}">
-    <span class="lecture-number">{{ lecture.number }}</span>
+    <span class="lecture-number">{{ session_number }}</span>
     <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
     <span class="lecture-title">{{ lecture.title }}</span>
     <span class="lecture-team">Materials</span>
@@ -57,7 +59,7 @@ semester: fall-2026
   </a>
   {% else %}
   <div class="lecture-row">
-    <span class="lecture-number"></span>
+    <span class="lecture-number">{{ session_number }}</span>
     <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
     <span class="lecture-title">{{ session.title }}</span>
   </div>

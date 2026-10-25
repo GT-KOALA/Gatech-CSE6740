@@ -11,5 +11,5 @@
   description: Learn predictive models from labeled data, from decision trees to neural networks.
 - id: advanced
   title: Advanced topics
-  range: Lectures 14–24
+  range: Lectures 14–25
   description: Explore generative models, sequence models, attention, and reinforcement learning.
