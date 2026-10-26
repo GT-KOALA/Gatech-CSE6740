@@ -6,8 +6,8 @@ slot_order: 2
 role: course_material
 role_label: Course materials
 tab_title: Core explanation II
-assignee: unassigned
-issue: null
+assignee: yousertin
+issue: 48
 ---
 ## Assignment pending
 
