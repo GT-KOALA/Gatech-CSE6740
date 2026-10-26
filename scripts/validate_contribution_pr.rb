@@ -38,7 +38,11 @@ def validate_structure(policy)
   required = policy.fetch("required_slots")
   lecture_files = Dir.glob(File.join(ROOT, "_lectures/fall-2026/*.md"))
   contribution_files = Dir.glob(File.join(ROOT, "_contributions/fall-2026/**/*.md"))
-  fail_check("expected 24 Fall 2026 lectures, found #{lecture_files.length}") unless lecture_files.length == 24
+  # Additional class sessions may have their own materials page without adding
+  # student assignments. Keep every original lecture group required.
+  lecture_groups = lecture_files.map { |file| File.basename(file)[/\A\d{2}(?=-)/] }.compact.uniq
+  missing_groups = (1..24).map { |number| format("%02d", number) } - lecture_groups
+  fail_check("missing Fall 2026 lecture groups: #{missing_groups.join(', ')}") unless missing_groups.empty?
   fail_check("expected 96 contribution files, found #{contribution_files.length}") unless contribution_files.length == 96
 
   grouped = contribution_files.group_by { |file| front_matter(File.read(file), file).fetch("lecture_number") }
