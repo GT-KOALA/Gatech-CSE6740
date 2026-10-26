@@ -40,14 +40,15 @@ def validate_structure(policy)
   contribution_files = Dir.glob(File.join(ROOT, "_contributions/fall-2026/**/*.md"))
   # Additional class sessions may have their own materials page without adding
   # student assignments. Keep every original lecture group required.
-  lecture_groups = lecture_files.map { |file| File.basename(file)[/\A\d{2}(?=-)/] }.compact.uniq
+  lecture_groups = lecture_files.map { |file| File.read(file)[/^number: "(\d{2})"$/, 1] }.compact.uniq
   missing_groups = (1..24).map { |number| format("%02d", number) } - lecture_groups
   fail_check("missing Fall 2026 lecture groups: #{missing_groups.join(', ')}") unless missing_groups.empty?
-  fail_check("expected 96 contribution files, found #{contribution_files.length}") unless contribution_files.length == 96
+  assigned_groups = (1..24).map { |number| format("%02d", number) } + policy.fetch("additional_lecture_groups", [])
+  expected_files = assigned_groups.length * required.length
+  fail_check("expected #{expected_files} contribution files, found #{contribution_files.length}") unless contribution_files.length == expected_files
 
   grouped = contribution_files.group_by { |file| front_matter(File.read(file), file).fetch("lecture_number") }
-  (1..24).each do |number|
-    lecture = format("%02d", number)
+  assigned_groups.each do |lecture|
     files = grouped.fetch(lecture, [])
     fail_check("lecture #{lecture} must have exactly four contribution slots") unless files.length == 4
     slots = files.to_h do |file|

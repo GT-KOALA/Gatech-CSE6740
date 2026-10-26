@@ -39,6 +39,6 @@ class ContributionStructureTest < Minitest::Test
     FileUtils.rm(Dir.glob(File.join(@root, '_contributions/fall-2026/**/*.md')).first)
     output, status = validate
     refute status.success?
-    assert_includes output, 'expected 96 contribution files, found 95'
+    assert_includes output, 'expected 104 contribution files, found 103'
   end
 end
