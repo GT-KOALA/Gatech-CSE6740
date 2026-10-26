@@ -6,8 +6,8 @@ slot_order: 1
 role: course_material
 role_label: Course materials
 tab_title: Core explanation I
-assignee: unassigned
-issue: null
+assignee: KyliinX
+issue: 47
 ---
 ## Assignment pending
 
