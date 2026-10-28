@@ -3,11 +3,11 @@ title: Diffusion models
 number: "17-diffusion"
 date: 2026-10-28
 summary: The second lecture on diffusion models.
-status: planned
+status: published
 ---
 ## Materials
 
-Slides for this lecture will be posted here separately from the October 26 lecture.
+- [Lecture 17 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/17/lecture-17-diffusion-models.pdf' | relative_url }})
 
 ## Lecture notes
 
