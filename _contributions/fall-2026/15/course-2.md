@@ -48,8 +48,14 @@ $$
 L = \sum_i \frac{1}{2\eta}\big\lVert x_i - G_\theta(z_i)\big\rVert^2 + D_{\mathrm{KL}}\big(q(z) \,\Vert\, p(z)\big)
 $$
 
+This is the slide's shorthand. Written out, both terms are inside the sum over training examples:
+
+$$
+L = \sum_i \Big[ \frac{1}{2\eta}\big\lVert x_i - G_\theta(z_i)\big\rVert^2 + D_{\mathrm{KL}}\big(q(z \mid x_i, \phi) \,\Vert\, p(z)\big) \Big].
+$$
+
 - **Reconstruction loss:** measures how much the reconstruction $$x' = G_\theta(z_i)$$ differs from $$x_i$$, as in an ordinary autoencoder.
-- **KL divergence loss:** measures how far the encoder's distribution $$\mathcal{N}\big(\mu_\phi(x_i), \sigma^2_\phi(x_i)\big)$$ is from the target $$\mathcal{N}(0, I)$$. Since $$q$$ depends on $$x_i$$, there is one KL term per example, inside the sum.
+- **KL divergence loss:** measures how far the encoder's distribution $$\mathcal{N}\big(\mu_\phi(x_i), \sigma^2_\phi(x_i)\big)$$ is from the target $$\mathcal{N}(0, I)$$. Since $$q$$ depends on $$x_i$$, there is one KL term per example.
 
 The KL divergence is defined as
 
@@ -59,7 +65,7 @@ $$
 
 It is $$\ge 0$$, equals $$0$$ only when $$q = p$$, and is not symmetric.
 
-The two terms compete. Reconstruction prefers codes that are well separated and have small variance. KL prefers every code distribution to look like $$\mathcal{N}(0, I)$$. The result is codes that are informative but packed around the origin without gaps.
+The two terms compete. On its own, reconstruction is easiest when codes are distinct and have small variance. KL pulls every code distribution toward $$\mathcal{N}(0, I)$$. Intuitively, the result is codes that still carry information about the input but stay concentrated around the origin, with overlapping clouds and fewer large empty regions than an ordinary autoencoder.
 
 ## Deriving the Loss (slides 19–21)
 
@@ -101,7 +107,7 @@ $$
 \mathbb{E}_q\big[\log p(x \mid z)\big] = -\frac{1}{2\eta}\, \mathbb{E}_q\big\lVert x - G_\theta(z)\big\rVert^2 - \frac{d}{2}\log(2\pi\eta).
 $$
 
-The slide drops the constant $$-\frac{d}{2}\log(2\pi\eta)$$, which does not affect training. In practice, the expectation is estimated with a sampled $$z$$. So squared error is exactly the log-likelihood of a Gaussian decoder.
+The slide drops the constant $$-\frac{d}{2}\log(2\pi\eta)$$, which does not affect training. In practice, the expectation is estimated with a sampled $$z$$. So, for fixed $$\eta$$, minimizing the squared error is equivalent to maximizing the Gaussian decoder's log-likelihood: the two differ only by the factor $$-\frac{1}{2\eta}$$ and an additive constant.
 
 ### KL term
 
@@ -136,7 +142,7 @@ recons_loss = F.mse_loss(recons, input)
 kld_loss = torch.mean(-0.5 * torch.sum(1 + log_var - mu ** 2 - log_var.exp(), dim = 1), dim = 0)
 ```
 
-`kld_loss` is the formula above: the sum over `dim = 1` runs over latent coordinates, and the mean over `dim = 0` averages over the batch. In the repository the terms are combined as `recons_loss + kld_weight * kld_loss`, where `kld_weight` balances the two terms (playing the role of $$\eta$$).
+`kld_loss` is the formula above: the sum over `dim = 1` runs over latent coordinates, and the mean over `dim = 0` averages over the batch. In the repository the terms are combined as `recons_loss + kld_weight * kld_loss`, where `kld_weight` sets the relative weight of the KL term. It is not the same quantity as $$\eta$$ (the decoder noise variance), but it has a similar effect: in the formula, a larger $$\eta$$ also gives the KL term relatively more weight.
 
 **Encoder** (slide 23): convolutional layers extract features, the features are flattened, and then two fully connected heads predict the Gaussian parameters.
 
@@ -169,7 +175,7 @@ After training, keep only the decoder:
 1. Sample $$z \sim \mathcal{N}(0, I)$$.
 2. Decode: $$x' \sim p(x \mid z, \theta)$$.
 
-For example, a VAE trained on cat images generates new cats this way. It works because the KL term kept the training codes close to $$\mathcal{N}(0, I)$$, so random prior samples land where the decoder was trained.
+For example, a VAE trained on cat images generates new cats this way. Intuitively, this works because the KL term keeps the training codes close to $$\mathcal{N}(0, I)$$, so random prior samples tend to fall in regions the decoder saw during training. This is not a guarantee, and samples can still be blurry or unrealistic.
 
 ### Latent interpolation
 
