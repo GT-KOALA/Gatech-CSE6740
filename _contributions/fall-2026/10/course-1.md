@@ -156,7 +156,7 @@ For $y=\beta_1x+\beta_0$, the weight space is 2-D, so the distribution over $(\b
 
 Each observation removes the lines that miss it, so the posterior shrinks and the sampled lines concentrate around the true trend. This is the update $\Sigma^{-1}=S^{-1}+\tfrac{1}{\sigma^2}X^\top X$ seen visually: every new row of $X$ adds information and tightens the blob.
 
-![Four panels of Bayesian line fitting as data points accumulate: the weight-space heatmap shrinks from a broad blob to a tiny spot, while the sampled red lines bunch around the blue data points](course-1-images/bayesian-line-fitting.jpg)
+![Four panels of Bayesian line fitting as data points accumulate: the weight-space heatmap shrinks from a broad blob to a tiny spot, while the sampled red lines bunch around the blue data points](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/10/figures/bayesian-line-fitting.jpg)
 
 *Bayesian line fitting: posterior over $(\beta_0,\beta_1)$ and sampled lines. Figure from the Lecture 10 slides (slide 9), K. Wang, CSE 6740. Image credit: Gregory Gundersen.*
 
@@ -328,7 +328,7 @@ A distribution over functions with this property is a **Gaussian process**, writ
 
 The figure below shows this with the RBF kernel. Each dashed curve is one random function drawn from the distribution, the black line is the mean, and the grey band is $\pm1$ standard deviation.
 
-![Two stacked plots of a Gaussian process with an RBF kernel: random functions with a constant-width grey band before any data (top), and functions pinned to red observations with a band that narrows at the data and widens in the gaps (bottom)](course-1-images/gp-rbf-prior-posterior.jpg)
+![Two stacked plots of a Gaussian process with an RBF kernel: random functions with a constant-width grey band before any data (top), and functions pinned to red observations with a band that narrows at the data and widens in the gaps (bottom)](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/10/figures/gp-rbf-prior-posterior.jpg)
 
 *Gaussian process regression with an RBF kernel: prior (top) and posterior (bottom) samples. Figure from the Lecture 10 slides (slide 21), K. Wang, CSE 6740. Image credit: scikit-learn.*
 
