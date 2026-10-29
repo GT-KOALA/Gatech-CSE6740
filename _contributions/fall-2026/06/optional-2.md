@@ -45,7 +45,12 @@ Thus a bootstrap sample of size $n$ contains about $0.632n$ distinct observation
 At a node, sample a candidate subset $M\subseteq\{1,\ldots,d\}$ of size $m$. Search for the best feature-threshold split within $M$:
 
 $$
-(j^*,t^*)=\underset{j\in M,t}{\operatorname{argmax}}\left[H(S)-\frac{|S_L|}{|S|}H(S_L)-\frac{|S_R|}{|S|}H(S_R)\right],
+(j^{\ast},t^{\ast})=
+\underset{j\in M,t}{\mathrm{arg\,max}}
+\left[
+H(S)-\frac{|S_L|}{|S|}H(S_L)
+-\frac{|S_R|}{|S|}H(S_R)
+\right].
 $$
 
 where $S$ is the node's bootstrap data, $S_L=\{x\in S:x_j\le t\}$, and $S_R=\{x\in S:x_j>t\}$. For classification,
@@ -83,7 +88,7 @@ Sampling observations and averaging trees is **bagging**. A standard random fore
 A hard-voting description is
 
 $$
-\widehat y(x)=\underset{c}{\operatorname{argmax}}\sum_{b=1}^{B}\mathbf{1}\{T_b(x)=c\},
+\widehat y(x)=\underset{c}{\mathrm{argmax}}\sum_{b=1}^{B}\mathbf{1}\{T_b(x)=c\},
 $$
 
 where $T_b(x)$ is tree $b$'s predicted class. For example, predictions $(A,B,A,A,B)$ give class $A$.
@@ -92,7 +97,7 @@ where $T_b(x)$ is tree $b$'s predicted class. For example, predictions $(A,B,A,A
 
 $$
 \widehat p(c\mid x)=\frac{1}{B}\sum_{b=1}^{B}\widehat p_b(c\mid x),\qquad
-\widehat y(x)=\underset{c}{\operatorname{argmax}}\widehat p(c\mid x).
+\widehat y(x)=\underset{c}{\mathrm{argmax}}\widehat p(c\mid x).
 $$
 
 A tree's probability is the class fraction in the leaf reached by $x$. Probability averaging and hard voting need not agree when leaves are impure. Forest probabilities are estimates, not automatically calibrated confidence statements.
@@ -113,7 +118,7 @@ The following calculation is an illustrative variance model, not a general class
 
 $$
 \begin{aligned}
-\operatorname{Var}\left(\frac{1}{B}\sum_{b=1}^{B}Z_b\right)
+\mathrm{Var}\left(\frac{1}{B}\sum_{b=1}^{B}Z_b\right)
 &=\frac{1}{B^2}\left[B\sigma_T^2+B(B-1)\rho\sigma_T^2\right]\\
 &=\sigma_T^2\left[\rho+\frac{1-\rho}{B}\right].
 \end{aligned}
@@ -132,8 +137,8 @@ For squared-error regression,
 
 $$
 \mathbb{E}\left[(Y-\widehat f(x))^2\mid X=x\right]
-=\operatorname{Var}(Y\mid X=x)+\operatorname{Bias}(\widehat f(x))^2
-+\operatorname{Var}(\widehat f(x)).
+=\mathrm{Var}(Y\mid X=x)+\mathrm{Bias}(\widehat f(x))^2
++\mathrm{Var}(\widehat f(x)).
 $$
 
 This decomposition assumes prediction is evaluated on a fresh response independent of training, conditional on $x$. A forest primarily targets estimator variance; it cannot remove irreducible noise or repair every source of bias. For classification, averaging probability estimates offers a related intuition, but the variance identity is not itself a formula for misclassification error. Forests can still overfit or fail under distribution shift.
