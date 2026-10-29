@@ -459,7 +459,7 @@ The questions from slide 20 (how many parameters, how much memory, how much comp
 
 - Slide 18's idea is to **learn filters from data instead of designing them by hand**. Stacked conv layers learn a hierarchy (edges, then parts, then objects) because each layer's receptive field is larger than the one before.
 - A **complete CNN** is a conv/ReLU/pool feature extractor, then flattening (or global average pooling), then FC layers and softmax, trained end to end with backpropagation. With shared weights, a filter's gradient is a sum over all locations.
-- **Costs:** a conv layer has $(F^2 C + 1)\,K$ parameters regardless of image size. FC layers hold most of the parameters (93% in the running example, about 96% in AlexNet, 89% in VGG-16). Conv layers do most of the computation in real CNNs, and early layers dominate activation memory.
+- **Costs:** a conv layer has $(F^2 C + 1)\,K$ parameters regardless of image size. FC layers hold most of the parameters (about 99.99% in the running example, where FC2 alone is 93%; about 96% in AlexNet, 89% in VGG-16). Conv layers do most of the computation in real CNNs, and early layers dominate activation memory.
 - **AlexNet** (2012) showed that deep CNNs with ReLU, trained on GPUs, work at ImageNet scale. **VGGNet** (2015) showed that stacks of $3 \times 3$ filters cover large receptive fields more cheaply, and that depth helps, up to a point.
 - **Very deep plain networks are hard to train.** Gradients are products of many factors that can vanish, and plain networks show the degradation problem. ReLU, careful initialization, **residual shortcuts** ($y = \mathcal{F}(x) + x$), and **batch normalization** together made networks with 100+ layers practical.
 
