@@ -6,8 +6,8 @@ slot_order: 1
 role: course_material
 role_label: Course materials
 tab_title: Core explanation I
-assignee: unassigned
-issue: null
+assignee: HUST-AI-HYZ
+issue: 53
 ---
 ## Assignment pending
 
