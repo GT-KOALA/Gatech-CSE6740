@@ -74,10 +74,10 @@ With the numbers above, $w_0 = -0.5$. Input $(1,1)$ gives $-0.5 + 0.55 = 0.05 \g
 | Sigmoid | $\sigma(u) = 1 / (1 + e^{-u})$ | 0.119 | 0.5 | 0.622 | 0.881 |
 | Hyperbolic tangent | $\tanh(u)$ | $-0.964$ | 0 | 0.462 | 0.964 |
 
-There are two properties that are shared by all transforms:
+The four transforms share the first property and differ in the second one:
 
-- **All four are non-decreasing**: if $u_1 < u_2$ then $f(u_1) \le f(u_2)$. Section 7 shows that this alone forces a single unit to draw a straight boundary.
-- **Only the transform with smooth curve can be trained by gradient descent.** The hard limiter's slope is 0 everywhere except at the jump, so the gradient doesn't know towards which way to move the weights. The sigmoid and tanh have a nonzero slope everywhere.
+1. **All four are non-decreasing**: if $u_1 < u_2$ then $f(u_1) \le f(u_2)$. Section 7 shows that this alone forces a single unit to draw a straight boundary.
+2. **Three of the four work with gradient descent while the hard limiter does not.** Gradient descent needs the slope $df/du$. The hard limiter's slope is 0 everywhere (it does not exist at the jump $u = 0$), so the gradient is unable to give information about which way to move the weights. The piecewise-linear transform has slope 1 for $0 < u < 1$ and 0 outside that interval; at the two corners $u = 0$ and $u = 1$ a value is chosen by convention, so it can be trained as long as some inputs land in the middle interval. The sigmoid and tanh have a nonzero slope everywhere.
 
 ## 5. Logistic regression is a perceptron with a sigmoid
 
@@ -118,8 +118,10 @@ $$
 \min_w\ l(w) = \sum_{i=1}^{n} \left(y^i - \sigma(w^\top x^i)\right)^2
 $$
 
-- **Optimizer:** gradient descent. The slide warns that the objective is **not convex**, so gradient descent is only guaranteed to reach a local optimum.
-
+- **Optimizer:** gradient descent. The slide warns that the objective is **not convex**. Gradient descent seeks a low-loss solution, but on a non-convex objective it has no general guarantee of reaching the global minimum (the lowest loss over all weights), and it is not even guaranteed to reach a local minimum. Two separate things can go wrong:
+  - **It may not converge at all.** Each step moves the weights by the step size times the gradient, and the gradient only describes the slope at the current point. If the step size is too large, a step can jump past the bottom of a valley and raise the loss: with loss $w^2$ and step size $1.5$, one step from $w = 1$ lands at $w = -2$, and the loss goes from 1 to 4. So any convergence result needs the step size to be small enough, together with assumptions on the loss. Even with a small step size, the weights can keep moving forever if the loss has no lowest point, as in the one-example loss below.
+  - **Where it settles need not be a minimum.** Gradient descent stops only where the gradient is zero in every direction. Such a point can be a local minimum, or a **saddle point**, where the loss goes up in some directions and down in others, so it is not a minimum at all. 
+  
 **Why it is not convex.** A convex function satisfies, for any two points $a$ and $b$, "value at the midpoint $\le$ average of the values at $a$ and $b$". One violation is enough to show a function is not convex. Take one training example with $x = 1$, $y = 1$, so $l(w) = (1 - \sigma(w))^2$:
 
 | $w$ | $\sigma(w)$ | $l(w)$ |
@@ -284,7 +286,7 @@ The slide does not say which transform or thresholds to use, and the result depe
 
 **The part I think matters most** is the right panel. In the coordinates $(h_1, h_2)$, both label-1 points land at $(1,1)$ and the label-0 points at $(0,1)$ and $(1,0)$, so one line, $h_1 + h_2 = 1.5$, separates them. The output unit is still an ordinary perceptron, just working on features computed by the hidden layer. **The hidden layer is a learned $\phi(x)$**: the "learn $\phi$ and $w$ together" idea from Section 1.
 
-In practice nobody sets these weights by hand. They are learned by gradient descent, and computing the gradient for hidden units (backpropagation) is the topic after the multilayer perceptron section.
+This hard-limiter network, with weights chosen by hand, only shows that suitable weights exist. It does not show how to find them. In practice they are learned by gradient descent, and computing the gradient for hidden units (backpropagation) is the topic after the multilayer perceptron section. Because the hard limiter's slope is 0 wherever it exists (Section 4), backpropagation uses differentiable or piecewise-differentiable transforms instead, such as the sigmoid, tanh, or piecewise-linear transform.
 
 ## References
 
