@@ -9,9 +9,9 @@ tab_title: Core explanation II
 assignee: Duckbluee
 issue: 51
 ---
-
 ## Assignment pending
 
 Develop the assigned part of the lecture's core course materials.
 
 The course team will assign this section through a GitHub issue.
+
