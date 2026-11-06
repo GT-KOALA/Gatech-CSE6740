@@ -15,7 +15,6 @@ status: published
 
 - [Lecture 18 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/18/lecture-18-rnn-lstm.pdf' | relative_url }})
 - [Interactive RNN and LSTM animation: reading between the words]({{ '/assets/semesters/fall-2026/lectures/18/rnn/' | relative_url }}) — Explore recurrent state updates, backpropagation through time, LSTM gates, and SMS classification.
-- [SMS classification explorer and downloadable animations]({{ '/assets/semesters/fall-2026/lectures/18/rnn/explorer.html' | relative_url }})
 
 ## Lecture notes
 
