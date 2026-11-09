@@ -1,0 +1,21 @@
+The little robot | temperature=0.5 | seed=42 | stop=eos
+Once upon a time, there was a little robot named Robby. Robby loved to play with his friends in the forest. One day, while playing, he saw a big, scary wolf. The wolf looked very hungry and wanted to eat Robby.
+Robby was scared and didn't know what to do. He remembered what his mommy had told him. She said that if he ever had a problem, he should call for help. So, Robby called for his friends, the birds, and the squirrels.
+The birds, the squirrels, and the squirrels came to help Robby. They all worked together to stop the wolf from eating him. The wolf was scared and ran away. Robby was safe and happy. He thanked his friends for helping him and they all played together in the forest.
+
+The little robot | temperature=0.8 | seed=42 | stop=eos
+Once upon a time, there was a little robot named Bobo. Bobo loved to zoom around the house. He would zoom and zoom all day long. One day, Bobo wanted to go to the park. But there was a delay. The park was far away, and Bobo had to wait.
+Bobo was sad. He wanted to go to the park so he could zoom around. But he knew he had to wait. He played with his toys and waited for his mom to come back. When the delay was finally over, Bobo zoomed off to the park. He was so happy!
+Bobo played with his friends all day. They zoomed and played games. At the end of the day, Bobo was tired but happy. He knew that waiting was good for him because he had a lot of fun zooming around the park.
+
+The little robot | temperature=1.2 | seed=42 | stop=eos
+Once upon a time, there was a little robot who loved to play with his toys. He played with his dolls, his blocks and his toy cars. Then, his mommy said, "Okay, let's finish our chores together!"
+At the end of their chores, there was a big surprise being played at the next door. The robot couldn't take his eyes off the room! It was so happy to have visitors. He hugged his mommy and said, "Thank you for buying me new toys, Mommy! I can't wait to play with them!"
+
+A rainy afternoon | temperature=0.8 | seed=17 | stop=eos
+Lily looked out of the window. It was raining, so she decided to go outside and play. She put on her coat and boots and ran outside to play.
+When she got outside, she saw that the street was very muddy. She slipped on her coat and laughed. At the end of the street she saw a little girl playing with a ball. Lily asked the little girl if she wanted to play with her. The little girl said yes and they played together for hours. 
+At the end of the day, Lily went back inside. She felt happy and clean in her warm coat. She couldn't wait to tell her mom about her fun day outside.
+
+The lost puppy | temperature=0.8 | seed=23 | stop=eos
+Tom found a small puppy under a tree. The puppy was cold and hungry. Tom felt sad for the puppy. He gave the puppy some food and a warm place to sleep. The puppy felt better and started to play with Tom's toys. Tom was happy to see the puppy and he knew that the dog would be happy too. From that day on, the puppy and Tom were best friends.

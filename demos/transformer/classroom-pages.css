@@ -1,0 +1,89 @@
+/* Companion pages use the same viewport workspace as the architecture demo. */
+html:has(.support-page),body.support-page{height:100dvh;overflow:hidden}
+.support-page{display:flex;flex-direction:column;font-size:14px;line-height:1.5}
+.support-page main{display:grid;grid-template-columns:minmax(0,1fr) 260px;flex:1;min-height:0;max-width:none;width:100%;margin:0;overflow:hidden}
+.support-page .visual{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden;padding:14px 16px 8px}
+.support-page .eyebrow{font-size:10px;letter-spacing:.13em;color:var(--muted)}
+.support-page h1{font:normal 25px/1.15 Georgia;margin:6px 0 12px}
+.support-page h2{font:normal 21px/1.25 Georgia;margin:7px 0 12px}
+.support-page aside{min-height:0;overflow:hidden;background:var(--panel);border-left:1px solid var(--line);border-top:0;padding:16px 14px;font-size:13px;line-height:1.6}
+.support-page aside p{font-size:13px;line-height:1.55;margin:0 0 12px}
+.support-page .equation{font:11px/1.8 ui-monospace,monospace;white-space:pre-line;overflow-wrap:anywhere;color:var(--gold);background:#0e1723;border-radius:8px;padding:10px;margin:12px 0}
+.support-page .takeaway{font-size:12px;line-height:1.55;border-left:2px solid var(--green);padding-left:12px;color:#bce0d2;margin:14px 0}
+.support-page .provenance{font-size:11px;line-height:1.7;border-top:1px solid var(--line);padding-top:12px;margin-top:14px;color:var(--muted)}
+.support-page .controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 10px}
+.support-page .controls label{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}
+.support-page .controls select{font-size:12px;padding:4px 8px;max-width:300px}
+.support-page #controls{min-height:0;flex-shrink:0}
+.support-page .legend{font-size:11px;color:var(--muted)}
+.support-page .caption{flex-shrink:0;color:var(--muted);font-size:10px;line-height:1.4;min-height:0;margin:7px 0 0}
+.support-page .story{font:clamp(18px,1.65vw,25px)/1.65 Georgia;white-space:pre-wrap;background:#101b28;border:1px solid #2b4057;border-radius:10px;padding:16px 18px;min-height:0;max-height:none;overscroll-behavior:contain;scrollbar-color:#3a536d transparent;scrollbar-width:thin}
+.support-page .prompt{color:var(--blue)}
+.support-page .generated{color:var(--text)}
+.support-page .probabilities{display:grid;gap:9px;margin:0}
+.support-page .probrow{display:grid;grid-template-columns:minmax(70px,1fr) minmax(30px,1fr) 48px;gap:8px;align-items:center;font:12px ui-monospace,monospace}
+.support-page .probrow>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.support-page .probrow>span:last-child{text-align:right}
+.support-page .probrow>div{background:#213146;border-radius:4px;overflow:hidden}
+.support-page .probrow i{height:11px;border-radius:4px;background:var(--blue)}
+.support-page .probrow.chosen{color:var(--green)}
+.support-page .probrow.chosen i{background:var(--green)}
+.support-page footer{position:static;display:flex;justify-content:space-between;gap:12px;flex-shrink:0;padding:6px 16px;border-top:1px solid var(--line);background:#101923}
+.support-page footer>div{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.support-page footer button,.support-page footer select{font-size:11px;padding:5px 8px}
+.support-page footer label{font-size:10px;color:var(--muted);white-space:nowrap}
+.support-page .bottom{display:flex;justify-content:space-between;gap:8px;padding:4px 16px;background:#101923;color:var(--muted);font-size:9px;flex-shrink:0}
+/* Recorded stories: the story and its current probabilities share one stage. */
+.story-page #stage{flex:1;min-height:0;overflow:hidden}
+.story-page #stage.enter{animation:none}
+.story-page #stage[data-scene="0"]{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;gap:10px 16px}
+.story-page .pipeline{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0;padding:9px 12px;border:1px solid #2b4057;border-radius:10px;background:#101b28;font-size:12px}
+.story-page .pipeline b{font-weight:500;font-size:12px;padding:6px 9px;border:1px solid #3a536d;border-radius:6px}
+.story-page .pipeline b.on{background:#20384c;color:var(--blue)}
+.story-page #stage[data-scene="0"]>.story{grid-column:1;grid-row:2/4;overflow:auto}
+.story-page #stage[data-scene="0"]>.probability-heading{grid-column:2;grid-row:2;font-size:10px;line-height:1.6;padding:10px 12px 0;border:1px solid #2b4057;border-bottom:0;border-radius:10px 10px 0 0;background:#101b28}
+.story-page #stage[data-scene="0"]>.probabilities{grid-column:2;grid-row:3;align-content:start;padding:10px 12px;border:1px solid #2b4057;border-top:0;border-radius:0 0 10px 10px;background:#101b28;margin-top:-10px}
+.story-page .scrub{grid-column:1/-1;grid-row:4;display:flex;align-items:center;gap:12px;margin:0;padding:6px 0;font-size:11px;color:var(--muted)}
+.story-page .scrub label{white-space:nowrap}
+.story-page .scrub input{width:100%;padding:0}
+.story-page .compare{height:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.story-page .compare>section{display:flex;flex-direction:column;min-width:0;min-height:0;border:1px solid #2b4057;border-radius:10px;background:#101b28;padding:12px}
+.story-page .compare h3{font:normal 22px Georgia;color:var(--blue);margin:0 0 7px}
+.story-page .compare .meta{font-size:10px;color:var(--muted);margin-bottom:10px}
+.story-page .compare .story{flex:1;height:auto;max-height:none;border:0;padding:0;font-size:clamp(16px,1.35vw,21px);overflow:auto;border-radius:0}
+.story-page #stage[data-scene="2"]{display:flex;flex-direction:column;gap:10px;padding-top:5px}
+.story-page .tokens{display:flex;flex-wrap:wrap;gap:5px;margin:0}
+.story-page .tokens button{font-size:12px;padding:6px 9px;margin:0;border:1px solid #344e68;color:var(--text);border-radius:6px}
+.story-page .tokens button.current{outline:2px solid var(--gold);outline-offset:-1px}
+.story-page .attention-bars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 20px;background:#101b28;border:1px solid #2b4057;border-radius:10px;padding:14px}
+.story-page .attnrow{grid-template-columns:minmax(70px,1fr) 1.5fr 50px;font-size:12px;gap:10px}
+.story-page .attnrow>span:last-child{font:11px ui-monospace,monospace;text-align:right}
+.story-page .bar{background:#213146;height:11px;border-radius:4px;overflow:hidden}
+/* Live generation: consistent prompt card, settings and probability bars. */
+.live-page textarea{flex:0 0 auto;width:100%;height:76px;resize:none;font:18px/1.5 Georgia;border:1px solid #3a4d65;border-radius:8px;padding:10px 12px;margin:5px 0 10px;background:#101b28}
+.live-page .visual>label{font-size:11px;color:var(--muted)}
+.live-page .actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.live-page .actions button{font-size:12px;padding:6px 10px}
+.live-page .actions .primary{background:#2c526c;border-color:#6393b5}
+.live-page #status{font-size:11px;color:var(--muted);min-height:16px;margin:8px 0}
+.live-page #status.error{color:var(--gold)}
+.live-page #output{flex:1;min-height:0;max-height:none;overflow:auto;background:#101b28;border-color:#2b4057;font:clamp(18px,1.65vw,25px)/1.65 Georgia;padding:16px 18px}
+.live-page .settings{display:grid;grid-template-columns:1fr 1fr;gap:10px;border:1px solid #2b4057;background:#101b28;border-radius:10px;padding:10px}
+.live-page .settings label{font-size:11px;gap:5px}
+.live-page .settings input{font-size:14px;background:#192637;border-color:#3a4d65;padding:5px 7px}
+.live-page aside .legend{font-size:12px;line-height:1.55;margin:12px 0 16px}
+.live-page #candidateTitle{font-size:10px;min-height:32px;line-height:1.6;overflow-wrap:anywhere}
+.live-page #candidates{gap:9px;padding:12px 10px;border:1px solid #2b4057;border-radius:10px;background:#101b28;margin:6px 0 0}
+.live-page #candidates:empty::after{font-size:12px;line-height:1.6;color:var(--muted)}
+.live-page #candidates .probrow{grid-template-columns:minmax(65px,1fr) minmax(25px,1fr) 43px;font-size:11px;gap:6px}
+.live-page aside .takeaway{font-size:12px;margin-top:14px}
+@media(max-height:740px){.support-page .visual{padding-top:9px}.support-page aside{padding-top:12px}.support-page h1{font-size:23px;margin-bottom:9px}.support-page h2{font-size:20px;margin-bottom:10px}.support-page aside{font-size:12px;line-height:1.5}.support-page .takeaway{font-size:11px;margin:10px 0}.support-page .equation{margin:9px 0;padding:8px}.live-page textarea{height:64px;font-size:17px}.live-page aside .legend{font-size:11px;margin:10px 0}.live-page .settings{gap:8px}.story-page .provenance{font-size:10px;margin-top:10px;padding-top:9px}}
+@media(max-width:1050px){.support-page main{grid-template-columns:minmax(0,1fr) 225px}.support-page aside{padding:12px}.support-page aside p{font-size:12px}.story-page #stage[data-scene="0"]{grid-template-columns:minmax(0,1.4fr) minmax(190px,1fr)}.story-page .pipeline{font-size:10px;padding:7px;gap:5px}.story-page .pipeline b{font-size:10px;padding:5px}.support-page .probrow{font-size:11px;grid-template-columns:minmax(50px,1fr) 1fr 42px}.story-page .compare{gap:8px}.story-page .compare>section{padding:9px}.story-page .compare .story{font-size:16px}}
+@media(max-width:700px){html:has(.support-page),body.support-page{height:auto;min-height:100dvh;overflow:auto}.support-page main{display:block;overflow:visible}.support-page .visual{min-height:65vh;overflow:visible}.support-page aside{border-left:0;border-top:1px solid var(--line);overflow:visible}.story-page #stage{min-height:420px}.story-page #stage[data-scene="0"]{grid-template-columns:1fr;grid-template-rows:auto 260px auto auto auto}.story-page #stage[data-scene="0"]>.story{grid-column:1;grid-row:2}.story-page #stage[data-scene="0"]>.probability-heading{grid-column:1;grid-row:3}.story-page #stage[data-scene="0"]>.probabilities{grid-column:1;grid-row:4;min-height:160px}.story-page .scrub{grid-row:5}.story-page .compare{grid-template-columns:1fr}.story-page .compare .story{height:250px;min-height:250px}.story-page .attention-bars{grid-template-columns:1fr}.support-page footer{flex-wrap:wrap}.support-page .bottom{flex-wrap:wrap}.live-page #output{min-height:240px}.live-page .visual{min-height:80vh}}
+@media(prefers-reduced-motion:reduce){.support-page *, .support-page *::before,.support-page *::after{animation:none!important;transition:none!important}}
+
+/* The index page supplies navigation when live generation is embedded. */
+.embedded-live .lab-header{display:none}
+
+.story-page .provenance .comparison-note{font-size:10px;line-height:1.5;margin:10px 0 0}
+.story-page aside{overflow:auto}

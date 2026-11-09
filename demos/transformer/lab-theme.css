@@ -1,0 +1,30 @@
+/* Shared visual language for the architecture, recorded, and live demos. */
+:root{color-scheme:dark;--bg:#0b1018;--panel:#121c29;--line:#29384c;--text:#e8eef6;--ink:var(--text);--muted:#9caec2;--blue:#79c7ff;--gold:#e9bd75;--amber:var(--gold);--green:#91dcc1;--pink:#de9caf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui}
+a{color:var(--blue);text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit;background:#192637;border:1px solid #3a4d65;border-radius:6px;padding:7px 10px}
+button,select{cursor:pointer}
+button:hover{background:#2a415b}
+button:disabled{opacity:.35;cursor:default}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.primary{background:#2c526c;border-color:#6393b5}
+.lab-header{display:grid;grid-template-columns:auto minmax(190px,1fr) auto;align-items:center;gap:5px 16px;padding:7px 16px;border-bottom:1px solid var(--line);flex-shrink:0}
+.lab-header .brand{font-size:11px;letter-spacing:.12em;color:var(--text);margin:0;white-space:nowrap}
+.lab-header .brand span{display:none}
+.lab-header>select,.lab-header>.page-name{font-size:12px;max-width:380px;width:100%;padding:4px 8px;margin:0}
+.page-name{color:var(--muted)}
+.lab-header nav{display:flex;align-items:center;justify-self:end;gap:14px;margin:0;font-size:11px}
+.lab-header nav a{white-space:nowrap}
+.lab-header nav a[aria-current=page]{color:var(--green)}
+.lab-header nav button{font-size:12px;padding:4px 8px;white-space:nowrap}
+@media(max-width:1050px){.lab-header{gap:5px 10px}.lab-header nav{gap:9px}}
+@media(max-width:650px){.lab-header{grid-template-columns:auto 1fr;padding:7px 12px}.lab-header nav{grid-column:1/-1;justify-self:stretch;justify-content:space-between}}
+
+/* Shared checkpoint selector: visible inside the embedded live panel as well. */
+.modelbar{display:flex;align-items:center;gap:10px;grid-column:1/-1;padding:5px 16px;border-bottom:1px solid var(--line);background:#101923;flex-shrink:0;min-width:0}
+header .modelbar{padding:3px 0 0;border:0;background:none}
+.modelbar label{font-size:9px;letter-spacing:.12em;color:var(--muted)}
+.modelbar select{font-size:12px;padding:4px 8px;max-width:220px}
+#model-summary{font-size:10px;color:var(--muted);line-height:1.5}
+@media(max-width:850px){.modelbar{flex-wrap:wrap;gap:4px 9px}#model-summary{flex-basis:100%}}
