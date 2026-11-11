@@ -63,7 +63,7 @@ With the numbers above, $w_0 = -0.5$. Input $(1,1)$ gives $-0.5 + 0.55 = 0.05 \g
 
 ## 4. Four choices for the nonlinear transform
 
-![Four side-by-side plots of output against the weighted sum u, for u from minus 4 to 4. Hard limiter: a jump from 0 to 1 at u equals 0. Piecewise linear: 0 for negative u, rising in a straight line to 1 at u equals 1, then flat. Sigmoid: a smooth S-curve from 0 to 1 through 0.5 at u equals 0. Hyperbolic tangent: a steeper S-curve from minus 1 to 1 through 0 at u equals 0.](course-1-images/fig2-activation-functions.png)
+![Four side-by-side plots of output against the weighted sum u, for u from minus 4 to 4. Hard limiter: a jump from 0 to 1 at u equals 0. Piecewise linear: 0 for negative u, rising in a straight line to 1 at u equals 1, then flat. Sigmoid: a smooth S-curve from 0 to 1 through 0.5 at u equals 0. Hyperbolic tangent: a steeper S-curve from minus 1 to 1 through 0 at u equals 0.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/11/figures/fig2-activation-functions.png)
 
 *Figure 1. The four transforms on the "Other Nonlinear Neurons" slide.*
 
@@ -132,7 +132,7 @@ $$
 
 The average at the two ends is $(0.964 + 0.250)/2 = 0.607$, but the value at the midpoint $w = -2$ is $0.776 > 0.607$. Not convex.
 
-![Two side-by-side plots of the loss on one example as the weight w runs from minus 6 to 6. Left, square loss: flat near 1 for very negative w, then an S-shaped drop to 0; the region left of w equals minus ln 2 is shaded and labelled concave, so not convex. Right, logistic loss: falls along a straight line from about 6 and flattens toward 0 for positive w.](course-1-images/fig3-square-vs-logistic-loss.png)
+![Two side-by-side plots of the loss on one example as the weight w runs from minus 6 to 6. Left, square loss: flat near 1 for very negative w, then an S-shaped drop to 0; the region left of w equals minus ln 2 is shaded and labelled concave, so not convex. Right, logistic loss: falls along a straight line from about 6 and flattens toward 0 for positive w.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/11/figures/fig3-square-vs-logistic-loss.png)
 
 *Figure 2. Left: the square loss $(1 - \sigma(w))^2$ from the table above. Between $w = -4$ and $w = 0$ the curve is above the straight line formed by connecting those two points, so it is not convex. Right: for comparison, the logistic loss $-\log \sigma(w)$ on the same example, which is convex.*
 
@@ -252,7 +252,7 @@ This table represents a XNOR gate which is the complement of XOR gate. Using eit
 
 The left-hand sides are the **same number**, so both cannot hold $w_1 + w_2$ can't not be greater than or equal to 2c and less than 2c at the same time. No choice of $w_1, w_2$, cutoff or monotone transform works. 
 
-![Two plots of the four corners of the unit square, label-1 points as blue circles and label-0 points as orange squares. Left, AND: only (1,1) is blue, and a straight line separates it from the other three. Right, XNOR: (0,0) and (1,1) are blue, (0,1) and (1,0) are orange, and the two dotted diagonals joining each pair cross at the shared midpoint (0.5, 0.5).](course-1-images/fig4-and-vs-xnor.png)
+![Two plots of the four corners of the unit square, label-1 points as blue circles and label-0 points as orange squares. Left, AND: only (1,1) is blue, and a straight line separates it from the other three. Right, XNOR: (0,0) and (1,1) are blue, (0,1) and (1,0) are orange, and the two dotted diagonals joining each pair cross at the shared midpoint (0.5, 0.5).](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/11/figures/fig4-and-vs-xnor.png)
 
 *Figure 3. Left: the AND unit's boundary. Right: in the XNOR table, the two same-label pairs share a midpoint. Original figure made for these notes.*
 
@@ -280,7 +280,7 @@ The slide does not say which transform or thresholds to use, and the result depe
 - The output needs $h_1 + h_2 \ge 1.5$. With $h_1, h_2 \in \lbrace 0, 1 \rbrace$ that means both must be 1, so the output is AND of the two hidden units.
 - Together, the output is 1 only in the thin wedge $0.875 x_1 \le x_2 \le x_1$, which contains $(0,0)$ and $(1,1)$ and neither of the other corners.
 
-![Two plots. Left, input space: the four XNOR points with a solid line x2 equals x1 and a dashed line x2 equals 0.875 times x1 from the origin, and the thin wedge between them shaded; the blue points (0,0) and (1,1) lie on its edge, and the orange points lie outside. Right, hidden space with axes h1 and h2: (0,0) and (1,1) both land at (1,1), (0,1) lands at (0,1), (1,0) lands at (1,0), and the line h1 plus h2 equals 1.5 separates blue from orange.](course-1-images/fig5-xnor-two-layer.png)
+![Two plots. Left, input space: the four XNOR points with a solid line x2 equals x1 and a dashed line x2 equals 0.875 times x1 from the origin, and the thin wedge between them shaded; the blue points (0,0) and (1,1) lie on its edge, and the orange points lie outside. Right, hidden space with axes h1 and h2: (0,0) and (1,1) both land at (1,1), (0,1) lands at (0,1), (1,0) lands at (1,0), and the line h1 plus h2 equals 1.5 separates blue from orange.](/Gatech-CSE6740/assets/semesters/fall-2026/lectures/11/figures/fig5-xnor-two-layer.png)
 
 *Figure 4. Left: the line each hidden unit draws, and the wedge where both output 1. Right: the same four inputs in the coordinates $(h_1, h_2)$ produced by the hidden layer. Original figure made for these notes.*
 
