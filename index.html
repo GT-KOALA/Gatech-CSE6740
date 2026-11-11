@@ -2,14 +2,18 @@
 layout: default
 title: Home
 ---
-{% assign term = site.data.semesters | where: "id", site.current_semester | first %}
-<div class="home-page">
-  <section class="home-intro" aria-labelledby="course-title">
-    <p class="eyebrow">Georgia Tech · CSE 6740 · {{ term.label }}</p>
-    <h1 id="course-title">Computational<br>Data Analysis</h1>
-    <p>Lecture slides, notes, and interactive demos for machine learning and data analysis.</p>
-    <a class="button" href="{{ term.url | relative_url }}">Fall 2026 lectures <span aria-hidden="true">→</span></a>
-    <p class="home-meeting">{{ term.meeting }} · {{ term.location }}</p>
-  </section>
-
-</div>
+<section class="hero" aria-labelledby="course-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Georgia Tech · CSE 6740</p>
+    <h1 id="course-title">Computational<br><em>Data Analysis</em></h1>
+    <p class="hero-description">Lecture slides, notes, and interactive demos for machine learning and data analysis.</p>
+    <div class="hero-actions">
+      <a class="button" href="{{ '/fall-2026/' | relative_url }}">Fall 2026 lectures</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="data-point p1"></div><div class="data-point p2"></div><div class="data-point p3"></div><div class="data-point p4"></div><div class="data-point p5"></div>
+    <span class="axis-label x">models →</span><span class="axis-label y">insight →</span>
+  </div>
+</section>
