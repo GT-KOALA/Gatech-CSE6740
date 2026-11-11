@@ -15,3 +15,35 @@
 .schedule-module-heading>p{font-size:15px;color:var(--muted);margin:0;max-width:470px}
 .schedule-module .lecture-row:first-of-type{border-top:0}
 @media(max-width:700px){.schedule-modules{grid-template-columns:1fr;gap:10px}.schedule-modules a{padding:18px 40px 18px 20px;gap:6px}.schedule-module-heading{grid-template-columns:1fr;gap:16px}.schedule-module{scroll-margin-top:130px}}
+
+/* Compact homepage and persistent mobile navigation. */
+.home-page{max-width:1040px;margin:0 auto;padding:56px 32px 48px}
+.home-intro{padding-bottom:40px}
+.home-intro h1{font:500 clamp(42px,6vw,68px)/1.05 "Newsreader",serif;letter-spacing:-.035em;color:var(--navy);margin:0 0 20px}
+.home-intro>p:not(.eyebrow){color:var(--muted);max-width:580px;margin:0 0 24px;font-size:17px}
+.home-intro .button{padding:13px 20px}
+.home-intro>p.home-meeting{font-size:13px;margin:16px 0 0}
+.home-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:12px}
+.home-section-heading h2{font:500 29px "Newsreader",serif;color:var(--navy);margin:0}
+.home-section-heading a,.home-resources a{color:var(--teal);font-size:14px;text-decoration:none}
+.home-lecture-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--gold)}
+.home-lecture-list li{border-bottom:1px solid var(--line)}
+.home-lecture-list a{display:grid;grid-template-columns:70px minmax(0,1fr) 20px;gap:16px;align-items:center;padding:20px 8px;color:var(--navy);text-decoration:none;font-size:18px}
+.home-lecture-list time{font:12px "DM Mono",monospace;color:var(--muted)}
+.home-arrow{color:var(--teal)}
+.home-lecture-list a:hover{background:var(--cream)}
+.home-resources{display:flex;flex-wrap:wrap;gap:24px;padding-top:24px}
+.home-section-heading a:hover,.home-resources a:hover{text-decoration:underline}
+.site-header nav a[aria-current="page"]{color:var(--teal);text-decoration:underline;text-underline-offset:6px}
+a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:520px){
+  .site-header{position:static;flex-direction:column;gap:18px;padding:18px 20px}
+  .site-header nav{width:100%;gap:20px;justify-content:flex-start}
+  .site-header nav a:not(.github-link){display:inline-block}
+  .site-header nav a{font-size:13px}
+  .home-page{padding:36px 20px}
+  .home-intro{padding-bottom:32px}
+  .home-section-heading{gap:12px;flex-wrap:wrap}
+  .home-section-heading h2{font-size:26px}
+  .home-lecture-list a{grid-template-columns:55px minmax(0,1fr) 16px;gap:12px;padding:18px 0;font-size:16px}
+}

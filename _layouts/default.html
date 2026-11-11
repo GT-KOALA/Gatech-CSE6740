@@ -29,16 +29,15 @@
         <span>CSE 6740 <small>Course hub</small></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="{{ '/' | relative_url }}">Course</a>
-        <a href="{{ '/fall-2026/' | relative_url }}">Fall 2026</a>
-        <a href="{{ '/semesters/' | relative_url }}">Semesters</a>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="{{ '/fall-2026/' | relative_url }}"{% if page.url contains '/fall-2026/' %} aria-current="page"{% endif %}>Lectures</a>
+        <a href="{{ '/semesters/' | relative_url }}"{% if page.url == '/semesters/' %} aria-current="page"{% endif %}>Semesters</a>
         <a class="github-link" href="https://github.com/{{ site.repository }}">GitHub ↗</a>
       </nav>
     </header>
     <main>{{ content }}</main>
     <footer>
       <p>Georgia Institute of Technology · College of Computing</p>
-      <p>Lecture notes, examples, code, and references across course offerings.</p>
     </footer>
   </body>
 </html>
