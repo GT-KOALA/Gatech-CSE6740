@@ -25,3 +25,17 @@ a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
   .site-header nav a:not(.github-link){display:inline-block}
   .site-header nav a{font-size:13px}
 }
+
+/* Unified instructor and TA introductions. */
+.team-section{padding:56px clamp(24px,8vw,130px) 72px;background:var(--cream);scroll-margin-top:100px}
+.team-heading{margin-bottom:32px}
+.team-heading h2{font:500 clamp(34px,4vw,48px)/1.1 "Newsreader",serif;color:var(--navy);margin:0}
+.team-heading>p:last-child{color:var(--muted);margin:14px 0 0}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.team-member img{display:block;width:160px;height:160px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
+.team-role{font:500 10px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin:22px 0 8px}
+.team-member h3{font:500 26px/1.2 "Newsreader",serif;color:var(--navy);margin:0}
+.team-hours{font-size:14px;line-height:1.7;color:var(--ink);margin:16px 0 0}
+.team-hours span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}
+@media(max-width:950px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}}
+@media(max-width:440px){.team-grid{grid-template-columns:1fr}.team-member{padding-bottom:24px;border-bottom:1px solid var(--line)}.team-member:last-child{padding-bottom:0;border:0}}

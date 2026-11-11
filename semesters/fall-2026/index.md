@@ -14,8 +14,8 @@ semester: fall-2026
 <section class="course-facts" aria-label="Fall 2026 course details">
   <div><span>When</span><strong>Mon & Wed<br>12:30–1:45 PM</strong></div>
   <div><span>Where</span><strong>{{ term.location }}</strong></div>
-  <div><span>Instructor</span><strong>{{ term.instructor }}</strong></div>
-  <div><span>Drop-in hours</span><strong>{{ term.instructor_hours }}</strong></div>
+  <div><span>Instructor</span><strong><a href="#teaching-team">{{ term.instructor }}</a></strong></div>
+  <div><span>Questions & support</span><strong><a href="#teaching-team">Teaching team & drop-in hours ↓</a></strong></div>
 </section>
 
 <nav class="schedule-modules" aria-label="Jump to a learning area">
@@ -71,14 +71,26 @@ semester: fall-2026
 
 <p class="schedule-note">Blank schedule entries indicate topics to be announced. Assessment information is communicated separately.</p>
 
-<section class="intro-grid teaching-team">
-  <div>
+<section class="team-section" id="teaching-team" aria-labelledby="team-title">
+  <header class="team-heading">
     <p class="eyebrow">Teaching team</p>
-    <h2>Questions and drop-in hours</h2>
-  </div>
-  <div class="prose">
+    <h2 id="team-title">Meet the team</h2>
+    <p>Bring your course questions to any of our weekly drop-in hours.</p>
+  </header>
+  <div class="team-grid">
+    <article class="team-member">
+      <img src="{{ term.instructor_photo | relative_url }}" alt="{{ term.instructor }}" width="160" height="160" loading="lazy">
+      <p class="team-role">Instructor</p>
+      <h3>{{ term.instructor }}</h3>
+      <p class="team-hours"><span>Drop-in hours</span>{{ term.instructor_hours }}</p>
+    </article>
     {% for ta in term.teaching_assistants %}
-    <p><strong>{{ ta.name }}</strong><br>{{ ta.hours }}</p>
+    <article class="team-member">
+      <img src="{{ ta.photo | relative_url }}" alt="{{ ta.name }}" width="160" height="160" loading="lazy">
+      <p class="team-role">Teaching assistant</p>
+      <h3>{{ ta.name }}</h3>
+      <p class="team-hours"><span>Drop-in hours</span>{{ ta.hours }}</p>
+    </article>
     {% endfor %}
   </div>
 </section>
