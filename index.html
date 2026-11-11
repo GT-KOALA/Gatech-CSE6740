@@ -3,33 +3,13 @@ layout: default
 title: Home
 ---
 {% assign term = site.data.semesters | where: "id", site.current_semester | first %}
-{% assign recent_lectures = site.lectures | where: "semester", site.current_semester | where: "status", "published" | sort: "date" | reverse %}
 <div class="home-page">
   <section class="home-intro" aria-labelledby="course-title">
     <p class="eyebrow">Georgia Tech · CSE 6740 · {{ term.label }}</p>
     <h1 id="course-title">Computational<br>Data Analysis</h1>
     <p>Lecture slides, notes, and interactive demos for machine learning and data analysis.</p>
-    <a class="button" href="{{ term.url | relative_url }}">View all lectures <span aria-hidden="true">→</span></a>
+    <a class="button" href="{{ term.url | relative_url }}">Fall 2026 lectures <span aria-hidden="true">→</span></a>
     <p class="home-meeting">{{ term.meeting }} · {{ term.location }}</p>
   </section>
 
-  <section class="home-recent" aria-labelledby="recent-title">
-    <div class="home-section-heading">
-      <h2 id="recent-title">Recent lectures</h2>
-      <a href="{{ term.url | relative_url }}">Full schedule <span aria-hidden="true">→</span></a>
-    </div>
-    <ul class="home-lecture-list">
-      {% for lecture in recent_lectures limit:3 %}
-      <li><a href="{{ lecture.url | relative_url }}">
-        <time datetime="{{ lecture.date | date: '%Y-%m-%d' }}">{{ lecture.date | date: "%b %-d" }}</time>
-        <span>{{ lecture.title }}</span>
-        <span class="home-arrow" aria-hidden="true">→</span>
-      </a></li>
-      {% endfor %}
-    </ul>
-  </section>
-  <nav class="home-resources" aria-label="Course resources">
-    <a href="{{ '/semesters/' | relative_url }}">All semesters <span aria-hidden="true">→</span></a>
-    <a href="https://github.com/{{ site.repository }}">Code repository <span aria-hidden="true">↗</span></a>
-  </nav>
 </div>
