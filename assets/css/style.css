@@ -39,3 +39,10 @@ a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
 .team-hours span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}
 @media(max-width:950px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}}
 @media(max-width:440px){.team-grid{grid-template-columns:1fr}.team-member{padding-bottom:24px;border-bottom:1px solid var(--line)}.team-member:last-child{padding-bottom:0;border:0}}
+
+/* The current course is the landing page. */
+.course-landing{max-width:1200px;padding-top:70px;padding-bottom:48px}
+.course-landing h1{font-size:clamp(48px,7vw,88px);line-height:1.02}
+.course-landing h1 em{color:var(--teal);font-weight:500}
+#lectures{scroll-margin-top:100px}
+@media(max-width:520px){.course-landing{padding-top:42px;padding-bottom:28px}#lectures{scroll-margin-top:20px}}

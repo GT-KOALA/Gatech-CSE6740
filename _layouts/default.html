@@ -29,8 +29,8 @@
         <span>CSE 6740 <small>Course hub</small></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
-        <a href="{{ '/fall-2026/' | relative_url }}"{% if page.url contains '/fall-2026/' %} aria-current="page"{% endif %}>Lectures</a>
+        <a href="{{ '/#lectures' | relative_url }}">Lectures</a>
+        <a href="{{ '/#teaching-team' | relative_url }}">Teaching team</a>
         <a href="{{ '/semesters/' | relative_url }}"{% if page.url == '/semesters/' %} aria-current="page"{% endif %}>Semesters</a>
         <a class="github-link" href="https://github.com/{{ site.repository }}">GitHub ↗</a>
       </nav>
