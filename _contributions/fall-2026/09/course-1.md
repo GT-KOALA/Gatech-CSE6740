@@ -154,10 +154,6 @@ The penalty $\lambda I$ matters even more here than before: with $d' \gg n$, the
 
 **Why this helps (in a geometric sense).** A relationship that is curved in the input space can become straight in a well-chosen feature space. The simplest example is 1-D classification where one class sits in the middle and the other on both sides. No single threshold on $x$ separates them, but mapping $x \mapsto \phi(x) = (x, x^2)$ lifts the points onto a parabola, and a horizontal line separates them perfectly.
 
-![Mapping x to (x, x^2) makes the classes linearly separable](feature_map_lift.png)
-
-The same idea drives kernel SVM later in this section: a straight boundary in feature space corresponds to a curved boundary in the original space.
-
 We also should consider cost. A good $\phi$ can be enormous (or infinite-dimensional), so we want the benefits of $\phi$ without ever computing it.
 
 ### 5. The kernel trick
