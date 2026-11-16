@@ -62,10 +62,10 @@ $$
 This is then normalized using the row-wise softmax:
 
 $$
-\text{normalized_similarity} = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
+\text{normalized similarity} = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
 $$
 
 
 <img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-
+Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$
