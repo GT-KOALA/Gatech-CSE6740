@@ -68,4 +68,14 @@ $$
 
 <img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$
+Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
+
+<img width="462" height="155" alt="image" src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
+
+## Masking Operators
+
+Masking can be used to cover certain parts of the attentions, for example only including the lower triangular part of the attention scores to compute the values because we only want the attention of the current token to previous tokens:
+
+<img width="656" height="149" alt="image" src="https://github.com/user-attachments/assets/c4beaeaf-c6a9-4c32-bf3c-4edc4c226e4a" />
+
+
