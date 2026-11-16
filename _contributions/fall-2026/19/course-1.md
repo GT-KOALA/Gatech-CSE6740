@@ -71,7 +71,7 @@ $$
 
 <img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-Normalizing prevents the dot products from becoming too large. 
+Normalizing prevents the dot products from becoming too large when the dimensions of the vectors increase.
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
