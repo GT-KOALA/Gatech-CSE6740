@@ -11,6 +11,8 @@ issue: 64
 ---
 ## Assignment pending
 
+Editing Test
+
 Develop the assigned part of the lecture's core course materials.
 
 The course team will assign this section through a GitHub issue.
