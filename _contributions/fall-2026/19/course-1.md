@@ -33,11 +33,18 @@ In order for the self-attention to be calculated, we need values, keys, and quer
 
 $\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } = XW^q \quad \in \mathbb{R}^{L \times d_k}$
 
-The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query. 
-
-Individually, 
+The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query; individually, 
 - Each query $q_i$ is computed by $x_i W^q$
 - Each key $k_i$ is computed by $x_i W^k$
 - Each value $v_i$ is computed by $x_i W^v$
+
+In the below example, each word in the following sentence represents a token, each with its own corresponding query, key, and value. 
+
+<img width="732" height="290" alt="image" src="https://github.com/user-attachments/assets/e71f4164-6196-4c59-a0cd-ba00d4542e1b" />
+
+## Attention Score
+
+To estimate the similarity between each query and key, a dot product is used:
+$$ similarity_{ij} = qq_i \dot k_j^{\top} \quad \in \mathbb{R}$$
 
 
