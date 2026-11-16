@@ -45,6 +45,6 @@ In the below example, each word in the following sentence represents a token, ea
 ## Attention Score
 
 To estimate the similarity between each query and key, a dot product is used:
-$$ similarity_{ij} = qq_i \dot k_j^{\top} \quad \in \mathbb{R}$$
+$similarity_{ij} = qq_i \dot k_j^{\top} \quad \in \mathbb{R}$
 
 
