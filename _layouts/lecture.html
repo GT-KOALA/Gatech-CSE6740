@@ -24,7 +24,12 @@ layout: default
 
   <div class="lecture-content prose">{{ content }}</div>
 
-  {% assign lecture_contributions = site.contributions | where: "semester", page.semester | where: "lecture_number", page.number | sort: "slot_order" %}
+  {% assign contribution_group = page.contribution_group | default: page.number %}
+  {% assign contribution_owner = site.lectures | where: "semester", page.semester | where: "contribution_group", contribution_group | first %}
+  {% assign lecture_contributions = nil %}
+  {% if contribution_owner == nil or contribution_owner.url == page.url %}
+    {% assign lecture_contributions = site.contributions | where: "semester", page.semester | where: "lecture_number", contribution_group | sort: "slot_order" %}
+  {% endif %}
   {% if lecture_contributions.size > 0 %}
   <section class="student-materials" aria-labelledby="student-materials-title">
     <div class="section-heading">
