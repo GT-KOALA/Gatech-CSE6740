@@ -47,7 +47,18 @@ In the below example, each word in the following sentence represents a token, ea
 To estimate the similarity between each query and key, a dot product is used:
 
 $$
-similarity_{ij} = qq_i \dot k_j^{\top} \quad \in \mathbb{R}
+similarity_{ij} = q_i \dot k_j^{\top} \quad \in \mathbb{R}
 $$
+
+<img width="277" height="123" alt="image" src="https://github.com/user-attachments/assets/769f6f11-feef-43c9-91aa-770eda71d9a3" />
+
+
+Altogether,
+
+$$
+similarity_{ij} = Q \dot K^{\top} \quad \in \mathbb{R}^{L \times L}
+$$
+
+<img width="459" height="125" alt="image" src="https://github.com/user-attachments/assets/66160338-22df-4906-944d-b104eb7b2342" />
 
 
