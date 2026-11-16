@@ -62,7 +62,7 @@ $$
 This is then normalized using the row-wise softmax:
 
 $$
-normalized\_similarity = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
+\text{normalized_similarity} = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
 $$
 
 
