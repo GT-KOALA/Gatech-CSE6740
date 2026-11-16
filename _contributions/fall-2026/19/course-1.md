@@ -36,9 +36,8 @@ $\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: 
 The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query. 
 
 Individually, 
-
-\begin{itemize}
-\item q
-\end{itemize}
+- Each query $q_i$ is computed by $x_i W^q$
+- Each key $k_i$ is computed by $x_i W^k$
+- Each value $v_i$ is computed by $x_i W^v$
 
 
