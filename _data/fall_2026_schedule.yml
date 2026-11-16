@@ -68,6 +68,10 @@
 - date: "2026-11-23"
   lecture: 22-topic-tbd
   group: advanced
+- date: "2026-11-25"
+  title: "Thanksgiving holiday, no class"
+  no_class: true
+  group: advanced
 - date: "2026-11-30"
   lecture: 23-topic-tbd
   group: advanced

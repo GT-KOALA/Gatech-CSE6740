@@ -1,21 +1,16 @@
 ---
-title: Deep reinforcement learning
+title: Policy evaluation and optimization
 number: "21"
 date: 2026-11-18
-summary: Combining representation learning with sequential decision making.
+summary: Evaluating policies and improving decisions through Bellman updates.
 status: planned
 ---
 ## Learning goals
 
-- Motivate function approximation in reinforcement learning.
-- Explain the core idea of deep Q-learning.
-- Recognize replay and target-network techniques.
+- Write Bellman expectation and optimality relationships.
+- Compare policy evaluation, policy iteration, and value iteration.
+- Trace policy evaluation and improvement on a small MDP.
 
 ## Materials
 
 Slides, code, examples, and references will be added after class.
-
-## Lecture notes
-
-An architecture overview, training loop, and stability checklist will be added here.
-

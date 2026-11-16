@@ -1,11 +1,16 @@
 ---
-title: Topic to be announced
+title: Deep RL
 number: "23"
 date: 2026-11-30
-summary: This lecture topic will be announced during the semester.
-status: to be announced
+summary: Combining representation learning with sequential decision making.
+status: planned
 ---
+## Learning goals
+
+- Motivate function approximation in reinforcement learning.
+- Explain the core idea of deep Q-learning.
+- Recognize replay and target-network techniques.
+
 ## Materials
 
-The topic and materials will be added when announced.
-
+Slides, code, examples, and references will be added after class.

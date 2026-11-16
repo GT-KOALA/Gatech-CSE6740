@@ -3,9 +3,11 @@ layout: default
 ---
 {% assign display_number = page.number %}
 {% assign schedule_key = page.semester | replace: "-", "_" | append: "_schedule" %}
+{% assign scheduled_lecture_number = 0 %}
 {% for session in site.data[schedule_key] %}
+  {% unless session.no_class %}{% assign scheduled_lecture_number = scheduled_lecture_number | plus: 1 %}{% endunless %}
   {% if session.lecture == page.slug %}
-    {% assign display_number = forloop.index %}
+    {% assign display_number = scheduled_lecture_number %}
     {% break %}
   {% endif %}
 {% endfor %}

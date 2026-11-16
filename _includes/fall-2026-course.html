@@ -38,14 +38,14 @@
   </header>
 {% assign sessions = site.data.fall_2026_schedule | where: "group", module.id %}
 {% for session in sessions %}
-  {% assign session_number = session_number | plus: 1 %}
+  {% unless session.no_class %}{% assign session_number = session_number | plus: 1 %}{% endunless %}
   {% assign lecture = nil %}
   {% if session.lecture %}
     {% assign lecture = semester_lectures | where: "slug", session.lecture | first %}
   {% endif %}
   {% if lecture %}
   <a class="lecture-row" href="{{ lecture.url | relative_url }}">
-    <span class="lecture-number">{{ session_number }}</span>
+    <span class="lecture-number">{% unless session.no_class %}{{ session_number }}{% endunless %}</span>
     <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
     <span class="lecture-title">{{ lecture.title }}</span>
     <span class="lecture-team">Materials</span>
@@ -53,7 +53,7 @@
   </a>
   {% else %}
   <div class="lecture-row">
-    <span class="lecture-number">{{ session_number }}</span>
+    <span class="lecture-number">{% unless session.no_class %}{{ session_number }}{% endunless %}</span>
     <span class="lecture-date">{{ session.date | date: "%b %-d" }}</span>
     <span class="lecture-title">{{ session.title }}</span>
   </div>
