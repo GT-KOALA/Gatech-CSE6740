@@ -47,7 +47,7 @@ In the below example, each word in the following sentence represents a token, ea
 To estimate the similarity between each query and key, a dot product is used:
 
 $$
-similarity_{ij} = q_i \dot k_j^{\top} \quad \in \mathbb{R}
+similarity_{ij} = q_i \cdot k_j^{\top} \quad \in \mathbb{R}
 $$
 
 <img width="277" height="123" alt="image" src="https://github.com/user-attachments/assets/769f6f11-feef-43c9-91aa-770eda71d9a3" />
@@ -56,7 +56,7 @@ $$
 Altogether,
 
 $$
-similarity= Q \dot K^{\top} \quad \in \mathbb{R}^{L \times L}
+similarity= Q \cdot K^{\top} \quad \in \mathbb{R}^{L \times L}
 $$
 
 In the resulting similarity matrix, each row corresponds to a query token and each column corresponds to a key token. Thus, each entry represents the similarity between the two tokens. A higher similarity indicates that the key token is relevant to the query token and should receive more attention, hence the name "attention score".
@@ -65,7 +65,7 @@ In the resulting similarity matrix, each row corresponds to a query token and ea
 This is then normalized using the row-wise softmax:
 
 $$
-\text{normalized similarity} = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
+\text{normalized similarity} = softmax(\frac{Q \cdot K^{\top}}{\sqrt{d_k}})
 $$
 
 
@@ -79,8 +79,10 @@ Finally, the attention is calculated by multiplying the normalized softmax with 
 
 ## Masking Operators
 
-Masking can be used to cover certain parts of the attentions, for example only including the lower triangular part of the attention scores to compute the values because we only want the attention of the current token to previous tokens:
+Masking can be used to restrict what attentions we use. For example, we only want to compare information between current and previous tokens, not future tokens, so we can mask the upper triangular part of the matrix (not including the digonal). This prevents future information from influencing anything. 
 
 <img width="656" height="149" alt="image" src="https://github.com/user-attachments/assets/c4beaeaf-c6a9-4c32-bf3c-4edc4c226e4a" />
 
+## Summary
 
+Overall, self-attention allows transformers to identify relationships among tokens without recurrence. Inputs are first transformed into queries and keys, then normalized using softmax, and finally multiplied by values to produce the final attention output. These operations allow transformers to include contextual information while allowing for parallel computing. 
