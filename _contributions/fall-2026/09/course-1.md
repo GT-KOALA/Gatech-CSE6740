@@ -188,6 +188,18 @@ These are the same features $1, x, x^2$ from polynomial regression in Section 2,
 
 Both give 49, but the kernel route never formed $\phi$. In general, $(x^\top z)^k$ costs $O(d)$ to compute, while the explicit features has about $d^k$ entries --> this is the biggest advantage!
 
+**Other common kernels.** The polynomial kernel is one of several standard choices. The next three all depend only on the distance between $x$ and $z$, so they act as similarity scores: $k(x,z) = 1$ when $x = z$, decaying toward $0$ as the points move apart. The bandwidth $\sigma > 0$ sets how fast.
+
+| Kernel | Formula | Intuition |
+|---|---|---|
+| Gaussian (RBF) | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_2^2}{2\sigma^2}\Big)$ | Squared distance gives very smooth fitted functions. The default choice. |
+| Exponential | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_2}{\sigma}\Big)$ | Unsquared distance: a sharp peak at $x = z$ and heavier tails, so fits are rougher (continuous but not smooth). |
+| Laplace | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_1}{\sigma}\Big)$ | Same shape as the exponential, but with $L_1$ distance, so it factorizes across coordinates. |
+
+Small $\sigma$ means only very close points count as similar (flexible, can overfit); large $\sigma$ means distant points still influence each other (smoother, can underfit).
+
+The feature map $\phi$ for the Gaussian RBF is *infinite-dimensional*, so the feature route is not just expensive but impossible, yet $k(x,z)$ still costs $O(d)$. All three are PSD, so everything from the previous section also applies. 
+
 ### 6. Which functions are valid kernels?
 
 We want $k(x,x') = \phi(x)^\top\phi(x')$, but usually we do not know $\phi$. How can we check that a $\phi$ exists?
@@ -226,7 +238,14 @@ $$
 
 A squared length can never be negative. The converse (PSD implies some $\phi$ exists) is the deeper half of the theorem: it guarantees that a function passing this test really is an inner product in some feature space, even if we never write that space down.
 
-The SVM dual and ridge regression rely on the quadratic form being nonnegative (that is what makes the problems convex with a unique, well-behaved solution). A “kernel” that breaks PSD-ness can make the optimization unbounded or meaningless.
+The SVM dual and ridge regression rely on the quadratic form being nonnegative (that is what makes the problems convex with a unique, well-behaved solution). A “kernel” that breaks PSD-ness can make the optimization unbounded or meaningless. 
+
+PSD-ness is what makes these optimization problems convex, but convexity and uniqueness are separate guarantees:
+
+- **SVM dual.** The quadratic term is $\alpha^\top Q\,\alpha$ with $Q_{ij} = y^{(i)}y^{(j)}K_{ij}$, and $Q$ is PSD exactly when $K$ is. That gives the dual the right curvature: it is a convex problem, so every local optimum is global. It does *not* make the optimal $\alpha$ unique. If $K$ is only positive *semi*definite (for example, with duplicated points or linearly dependent features), different $\alpha$ can achieve the same optimal value.
+- **Kernel ridge regression.** The coefficients solve $(K + \lambda I)\,\alpha = y$. With $K$ PSD and $\lambda > 0$, the matrix $K + \lambda I$ is strictly positive definite, hence invertible, so here the solution *is* unique: $\alpha = (K + \lambda I)^{-1}y$.
+
+A “kernel” that breaks PSD-ness loses both guarantees. The SVM dual is no longer convex (it can have spurious local optima, and without the box constraint it can be unbounded), and $K + \lambda I$ may be singular or indefinite, so the ridge formula no longer corresponds to a minimizer.
 
 **For non-example:** Try $k(x,x') = -\Vert x - x'\Vert ^2$ on two distinct points. The diagonal entries are 0 and the off-diagonal entries are $-\Vert x^{(1)} - x^{(2)}\Vert ^2 < 0$. With $v = (1,1)$, $v^\top K v = -2\Vert x^{(1)} - x^{(2)}\Vert ^2 < 0$, so this is not a valid kernel. Compare with RBF, which passes: its diagonal entries are 1 and its off-diagonal entries lie in $(0,1)$.
 
