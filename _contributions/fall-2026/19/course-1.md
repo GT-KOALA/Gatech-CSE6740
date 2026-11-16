@@ -40,7 +40,7 @@ The values (V) represent the information that will be combined to generate the a
 
 In the below example, each word in the following sentence represents a token, each with its own corresponding query, key, and value. 
 
-<img width="732" height="290" alt="image" src="https://github.com/user-attachments/assets/e71f4164-6196-4c59-a0cd-ba00d4542e1b" />
+<img width="732" height="290" alt="Image showing how each word in a given sentence is a token with a corresponding qi, ki, and, vi. It also shows the matrix multiplication of the row xi with the weight matrix Wv equaling vi." src="https://github.com/user-attachments/assets/e71f4164-6196-4c59-a0cd-ba00d4542e1b" />
 
 ## Attention Score
 
@@ -50,7 +50,7 @@ $$
 similarity_{ij} = q_i \cdot k_j^{\top} \quad \in \mathbb{R}
 $$
 
-<img width="277" height="123" alt="image" src="https://github.com/user-attachments/assets/769f6f11-feef-43c9-91aa-770eda71d9a3" />
+<img width="277" height="123" alt="Image showing the multiplication of row vector qi with column vector kj transpose equalling sij." src="https://github.com/user-attachments/assets/769f6f11-feef-43c9-91aa-770eda71d9a3" />
 
 
 Altogether,
@@ -69,19 +69,19 @@ $$
 $$
 
 
-<img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
+<img width="815" height="126" alt="Image showing each row qi being multiplied with each column kj transpose equaling all the sij elements making up the similarity matrix. It then shows after normalization/ row-wise softmax each element becomes s'ij." src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
 Normalizing prevents the dot products from becoming too large when the dimensions of the vectors increase.
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
-<img width="462" height="155" alt="image" src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
+<img width="462" height="155" alt="This image shows how the attention matrix is created. It shows all elements of the normalized softmax being multiplied by each row vector vj giving us each row of the attention matrix ai. " src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
 
 ## Masking Operators
 
 Masking can be used to restrict what attentions we use. For example, we only want to compare information between current and previous tokens, not future tokens, so we can mask the upper triangular part of the matrix (not including the digonal). This prevents future information from influencing anything. 
 
-<img width="656" height="149" alt="image" src="https://github.com/user-attachments/assets/c4beaeaf-c6a9-4c32-bf3c-4edc4c226e4a" />
+<img width="656" height="149" alt="This image illustrates what the calculation of the attention matrix looks like with the upper triangular part of the normalized softmax (exluding the diagonal) discarded." src="https://github.com/user-attachments/assets/c4beaeaf-c6a9-4c32-bf3c-4edc4c226e4a" />
 
 ## Summary
 
