@@ -10,9 +10,9 @@ assignee: emilynwhite2003
 issue: 64
 ---
 ## Background
-Transformers propose an attention mechanism to compute the correlation of different tokens and were introduced in 2017 by Google Brain. Prior to transformers, RNN and LSTMs were primarily used to store and propagate information from previous tokens. A problem is that these use recurrence, where information from previous tokens is passed through the through the network, which requires sequential processing and it makes it not possible to parallelize computations, making the computation take longer. 
+Transformers propose an attention mechanism to compute the correlation of different tokens and were introduced in 2017 by Google Brain. Prior to transformers, RNN and LSTMs were primarily used to store and propagate information from previous tokens. A problem is that these use recurrence, where information from previous tokens is passed sequentially through the through the network, which makes it not possible to parallelize computations, increasing computation/processing time. 
 
-Transformers address these issues in the use of attention mechanisms, which allow the model to determine how much different tokens relate to each other in a given sequence, eliminating the need for recurrence. This allows for parallelization through the elimination of recurrence and instead allowing the relationship of all tokens to be calculated at the same time with matrix operations using self-attention mechanisms.  
+Transformers address this issue in the use of attention mechanisms, which allow the model to determine how much different tokens relate to each other in a given sequence, eliminating the need for recurrence. This allows for parallelization through the elimination of recurrence and instead allowing the relationship of all tokens to be calculated at the same time with matrix operations using self-attention. 
 
 ## What is a Self-Attention Mechanism?
 
@@ -29,14 +29,14 @@ x_L
 \end{bmatrix}\in\mathbb{R}^{L\times d}
 $$
 
-In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices.
+In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices. These weight matrices are learned during training and transform
 
-$\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } = XW^q \quad \in \mathbb{R}^{L \times d_k}$
+$\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } K = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } Q = XW^q \quad \in \mathbb{R}^{L \times d_k}$
 
 The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query; individually, 
-- Each query $q_i$ is computed by $x_i W^q$
-- Each key $k_i$ is computed by $x_i W^k$
-- Each value $v_i$ is computed by $x_i W^v$
+- Each query $q_i$ is computed by $x_i W^q$. 
+- Each key $k_i$ is computed by $x_i W^k$. 
+- Each value $v_i$ is computed by $x_i W^v$. 
 
 In the below example, each word in the following sentence represents a token, each with its own corresponding query, key, and value. 
 
@@ -56,8 +56,11 @@ $$
 Altogether,
 
 $$
-similarity_{ij} = Q \dot K^{\top} \quad \in \mathbb{R}^{L \times L}
+similarity= Q \dot K^{\top} \quad \in \mathbb{R}^{L \times L}
 $$
+
+In the resulting similarity matrix, each row corresponds to a query token and each column corresponds to a key token. Thus, each entry represents the similarity between the two tokens. A higher similarity indicates that the key token is relevant to the query token and should receive more attention, hence the name "attention score".
+
 
 This is then normalized using the row-wise softmax:
 
@@ -67,6 +70,8 @@ $$
 
 
 <img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
+
+Normalizing prevents the dot products from becoming too large. 
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
