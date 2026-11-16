@@ -20,5 +20,5 @@ Self-attention allows each token in a sequence to incorporate information about 
 
 For example, consider an input sequence with length L, where each token is represented by a vector embedding with d dimensions. 
 
-$$ X=\begin{bmatrix}x_1 \ x_2 \\ vdots \x_L \end{bmatrix} \in\mathbb{R}^{L\times d} $$
+$$ X=\begin{bmatrix}x_1 \ x_2 \ \vdots \ x_L \end{bmatrix} \in\mathbb{R}^{L\times d} $$
 
