@@ -31,6 +31,6 @@ $$
 
 In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices.
 
-$\text{Values: }V = XW^v $
+$\text{Values: }V = XW^v  \quad \text{Keys: } = XW^k \quad \text{Queries: } = XW^q $
 
 
