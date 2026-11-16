@@ -1,6 +1,7 @@
 ---
 title: RNN, LSTM
 number: "16"
+contribution_group: "18"
 date: 2026-11-04
 summary: Modeling sequences with shared state and recurrent computation.
 status: published
