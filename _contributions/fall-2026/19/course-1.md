@@ -31,6 +31,14 @@ $$
 
 In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices.
 
-$\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v} \quad \text{Keys: } = XW^k \quad \in \mathbb{R}^{L \times d_k} \quad \text{Queries: } = XW^q \quad \in \mathbb{R}^{L \times d_q}$
+$\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } = XW^q \quad \in \mathbb{R}^{L \times d_k}$
+
+The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query. 
+
+Individually, 
+
+\begin{itemize}
+\item q
+\end{itemize}
 
 
