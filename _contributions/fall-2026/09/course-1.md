@@ -188,17 +188,29 @@ These are the same features $1, x, x^2$ from polynomial regression in Section 2,
 
 Both give 49, but the kernel route never formed $\phi$. In general, $(x^\top z)^k$ costs $O(d)$ to compute, while the explicit features has about $d^k$ entries --> this is the biggest advantage!
 
-**Other common kernels.** The polynomial kernel is one of several standard choices. The next three all depend only on the distance between $x$ and $z$, so they act as similarity scores: $k(x,z) = 1$ when $x = z$, decaying toward $0$ as the points move apart. The bandwidth $\sigma > 0$ sets how fast.
+**Other common kernels.**
+
+*Inner-product kernels* depend on $x^\top x'$:
 
 | Kernel | Formula | Intuition |
 |---|---|---|
-| Gaussian (RBF) | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_2^2}{2\sigma^2}\Big)$ | Squared distance gives very smooth fitted functions. The default choice. |
-| Exponential | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_2}{\sigma}\Big)$ | Unsquared distance: a sharp peak at $x = z$ and heavier tails, so fits are rougher (continuous but not smooth). |
-| Laplace | $k(x,z) = \exp\!\Big(-\dfrac{\lVert x - z\rVert_1}{\sigma}\Big)$ | Same shape as the exponential, but with $L_1$ distance, so it factorizes across coordinates. |
+| Polynomial, degree $d$ | $k(x,x') = (x^\top x')^d$ | All monomials of degree exactly $d$. |
+| Polynomial, degree up to $d$ | $k(x,x') = (x^\top x' + c)^d$ | The constant $c > 0$ adds all lower-degree terms. |
+| Exponential | $k(x,x') = \exp(s\, x^\top x')$ | With scale $s \ge 0$, polynomials of every degree at once: $1 + s\,x^\top x' + \frac{s^2 (x^\top x')^2}{2!} + \frac{s^3 (x^\top x')^3}{3!} + \cdots$ |
 
-Small $\sigma$ means only very close points count as similar (flexible, can overfit); large $\sigma$ means distant points still influence each other (smoother, can underfit).
+*Distance kernels* depend on how far apart $x$ and $x'$ are, so they can act as similarity scores: $k(x,x') = 1$ when $x = x'$, decaying toward $0$ as the points move apart.
 
-The feature map $\phi$ for the Gaussian RBF is *infinite-dimensional*, so the feature route is not just expensive but impossible, yet $k(x,z)$ still costs $O(d)$. All three are PSD, so everything from the previous section also applies. 
+| Kernel | Formula | Intuition |
+|---|---|---|
+| Gaussian RBF | $k(x,x') = \exp\!\Big(-\dfrac{\lVert x - x'\rVert^2}{2\sigma^2}\Big)$ | Squared distance gives very smooth fitted functions. The default choice. |
+| Laplace | $k(x,x') = \exp\!\Big(-\dfrac{\lVert x - x'\rVert}{2\sigma^2}\Big)$ | Unsquared distance: a sharp peak at $x = x'$ and heavier tails, so fits are rougher. |
+| Exponentiated distance | $k(x,x') = \exp\!\Big(-\dfrac{d(x,x')^2}{s^2}\Big)$ | The RBF recipe with any distance function $d(\cdot,\cdot)$, e.g. for strings or graphs. |
+
+For the distance kernels, the width ($\sigma$, or $s$ in the exponentiated distance) sets how fast similarity decays. A small width means only very close points count as similar (flexible, can overfit); a large width means distant points still influence each other (smoother, can underfit).
+
+The exponential kernel behaves differently. It is not a similarity score in this sense: $k(x,x) = \exp(s\lVert x\rVert^2)$ is generally not $1$, and the kernel grows with the dot product rather than decaying with distance. Its scale $s$ controls how heavily the higher-degree terms are weighted.
+
+The two are still related: expanding $\lVert x - x'\rVert^2$ shows the Gaussian RBF is the exponential kernel with $s = 1/\sigma^2$, rescaled so that $k(x,x) = 1$. Both therefore have an *infinite-dimensional* feature map $\phi$, so the feature route is not just expensive but impossible, yet $k(x,x')$ still costs $O(p)$. The polynomial, exponential, Gaussian RBF and Laplace kernels are all PSD, so everything from the previous section applies. The exponentiated-distance kernel is PSD only for suitable choices of $d(\cdot,\cdot)$.
 
 ### 6. Which functions are valid kernels?
 
@@ -237,8 +249,6 @@ $$
 $$
 
 A squared length can never be negative. The converse (PSD implies some $\phi$ exists) is the deeper half of the theorem: it guarantees that a function passing this test really is an inner product in some feature space, even if we never write that space down.
-
-The SVM dual and ridge regression rely on the quadratic form being nonnegative (that is what makes the problems convex with a unique, well-behaved solution). A “kernel” that breaks PSD-ness can make the optimization unbounded or meaningless. 
 
 PSD-ness is what makes these optimization problems convex, but convexity and uniqueness are separate guarantees:
 
