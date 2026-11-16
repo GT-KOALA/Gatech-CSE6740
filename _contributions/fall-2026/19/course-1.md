@@ -59,6 +59,13 @@ $$
 similarity_{ij} = Q \dot K^{\top} \quad \in \mathbb{R}^{L \times L}
 $$
 
-<img width="459" height="125" alt="image" src="https://github.com/user-attachments/assets/66160338-22df-4906-944d-b104eb7b2342" />
+This is then normalized using the row-wise softmax:
+
+$$
+normalized\_similarity = softmax(\frac{QK^{\top}}{\sqrt{d_k}})
+$$
+
+
+<img width="815" height="126" alt="image" src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
 
