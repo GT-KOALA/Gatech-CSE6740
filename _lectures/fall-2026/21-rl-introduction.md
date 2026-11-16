@@ -1,9 +1,9 @@
 ---
 title: Introduction to reinforcement learning
 number: "18"
-date: 2026-11-09
+date: 2026-11-16
 summary: Learning behavior through interaction, reward, and delayed consequences.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 21 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/21/lecture-21-introduction-to-reinforcement-learning.pdf' | relative_url }})
 
 ## Lecture notes
 

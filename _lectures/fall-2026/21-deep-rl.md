@@ -3,7 +3,7 @@ title: Deep reinforcement learning
 number: "21"
 date: 2026-11-18
 summary: Combining representation learning with sequential decision making.
-status: published
+status: planned
 ---
 ## Learning goals
 
@@ -13,7 +13,7 @@ status: published
 
 ## Materials
 
-- [Lecture 21 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/21/lecture-21-deep-reinforcement-learning.pdf' | relative_url }})
+Slides, code, examples, and references will be added after class.
 
 ## Lecture notes
 
