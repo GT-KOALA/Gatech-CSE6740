@@ -29,6 +29,8 @@ x_L
 \end{bmatrix}\in\mathbb{R}^{L\times d}
 $$
 
-In order for the self-attention to be calculated, 
+In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices.
+
+$\text{Values: }V = XW^v $
 
 
