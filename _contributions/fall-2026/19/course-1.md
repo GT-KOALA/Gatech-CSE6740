@@ -18,7 +18,7 @@ Transformers address these issues in the use of attention mechanisms, which allo
 
 Self-attention allows each token in a sequence to incorporate information about other tokens in a same given sequence. It calculates how strongly each token relates to other tokens in the sequence, and it uses these relationships to determine what information is most important.  
 
-For example, consider an input sequence with length L, where each token is represented by a vector embedding with d dimensions. 
+For example, consider an input sequence with length L, where each token is represented by a vector embedding with d dimensions. This creates an input matrix: 
 
 $$
 X=\begin{bmatrix}
@@ -28,4 +28,7 @@ x_2\\
 x_L
 \end{bmatrix}\in\mathbb{R}^{L\times d}
 $$
+
+In order for the self-attention to be calculated, 
+
 
