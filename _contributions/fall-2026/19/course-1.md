@@ -89,6 +89,12 @@ Overall, self-attention allows transformers to identify relationships among toke
 
 ## Sources
 
-"Attention Is All You Need": Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin 2017 \url{https://arxiv.org/abs/1706.03762}
+"Attention Is All You Need": Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin 2017 https://arxiv.org/abs/1706.03762
+
+https://www.math.utah.edu/~bwang/mathds/Lecture14.pdf
+
+https://towardsdatascience.com/contextual-transformer-embeddings-using-self-attention-explained-with-diagrams-and-python-code-d7a9f0f4d94e/
+
+https://www.codecademy.com/article/transformer-architecture-self-attention-mechanism
 
 
