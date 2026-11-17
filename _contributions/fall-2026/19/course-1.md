@@ -29,7 +29,7 @@ x_L
 \end{bmatrix}\in\mathbb{R}^{L\times d}
 $$
 
-In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices. These weight matrices are learned during training and transform.
+In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices. These weight matrices are learned during training
 
 $\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } K = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } Q = XW^q \quad \in \mathbb{R}^{L \times d_k}$
 
@@ -83,6 +83,8 @@ Visually,
 
 <img width="462" height="155" alt="This image shows how the attention matrix is created. It shows all elements of the normalized softmax being multiplied by each row vector vj giving us each row of the attention matrix ai. " src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
 
+The output of this process is a weighted sum of the values representing the compatibility between the query and key.
+
 ## Masking Operators
 
 Masking can be used to restrict what attentions we use. For example, we only want to compare information between current and previous tokens, not future tokens, so we can mask the upper triangular part of the matrix (not including the digonal). This prevents future information from influencing anything. 
@@ -94,6 +96,8 @@ Masking can be used to restrict what attentions we use. For example, we only wan
 Overall, self-attention allows transformers to identify relationships among tokens without recurrence. Inputs are first transformed into queries and keys, then normalized using softmax, and finally multiplied by values to produce the final attention output. These operations allow transformers to include contextual information while allowing for parallel computing. 
 
 ## Sources
+
+Lecture 19 slides
 
 "Attention Is All You Need": Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin 2017 https://arxiv.org/abs/1706.03762
 
