@@ -29,7 +29,7 @@ x_L
 \end{bmatrix}\in\mathbb{R}^{L\times d}
 $$
 
-In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices. These weight matrices are learned during training
+In order for the self-attention to be calculated, we need values, keys, and queries, which are calculated using weight matrices. These weight matrices are learned during training. Having three different weight matrices allows for the tokens to be represented in the three needed ways.
 
 $\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } K = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } Q = XW^q \quad \in \mathbb{R}^{L \times d_k}$
 
@@ -87,7 +87,7 @@ Visually,
 
 <img width="462" height="155" alt="This image shows how the attention matrix is created. It shows all elements of the normalized softmax being multiplied by each row vector vj giving us each row of the attention matrix ai. " src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
 
-The attention output for each token becomes a weighted sum of the values, where the weights represent the similarity between the query and token keys. Altogether, this process allows each token to include relevant information from other tokens in the given sequence. 
+The attention output for each token becomes a weighted sum of the values, where the weights represent the similarity between the query and token keys. This output is $L \times d_v$. Altogether, this process allows each token to include relevant information from other tokens in the given sequence. 
 
 ## Masking Operators
 
