@@ -10,7 +10,7 @@ assignee: emilynwhite2003
 issue: 64
 ---
 ## Background
-Transformers propose an attention mechanism to compute the correlation of different tokens and were introduced in 2017 by Google Brain. Prior to transformers, RNN and LSTMs were primarily used to store and propagate information from previous tokens. A problem is that these use recurrence, where information from previous tokens is passed sequentially through the through the network, which makes it not possible to parallelize computations, increasing computation/processing time. 
+Transformers propose an attention mechanism to compute the similarity of different tokens and were introduced in 2017 by Google Brain. Prior to transformers, RNN and LSTMs were primarily used to store and propagate information from previous tokens. A problem is that these use recurrence, where information from previous tokens is passed sequentially through the through the network, which makes it not possible to parallelize computations, increasing computation/processing time. 
 
 Transformers address this issue with the use of attention mechanisms, which allow the model to determine how much different tokens relate to each other in a given sequence, eliminating the need for recurrence. This allows for parallelization through the elimination of recurrence and instead allowing the relationship of all tokens to be calculated at the same time with matrix operations using self-attention. 
 
@@ -33,7 +33,7 @@ In order for the self-attention to be calculated, we need values, keys, and quer
 
 $\text{Values: }V = XW^v \quad \in \mathbb{R}^{L \times d_v}, \quad \text{Keys: } K = XW^k \quad \in \mathbb{R}^{L \times d_k}, \quad \text{Queries: } Q = XW^q \quad \in \mathbb{R}^{L \times d_k}$
 
-The values (V) represent the information that will be combined to generate the attention output. The keys (K) determine how relevant other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query; individually, 
+The values (V) represent the information that will be combined to generate the attention output. The keys (K) are representations of the tokens that are used to determine how relevant a token is to other tokens are in a query. The queries (Q) represent what information each token is looking for. Each token has its own value, key, and query; individually, 
 - Each query $q_i$ is computed by $x_i W^q$. 
 - Each key $k_i$ is computed by $x_i W^k$. 
 - Each value $v_i$ is computed by $x_i W^v$. 
@@ -59,10 +59,10 @@ $$
 similarity= Q \cdot K^{\top} \quad \in \mathbb{R}^{L \times L}
 $$
 
-In the resulting similarity matrix, each row corresponds to a query token and each column corresponds to a key token. Thus, each entry represents the similarity between the two tokens. A higher similarity indicates that the key token is relevant to the query token and should receive more attention, hence the name "attention score".
+In the resulting similarity matrix, each row corresponds to a query token and each column corresponds to a key token. Thus, each entry represents the similarity between the two tokens. A higher similarity indicates that the key token is relevant to the query token and should receive a higher attention weight, hence the name "attention score".
 
 
-This is then normalized/scaled using the row-wise softmax:
+This is then normalized/scaled using the row-wise softmax equation below:
 
 $$
 \text{normalized similarity} = softmax(\frac{Q \cdot K^{\top}}{\sqrt{d_k}})
@@ -71,7 +71,7 @@ $$
 
 <img width="815" height="126" alt="Image showing each row qi being multiplied with each column kj transpose equaling all the sij elements making up the similarity matrix. It then shows after normalization/ row-wise softmax each element becomes s'ij." src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scaled similarity scores then represent the weights that represent the importance of each token to be applied to the values.
+Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scale similarity scores then represent the weights that represent the importance of each token to be applied to the values.
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
@@ -83,7 +83,7 @@ Visually,
 
 <img width="462" height="155" alt="This image shows how the attention matrix is created. It shows all elements of the normalized softmax being multiplied by each row vector vj giving us each row of the attention matrix ai. " src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
 
-The output of this process is a weighted sum of the values representing the compatibility between the query and key.
+The attention output for each token becomes a weighted sum of the values, where the weights represent the similarity between the query and token keys. Altogether, this process allows each token to include relevant information from other tokens in the given sequence. 
 
 ## Masking Operators
 
@@ -93,7 +93,7 @@ Masking can be used to restrict what attentions we use. For example, we only wan
 
 ## Summary
 
-Overall, self-attention allows transformers to identify relationships among tokens without recurrence. Inputs are first transformed into queries and keys, then normalized using softmax, and finally multiplied by values to produce the final attention output. These operations allow transformers to include contextual information while allowing for parallel computing. 
+Overall, self-attention allows transformers to identify relationships among tokens without recurrence. Inputs are first transformed into values, queries, and keys, then similarity is calculated and then scaled and normalized using softmax, and finally the attention weights are multiplied by values to produce the final attention output. These operations allow transformers to include contextual information while allowing for parallel computing. 
 
 ## Sources
 
@@ -106,5 +106,7 @@ https://www.math.utah.edu/~bwang/mathds/Lecture14.pdf
 https://towardsdatascience.com/contextual-transformer-embeddings-using-self-attention-explained-with-diagrams-and-python-code-d7a9f0f4d94e/
 
 https://www.codecademy.com/article/transformer-architecture-self-attention-mechanism
+
+Chatgpt was also used to verify that my explanations were accurate
 
 
