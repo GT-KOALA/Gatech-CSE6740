@@ -97,7 +97,7 @@ Overall, self-attention allows transformers to identify relationships among toke
 
 ## Sources
 
-Lecture 19 slides
+Lecture 19 slides (all images)
 
 "Attention Is All You Need": Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin 2017 https://arxiv.org/abs/1706.03762
 
