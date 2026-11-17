@@ -86,3 +86,9 @@ Masking can be used to restrict what attentions we use. For example, we only wan
 ## Summary
 
 Overall, self-attention allows transformers to identify relationships among tokens without recurrence. Inputs are first transformed into queries and keys, then normalized using softmax, and finally multiplied by values to produce the final attention output. These operations allow transformers to include contextual information while allowing for parallel computing. 
+
+## Sources
+
+"Attention Is All You Need": Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin 2017 \url{https://arxiv.org/abs/1706.03762}
+
+
