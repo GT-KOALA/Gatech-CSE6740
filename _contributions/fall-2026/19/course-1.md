@@ -62,7 +62,7 @@ $$
 In the resulting similarity matrix, each row corresponds to a query token and each column corresponds to a key token. Thus, each entry represents the similarity between the two tokens. A higher similarity indicates that the key token is relevant to the query token and should receive more attention, hence the name "attention score".
 
 
-This is then normalized using the row-wise softmax:
+This is then normalized/scaled using the row-wise softmax:
 
 $$
 \text{normalized similarity} = softmax(\frac{Q \cdot K^{\top}}{\sqrt{d_k}})
@@ -71,9 +71,13 @@ $$
 
 <img width="815" height="126" alt="Image showing each row qi being multiplied with each column kj transpose equaling all the sij elements making up the similarity matrix. It then shows after normalization/ row-wise softmax each element becomes s'ij." src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-Normalizing prevents the dot products from becoming too large when the dimensions of the vectors increase.
+Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scaled similarity scores then represent the weights that represent the importance of each token to be applied to the values.
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
+
+$$
+Attention(Q,K,V) = softmax(\frac{QK^{\top}}{\sqrt{d_k}})V
+$$
 
 <img width="462" height="155" alt="This image shows how the attention matrix is created. It shows all elements of the normalized softmax being multiplied by each row vector vj giving us each row of the attention matrix ai. " src="https://github.com/user-attachments/assets/5194af0c-af1d-40b7-b5fc-8a187747c542" />
 
