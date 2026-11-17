@@ -71,7 +71,9 @@ $$
 
 <img width="815" height="126" alt="Image showing each row qi being multiplied with each column kj transpose equaling all the sij elements making up the similarity matrix. It then shows after normalization/ row-wise softmax each element becomes s'ij." src="https://github.com/user-attachments/assets/b9a7e71f-8cae-43da-90e0-b10e4330e6bc" />
 
-Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scale similarity scores then represent the weights that represent the importance of each token to be applied to the values.
+Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase, essentially cancelling out the effect of dimensionality. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scale similarity scores then represent the weights that represent the importance of each token to be applied to the values.
+
+Each row of the similarity matrix represents how similar every token is to that specific token. For example, the first row: $s'_{11}$, $s'_{12}$, ..., $s'_{1L}$ represents how similar each token (token 1 through L) is to token 1.
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
