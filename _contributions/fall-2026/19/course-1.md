@@ -73,7 +73,9 @@ $$
 
 Dividing by $\sqrt{d_k}$ prevents the dot products from becoming too large when the dimensions of the vectors increase, essentially cancelling out the effect of dimensionality. The softmax function converts the similarity scores into nonnegative weights that sum together to 1 for each row. These normalized/scale similarity scores then represent the weights that represent the importance of each token to be applied to the values.
 
-Each row of the similarity matrix represents how similar every token is to that specific token. For example, the first row: $s^{\prime}_{11}$, $s^{\prime}_{12}$, ..., $s^{\prime}_{1L}$ represents how similar each token (token 1 through L) is to token 1. 
+Each row of the similarity matrix represents how similar every token is to that specific token. For example, the first row: 
+$s^{\prime}_{11}$, $s^{\prime}_{12}$, ..., $s^{\prime}_{1L}$
+represents how similar each token (token 1 through L) is to token 1. 
 
 Finally, the attention is calculated by multiplying the normalized softmax with V to get a resulting matrix in $\mathbb{R}^{L \times d_v}$. This looks like: 
 
