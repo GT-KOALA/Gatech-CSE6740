@@ -82,4 +82,4 @@ plant.addEventListener('pointerdown',e=>{e.preventDefault();dragging=true;plant.
 byId('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{status('Use the browser full-screen menu.');}};
 window.addEventListener('resize',()=>{chartsDirty=true;draw();drawChart();});document.querySelector('details').addEventListener('toggle',()=>{if(document.querySelector('details').open){autoRun=learning=fast=running=false;update();}drawChart();});
 function frame(now){const dt=lastFrame?Math.min(.1,(now-lastFrame)/1000):0;lastFrame=now;if(learning){if(fast){const t=performance.now();do{advance(5);}while(learning&&performance.now()-t<12);}else if(now-lastLearn>=650){lastLearn=now;advance(+byId('batch').value);}}if(running){acc+=dt*+byId('speed').value;while(acc>=model.spec.playDt&&running){tick();acc-=model.spec.playDt;}update();}draw();requestAnimationFrame(frame);}
-setup();requestAnimationFrame(frame);
+setup(globalThis.location?.hash === '#mountain' ? 'mountain' : 'pendulum');requestAnimationFrame(frame);

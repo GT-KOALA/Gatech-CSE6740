@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lunar landing · Lecture 22</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="control.css">
+<link rel="stylesheet" href="viewport.css"><body><div id="presentation-shell"><header><a href="index.html">CSE 6740 <span>CONTROL STUDIO</span></a><a href="index.html">← Core experiments</a></header>
+<nav aria-label="Control problems"><a class="problem-link" href="swingup.html">01 Pendulum swing-up</a><a class="problem-link" href="swingup.html#mountain">02 Mountain car</a><a class="problem-link" aria-current="page" href="lunar.html">03 Lunar landing</a></nav>
+<article class="lunar-panel"><h1>Lunar landing</h1>
+<div class="flight-layout"><section>
+<canvas width="800" height="350" aria-label="Side view of the rotating lander, lunar terrain and marked landing pad"></canvas>
+<output aria-live="off" id="telemetry"></output><strong id="result" role="status">Ready for flight</strong><div id="debrief"></div>
+</section><section class="flight-controls"><h2>Flight controls</h2>
+<p>Tap A to tip right or D to tip left. Fire the opposite jet to stop the rotation. Hold W to thrust in the direction the nose points.</p>
+<button data-engine="left">A · Left jet</button><button data-engine="main">W · Main</button><button data-engine="right">D · Right jet</button>
+<p><button id="manual">Start manual flight</button><button id="auto">Watch autopilot</button></p>
+<h2>Touchdown</h2><p>Bring both feet over the green pad. Keep sideways speed below 0.6 m/s, vertical speed below 1 m/s, tilt within 12° and rotation within 15°/s.</p>
+<p>The autopilot tilts to cancel drift, then levels the craft and brakes its descent.</p></section></div>
+</article></div><script src="viewport.js"></script><script src="lunar.js"></script><script src="lunar-ui.js"></script></body></html>

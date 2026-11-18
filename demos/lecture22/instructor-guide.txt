@@ -6,7 +6,7 @@ Double-click **Launch Lecture 22.command** in the parent folder, or open `index.
 
 - Both pages use the full width. The right explanation panels are removed. Optional explanations, inspectors and convergence traces open in a fitted overlay; they do not push the demonstrations down the page. Opening an explanation pauses animation.
 - Core maps no longer flash when a backup completes. Their colors interpolate directly over at most 180 ms, with no brightness pulse. Color scales are fixed within each experiment, so unrelated cells do not change color when another cell changes the range. Numerical labels show the actual completed value; the color briefly eases toward it.
-- The control studio now contains **pendulum swing-up, mountain car, and precision landing**, each showing the physical system, value map, and greedy policy map simultaneously.
+- The control studio now contains **pendulum swing-up, mountain car, and three-engine lunar landing**. The first two show value iteration and policy maps. Lunar landing compares manual flight with a feedback autopilot.
 - Control policies can be stepped, animated, saved, revisited, tested, and compared from identical starting states. Manual control, dragging, start-state sliders, map clicks, and velocity impulses make each example interactive.
 
 ## Recommended control-studio walkthrough
@@ -25,7 +25,7 @@ Double-click **Launch Lecture 22.command** in the parent folder, or open `index.
 | --- | --- | --- |
 | Pendulum swing-up | Try the simple direct-upright PD baseline or manual torque. Compare k=1/5 with k=25 and the converged policy. Push after balancing. | A weak motor must first build momentum. Angle alone is insufficient: the policy depends on angular velocity. Longer lookahead discovers energy pumping and braking. |
 | Mountain car | Try driving right continuously. Animate the value wave backward from the summit. Compare k=25 and k=100, then test from the valley. | Driving temporarily away from the goal can be necessary. Early value functions do not yet communicate the goal’s benefit to the initial state. |
-| Precision landing | Test k=0, then k=5/25 and the converged controller. Change altitude and descent speed; apply a downward gust. | The policy develops a braking boundary in altitude–velocity space. An early policy may land safely but inefficiently. Some low, fast-descending states are unrecoverable. |
+| Lunar landing | Watch the autopilot, then fly from the same start with A, W and D. | Off-center side jets rotate the craft. Main thrust follows its tilt, allowing the pilot to brake horizontal drift and descent. Both feet must reach the marked pad within the speed, tilt and spin limits. Compare touchdown speed, offset and fuel remaining. |
 
 The policy shown at checkpoint k is **greedy with respect to Vₖ**. Therefore, its action has one additional reward step of lookahead compared with the k-sweep value estimate. The policy map shows decisions at grid states; rollout chooses actions at the continuous simulated state using interpolated successor values. The reward model is known. This is dynamic programming, not model-free learning from the displayed trajectory.
 
@@ -89,7 +89,7 @@ The stopping criterion is max |Vₖ−Vₖ₋₁|<10⁻⁵. This is convergence 
 | --- | --- |
 | Pendulum | θ∈[−π,π), ω∈[−8,8]; actions u∈{−2,0,2}; Δt=.05. ω′=clip(ω+(15 sin θ+3u)Δt,−8,8), θ′=wrap(θ+ω′Δt). Reward −(θ²+.1ω²+.001u²). Upright θ=0. Mass/length 1, gravity 10, no friction, semi-implicit Euler. Baseline u=clip(−8θ−2ω,−2,2). Balance message requires |θ|<.15 and |ω|<.5 for 40 steps. |
 | Mountain car | x∈[−1.2,.6], v∈[−.07,.07]; u∈{−1,0,1}. v′=clip(v+.001u−.0025cos(3x),−.07,.07); x′=clip(x+v′,−1.2,.6). Left-wall contact zeroes negative velocity. Reward −1 including goal entry; x≥.5 terminates. Baseline always drives right. This is dimensionless toy dynamics, shown at .035 playback seconds per step. |
-| Precision landing | h∈[0,1.5], v∈[−1,1]; u∈{0,1,2}; Δt=.05. v′=clip(v+(.6u−.6)Δt,−1,1); h′=clip(h+v′Δt,0,1.5). Ceiling contact zeroes upward velocity. Before touchdown, r=−.1−.03u²−.2v′²/(h′+.02). At touchdown r=50−1000v′² then terminate. Soft-landing success means speed ≤.2; the reward grades landing speed continuously rather than using that binary threshold. Baseline leaves the engine off. This is vertical-only landing. |
+| Legacy precision landing (benchmark only) | h∈[0,1.5], v∈[−1,1]; u∈{0,1,2}; Δt=.05. v′=clip(v+(.6u−.6)Δt,−1,1); h′=clip(h+v′Δt,0,1.5). Ceiling contact zeroes upward velocity. Before touchdown, r=−.1−.03u²−.2v′²/(h′+.02). At touchdown r=50−1000v′² then terminate. Soft-landing success means speed ≤.2; the reward grades landing speed continuously rather than using that binary threshold. Baseline leaves the engine off. This is vertical-only landing. |
 
 Control value colors have fixed ranges: pendulum [−900,0], mountain car [−100,0], lander [−60,50], with clipping outside those ranges. Policy colors represent actual action choices: orange = first action, gray = middle, teal = last; dark cells are terminal. Exact ties prefer the middle action for deterministic rollouts, while the inspector highlights all tied maxima. The white point is the current simulated state; gold is its actual trajectory; the outlined square is the inspected state. Periodic angle wrap may interrupt a trajectory line.
 
