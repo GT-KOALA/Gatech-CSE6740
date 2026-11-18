@@ -1,0 +1,132 @@
+# Lecture 22 — Planning Lab and Control Studio
+
+Double-click **Launch Lecture 22.command** in the parent folder, or open `index.html`. The header’s **Control Studio: 3 demos** link opens `swingup.html`; **Launch Control Studio.command** opens it directly. Everything runs offline: no installation, server, account, network, or pretrained model. Copy the whole `lecture22` folder to another computer. Lecture 21 remains unchanged.
+
+## What changed
+
+- Both pages use the full width. The right explanation panels are removed. Optional explanations, inspectors and convergence traces open in a fitted overlay; they do not push the demonstrations down the page. Opening an explanation pauses animation.
+- Core maps no longer flash when a backup completes. Their colors interpolate directly over at most 180 ms, with no brightness pulse. Color scales are fixed within each experiment, so unrelated cells do not change color when another cell changes the range. Numerical labels show the actual completed value; the color briefly eases toward it.
+- The control studio now contains **pendulum swing-up, mountain car, and precision landing**, each showing the physical system, value map, and greedy policy map simultaneously.
+- Control policies can be stepped, animated, saved, revisited, tested, and compared from identical starting states. Manual control, dragging, start-state sliders, map clicks, and velocity impulses make each example interactive.
+
+## Recommended control-studio walkthrough
+
+1. **Start at k=0.** Test this iteration. The policy has access only to immediate reward and the zero value array; no successful trajectory is supplied.
+2. Pause the automatically started planning animation. **One sweep** performs exactly one synchronous Bellman update over every grid state. Hover either map to inspect `Q(s,a) = r + γ V(next state)` for each action. The green-bordered cards mark all tied maxima.
+3. **Animate value iteration** updates one visible batch every 650 ms. The default is 25 sweeps per tick; use one sweep per tick for explanation. Planning starts automatically on page load, problem changes and value resets; at convergence the controller automatically runs from the chosen initial state. Pause or manual stepping cancels that automatic handoff. Watch both the values and action regions evolve. **Converge** computes faster in short batches.
+4. Move **Saved iteration** backward to an actual computed checkpoint. The displayed iteration and latest computed iteration are labeled separately. Click **Test this iteration** to replay the selected policy from the chosen initial state. This pauses planning and freezes values.
+5. Compare k=1, 5, 25, 100 and the converged controller. A useful policy can emerge well before the values converge. Behavior need not improve monotonically at every intermediate iteration or from every initial state.
+6. Click a map or drag the physical system to choose a new start. Start-state sliders provide a keyboard-accessible alternative. Push the moving system to test recovery.
+7. Try **Manual control** using the hold buttons or left/right arrows when focus is outside a form control. Releasing uses the middle action (zero torque, coast, or hover thrust). Switching controllers preserves the current state and pauses simulation; **Resume** hands control to the selected controller. **Reset state** restarts at the chosen initial state. **Test this iteration** always selects the VI controller and resets to the chosen start.
+
+### What to show in each control problem
+
+| Problem | Classroom experiment | What students should notice |
+| --- | --- | --- |
+| Pendulum swing-up | Try the simple direct-upright PD baseline or manual torque. Compare k=1/5 with k=25 and the converged policy. Push after balancing. | A weak motor must first build momentum. Angle alone is insufficient: the policy depends on angular velocity. Longer lookahead discovers energy pumping and braking. |
+| Mountain car | Try driving right continuously. Animate the value wave backward from the summit. Compare k=25 and k=100, then test from the valley. | Driving temporarily away from the goal can be necessary. Early value functions do not yet communicate the goal’s benefit to the initial state. |
+| Precision landing | Test k=0, then k=5/25 and the converged controller. Change altitude and descent speed; apply a downward gust. | The policy develops a braking boundary in altitude–velocity space. An early policy may land safely but inefficiently. Some low, fast-descending states are unrecoverable. |
+
+The policy shown at checkpoint k is **greedy with respect to Vₖ**. Therefore, its action has one additional reward step of lookahead compared with the k-sweep value estimate. The policy map shows decisions at grid states; rollout chooses actions at the continuous simulated state using interpolated successor values. The reward model is known. This is dynamic programming, not model-free learning from the displayed trajectory.
+
+## Core-experiment classroom route
+
+| Experiment / slides | Demonstration |
+| --- | --- |
+| Policy evaluation / 4–9 | Step twice: nonterminal values are first −1, then −1.75 beside exits and −2 elsewhere. Click a cell to open the inspector below the map. Converge and explain expected travel time under a random policy. |
+| Policy iteration / 10–13 | **Finish current phase** evaluates the fixed policy and pauses. Predict the arrows; **One step** performs greedy improvement. Repeat until stable. |
+| Value iteration / 14–19 | Three synchronous sweeps reproduce V₁, V₂, V₃ on slide 17. Compare with in-place and residual-priority updates. |
+| Rescue / 18–19 | Plan, animate twelve frozen-policy trials, increase action uncertainty, edit walls/hazards, and replan. Try 80 × 50. |
+| Contraction / 20–22 | Switch between Sample A and Sample B or click Resample. PI appears on the left and VI on the right. Both receive the same initial values. Compare the final VI grid with the first converged VI solution for the same settings. The chart tracks the VI optimality residual and its contraction bound. |
+
+Core animations start automatically on page load, experiment changes and resets. Space plays/pauses and left/right switches core experiments unless a form control has focus. Policy iteration always pauses between evaluation and improvement. Sliders/selects and Reset restore the preset core world. Map edits preserve other terrain but reset values. Tests of a core policy freeze the values and stop at 400 moves; unfinished trials are explicitly reported.
+
+Core color ranges are evaluation/PI [−24,0], VI [−4,0], rescue [−40,100], contraction [−24,20]. Out-of-range values are color-clipped; numerical values remain unchanged. Hazard orange overlays denote terrain rather than value.
+
+## Mathematical conventions
+
+### Slide grid and update schedules
+
+The 4 × 4 grid has zero-valued absorbing exits at the upper-left and lower-right corners. All transitions from a nonterminal cell cost −1, including exit entry and boundary collisions. Values start at zero; the initial policy is uniform over four actions.
+
+At γ=1, the random-policy values are:
+
+```text
+  0  -14  -20  -22
+-14  -18  -20  -20
+-20  -20  -18  -14
+-22  -20  -14    0
+```
+
+Optimal values are:
+
+```text
+ 0  -1  -2  -3
+-1  -2  -3  -2
+-2  -3  -2  -1
+-3  -2  -1   0
+```
+
+γ=1 converges in this proper episodic example, but does not establish a general strict contraction. The contraction experiment restricts γ<1.
+
+Policy iteration evaluates to Bellman residual <10⁻⁷, then chooses equally probable maximizing actions (tie tolerance 10⁻⁸), warm-starting each evaluation. Synchronous sweeps use the entire old array. In-place sweeps use row-major order and reuse new values immediately. Residual priority ranks all current residuals and updates the top ceil(N/8) in place. It illustrates prioritized asynchronous DP, not an optimized predecessor-queue implementation.
+
+Core “state backups” counts value writes, excluding residual scans, sorting, policy extraction, drawing, and policy improvement. Compare this measure with care; it is not total FLOPs or runtime. The core chart shows max |TV−V| after each sweep/batch. PI improvement changes the operator, so its trace is not one monotone convergence curve.
+
+### Rescue
+
+The default Terraced valley map has two ridges with openings on opposite sides. At γ=.98, a reward 50 transitions away retains about 36% of its weight. With 20% slip on the small map, compare the launch cell (−15.0), lower opening at (10,18) (+6.5), upper opening at (5,5) (+41.4), and destination neighbor (1,21) (+98.4). The reward is paid on entry to the destination. Ordinary moves cost −1, hazardous entry or a hazardous self-transition costs −16, destination entry gives +100 and terminates. Slip probability p divides equally between the two perpendicular directions; intended motion has probability 1−p. Walls cause self-transitions. The planner optimizes expected **discounted** reward, while the displayed rollout sum is **undiscounted**.
+
+The twelve displayed trials share a PRNG initialized to seed 42. They illustrate outcomes, not a reliable success-rate estimate. Edited terrain may make the destination unreachable. Value convergence still occurs with discounting, but the trajectory cutoff reports failures. The model is illustrative navigation rather than a calibrated robot simulation.
+
+### Continuous-state control solver
+
+All three examples use synchronous value iteration on a two-dimensional state grid, zero initial values, γ=.99, three actions, and nonnegative bilinear interpolation weights summing to one. The angle axis wraps periodically only for the pendulum. Terminal transitions receive their final reward and do not bootstrap. Terminal states have value zero.
+
+The stopping criterion is max |Vₖ−Vₖ₋₁|<10⁻⁵. This is convergence of the approximate grid operator; neither numerical convergence nor success from one initial state guarantees control accuracy everywhere. Simulation uses the same dynamics but continuous states, not nearest-cell snapping. All velocity and boundary caps are part of both planning and simulation.
+
+| Problem | Dynamics and objective |
+| --- | --- |
+| Pendulum | θ∈[−π,π), ω∈[−8,8]; actions u∈{−2,0,2}; Δt=.05. ω′=clip(ω+(15 sin θ+3u)Δt,−8,8), θ′=wrap(θ+ω′Δt). Reward −(θ²+.1ω²+.001u²). Upright θ=0. Mass/length 1, gravity 10, no friction, semi-implicit Euler. Baseline u=clip(−8θ−2ω,−2,2). Balance message requires |θ|<.15 and |ω|<.5 for 40 steps. |
+| Mountain car | x∈[−1.2,.6], v∈[−.07,.07]; u∈{−1,0,1}. v′=clip(v+.001u−.0025cos(3x),−.07,.07); x′=clip(x+v′,−1.2,.6). Left-wall contact zeroes negative velocity. Reward −1 including goal entry; x≥.5 terminates. Baseline always drives right. This is dimensionless toy dynamics, shown at .035 playback seconds per step. |
+| Precision landing | h∈[0,1.5], v∈[−1,1]; u∈{0,1,2}; Δt=.05. v′=clip(v+(.6u−.6)Δt,−1,1); h′=clip(h+v′Δt,0,1.5). Ceiling contact zeroes upward velocity. Before touchdown, r=−.1−.03u²−.2v′²/(h′+.02). At touchdown r=50−1000v′² then terminate. Soft-landing success means speed ≤.2; the reward grades landing speed continuously rather than using that binary threshold. Baseline leaves the engine off. This is vertical-only landing. |
+
+Control value colors have fixed ranges: pendulum [−900,0], mountain car [−100,0], lander [−60,50], with clipping outside those ranges. Policy colors represent actual action choices: orange = first action, gray = middle, teal = last; dark cells are terminal. Exact ties prefer the middle action for deterministic rollouts, while the inspector highlights all tied maxima. The white point is the current simulated state; gold is its actual trajectory; the outlined square is the inspected state. Periodic angle wrap may interrupt a trajectory line.
+
+### Checkpoints and interaction semantics
+
+- Mandatory stored iterations: 0, 1, 2, 3, 5, 10, 15, 25, 40, 60, 100, 150, 200, 300, 400, 600, 800, 1200, 1600 when reached, plus the final iteration.
+- Teaching/manual steps also save their batch endpoints. At most 45 snapshots are retained; nonmandatory older endpoints are discarded first. Mandatory early iterations remain available for comparison.
+- The slider indexes saved checkpoints, not every intervening sweep. Its k label is the actual iteration count.
+- Revisiting history never overwrites the latest computed array. Further planning resumes from the latest computed values. Testing uses the **selected** snapshot, not the latest one.
+- Reset values or changing problem/resolution clears history and restores the default initial state. Reset state preserves the computed values and selected checkpoint.
+- The simulation stops at termination or 1,200 steps. The pendulum is continuing and can be pushed repeatedly before the cutoff. Pushes after a terminal landing/arrival require a state reset.
+- Pointer release/cancellation, keyboard release and window blur release manual input. Window blur also pauses simulation. Manual button labels use “negative/off” and “positive/full” because lander actions are thrust levels.
+
+## Verification and optional computation benchmark
+
+Run from the parent reinforcement-learning directory:
+
+```sh
+node lecture22/verify.cjs
+node lecture22/benchmark.cjs 121 all
+node lecture22/benchmark.cjs 401 mountain
+```
+
+The benchmark accepts grid width 121, 241, or 401 and problem `pendulum`, `mountain`, `lander`, or `all`. Heights are 81, 161, 241 respectively. The largest mode has 96,641 states. Each benchmark prints actual checkpoint rollouts, final states, discounted reward and baseline comparison. Solve time includes model construction and value snapshot copies but excludes rollout/rendering overhead. Pendulum benchmark success is the final-state balance criterion; longest continuous balance duration is reported separately.
+
+Verified results at default 121 × 81:
+
+| Problem | Sweeps to convergence | Default-start result |
+| --- | --- | --- |
+| Pendulum | 565 | Near upright after 600 simulation steps; initial and simple PD policies fail. |
+| Mountain car | 218 | Summit reached in 103 moves; initial and always-right policies fail. |
+| Lander | 204 | Ground reached in 79 moves, speed .15 (soft landing); initial and engine-off policies fail. |
+
+The 401 × 241 settings also passed: 531, 337, and 119 sweeps respectively. For that setting, pendulum k=25 and mountain car k=100 already succeed before value convergence; lander k=5 lands softly but takes 90 steps, compared with 53 for the converged policy. These are deterministic illustrative results, not universal performance claims.
+
+Checks cover exact slide values and sweeps, contraction, asynchronous agreement, core controls, all three control problems, independent synchronous-backup calculations, interpolation, terminal non-bootstrapping, baseline/early-policy failures, successful final policies, frozen test values, checkpoint preservation and replay, bounded snapshot memory, manual handoff/release, pushes, drag/map selection, and absence of right-panel markup and flashing overlays. `verify-control.cjs` can also run independently. The older `pendulum.js` is retained as a standalone reference and regression-tested; the studio and benchmark now use `control-engine.js`.
+
+Both pages use a single fitted presentation frame with no document scrolling. The layout uses a minimum 1280 × 820 composition and scales down to fit smaller windows; text becomes smaller on very small screens. Explanations are fitted overlays. All controls stay in the composition. Viewport geometry is checked at six sizes from 390 × 844 through 1920 × 1080.
+
+Browser visual QA remains incomplete. The latest Safari verification attempt timed out. Browser automation was unavailable, and native Chrome interaction was interrupted by concurrent browser activity. The DOM/canvas execution harness verifies logic but does not verify projector layout, browser rendering, full screen, or motion perception. No browser visual checks are claimed for this revision.

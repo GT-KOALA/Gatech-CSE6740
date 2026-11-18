@@ -14,3 +14,5 @@ status: published
 ## Materials
 
 - [Lecture 22 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/22/lecture-22.pdf' | relative_url }})
+- [Planning Lab]({{ '/demos/lecture22/' | relative_url }}) — Step through policy evaluation, policy iteration, and value iteration.
+- [Control Studio]({{ '/demos/lecture22/swingup.html' | relative_url }}) — Test policies for pendulum swing-up, mountain car, and precision landing.

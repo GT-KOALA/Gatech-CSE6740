@@ -1,0 +1,79 @@
+/* One fitted presentation surface: no document or nested demo scrolling. */
+html,body{width:100%;height:100%;overflow:hidden}
+#presentation-shell{position:absolute;left:0;top:0;transform-origin:top left;display:grid;grid-template-rows:44px 48px minmax(0,1fr) 28px;overflow:hidden}
+#presentation-shell header{height:44px;padding:0 20px}
+#presentation-shell header a span{display:inline}
+#presentation-shell nav{padding:7px 20px;gap:8px;overflow:hidden}
+#presentation-shell nav button{min-width:0;font-size:12px;padding:6px 10px}
+#presentation-shell main{position:relative;display:flex;flex-direction:column;width:100%;height:100%;min-height:0;max-width:none;padding:12px 20px 8px;gap:8px;overflow:hidden}
+#presentation-shell .main-panel{flex:1;min-height:0;display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto auto;gap:8px}
+#presentation-shell .heading h1{font-size:26px;margin-bottom:5px}
+#presentation-shell .heading .eyebrow{margin-bottom:4px}
+#presentation-shell #subtitle{font-size:12px;margin:0}
+#presentation-shell #big-number{font-size:40px}
+#presentation-shell .toolbar{margin:0;flex-wrap:nowrap}
+#presentation-shell .metrics{margin:0;gap:8px}
+#presentation-shell .metric{padding:3px 10px}
+#presentation-shell .metric b{font-size:19px}
+#presentation-shell .metric span{font-size:9px}
+#presentation-shell .canvas-wrap{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto}
+#presentation-shell #world{width:100%;height:100%;min-height:0}
+#presentation-shell .legend{flex-wrap:nowrap;padding:5px;gap:18px}
+#presentation-shell #status{min-height:30px;padding:4px 0;font-size:12px}
+#presentation-shell .transport{flex-wrap:nowrap;gap:8px}
+#presentation-shell .transport button{padding:6px 10px}
+#presentation-shell footer{padding:5px 20px;gap:15px;flex-wrap:nowrap;font-size:10px}
+#presentation-shell .pill{display:inline}
+#presentation-shell .explanation-drawer{margin:0;padding:5px 0 0;flex:none}
+#presentation-shell .explanation-drawer summary{font-size:11px}
+#presentation-shell .explanation-drawer[open]{position:absolute;z-index:10;inset:8px 20px;background:#101c2bf5;border:1px solid #58758a;border-radius:9px;padding:14px;overflow:hidden;box-shadow:0 0 0 100vmax #070d14aa}
+#presentation-shell .explanation-drawer[open] summary{font-size:14px;color:var(--mint);padding-bottom:10px;cursor:pointer}
+#presentation-shell .drawer-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;transform-origin:top left;padding:10px 0}
+#presentation-shell .drawer-grid h2{font-size:22px}
+#presentation-shell .drawer-grid p{font-size:13px}
+#presentation-shell .drawer-grid .note{font-size:12px}
+#presentation-shell .explanation-drawer[open] summary::after{content:' · click to close';color:var(--muted);font-size:11px}
+/* Control studio keeps all three views and all controls in the fitted frame. */
+#presentation-shell.control-shell .main-panel{grid-template-rows:auto auto auto auto minmax(0,1fr) auto auto auto auto auto;gap:6px}
+#presentation-shell .learning-bar,#presentation-shell .replay-bar,#presentation-shell .simulation-bar,#presentation-shell .state-controls{padding:3px 0;gap:8px;flex-wrap:nowrap;margin:0}
+#presentation-shell .learning-bar button,#presentation-shell .simulation-bar button,#presentation-shell .replay-bar button,#presentation-shell .state-controls button{padding:5px 8px;font-size:11px}
+#presentation-shell .bar-label{min-width:68px;font-size:10px}
+#presentation-shell .replay-bar input{width:210px}
+#presentation-shell .state-controls input{width:120px}
+#presentation-shell .studio-stage{min-height:0;grid-template-columns:1fr 1fr 1fr;gap:12px}
+#presentation-shell .visual-card{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0}
+#presentation-shell .studio-stage .visual-card:first-child{grid-column:auto}
+#presentation-shell .studio-stage canvas{width:100%;height:100%;min-height:0}
+#presentation-shell .canvas-title{padding:8px 10px 0;font-size:10px}
+#presentation-shell .map-caption{padding:4px 8px;min-height:24px;font-size:10px}
+#presentation-shell #control-status{min-height:26px;padding:3px 0;font-size:11px}
+#presentation-shell .backup-strip{grid-template-columns:1fr 1.3fr;gap:14px;padding:8px 10px;font-size:12px}
+#presentation-shell .backup-strip .eyebrow{font-size:9px;margin-bottom:5px}
+#presentation-shell .q-card{padding:5px 8px;font-size:10px}
+#presentation-shell .q-card b{font-size:15px}
+#presentation-shell #backup-equation{font-size:11px;margin-top:4px}
+
+/* Keep the grid interactive while comparing individual Bellman backups. */
+#presentation-shell #explanation-drawer[open]:has(#numbers:not([hidden])){
+  inset:auto 16px 12px auto;
+  width:clamp(290px,23%,360px);
+  max-height:95%;
+  background:#101c2b;
+  box-shadow:0 4px 18px #070d1466;
+}
+#presentation-shell #explanation-drawer:has(#numbers:not([hidden])) .drawer-grid{
+  display:block;
+  padding:4px 0;
+}
+#explanation-drawer:has(#numbers:not([hidden])) .chart-card{display:none}
+#explanation-drawer:has(#numbers:not([hidden])) .aside-tabs{margin-bottom:8px}
+#presentation-shell #explanation-drawer:has(#numbers:not([hidden])) summary{font-size:11px}
+#explanation-drawer #numbers h2{margin:5px 0}
+#explanation-drawer #numbers .equation{margin:8px 0;padding:6px 10px}
+#explanation-drawer #numbers .note{margin:6px 0}
+
+/* Reserve the inspector trigger's row even while the drawer floats over main. */
+#presentation-shell .inspector-slot {
+  flex: 0 0 24px;
+  min-height: 0;
+}
