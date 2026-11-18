@@ -3,7 +3,7 @@ title: Policy evaluation and optimization
 number: "21"
 date: 2026-11-18
 summary: Evaluating policies and improving decisions through Bellman updates.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,4 +13,4 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 22 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/22/lecture-22.pdf' | relative_url }})
