@@ -1,12 +1,11 @@
 ---
-title: Topic to be announced
+title: RL Finetuning
 number: "25"
 redirect_from: /fall-2026/lectures/24-topic-tbd/
 date: 2026-12-02
-summary: This lecture topic will be announced during the semester.
-status: to be announced
+status: planned
 ---
 ## Materials
 
-The topic and materials will be added when announced.
+Lecture materials will be added here.
 
