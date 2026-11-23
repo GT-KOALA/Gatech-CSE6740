@@ -1,6 +1,7 @@
 ---
 title: Topic to be announced
-number: "24"
+number: "25"
+redirect_from: /fall-2026/lectures/24-topic-tbd/
 date: 2026-12-02
 summary: This lecture topic will be announced during the semester.
 status: to be announced

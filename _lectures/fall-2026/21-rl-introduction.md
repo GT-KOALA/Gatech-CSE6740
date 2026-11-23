@@ -1,6 +1,6 @@
 ---
 title: Introduction to reinforcement learning
-number: "18"
+number: "21"
 date: 2026-11-16
 summary: Learning behavior through interaction, reward, and delayed consequences.
 status: published

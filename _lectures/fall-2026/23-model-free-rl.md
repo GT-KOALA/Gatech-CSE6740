@@ -1,6 +1,7 @@
 ---
 title: "Model-free RL: Q-learning and SARSA"
-number: "22"
+number: "23"
+redirect_from: /fall-2026/lectures/22-topic-tbd/
 date: 2026-11-23
 summary: Learning action values and control policies directly from experience.
 status: published

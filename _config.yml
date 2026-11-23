@@ -27,3 +27,5 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - LICENSE
+plugins:
+  - jekyll-redirect-from

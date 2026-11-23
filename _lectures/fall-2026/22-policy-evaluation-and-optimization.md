@@ -1,6 +1,7 @@
 ---
 title: Policy evaluation and optimization
-number: "21"
+number: "22"
+redirect_from: /fall-2026/lectures/21-deep-rl/
 date: 2026-11-18
 summary: Evaluating policies and improving decisions through Bellman updates.
 status: published

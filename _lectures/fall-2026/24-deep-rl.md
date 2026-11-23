@@ -1,6 +1,7 @@
 ---
 title: Deep RL
-number: "23"
+number: "24"
+redirect_from: /fall-2026/lectures/23-topic-tbd/
 date: 2026-11-30
 summary: Combining representation learning with sequential decision making.
 status: planned
