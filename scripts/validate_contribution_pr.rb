@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "yaml"
+require "date"
 require "English"
 
 ROOT = File.expand_path("..", __dir__)
@@ -20,10 +21,10 @@ def fail_check(message)
   exit 1
 end
 
-def front_matter(content, source)
+def front_matter(content, source, permitted_classes: [])
   match = content.match(/\A---\s*\n(.*?)\n---\s*\n/m)
   fail_check("#{source} is missing YAML front matter") unless match
-  YAML.safe_load(match[1], permitted_classes: [], aliases: false) || {}
+  YAML.safe_load(match[1], permitted_classes: permitted_classes, aliases: false) || {}
 rescue Psych::SyntaxError => e
   fail_check("#{source} has invalid YAML: #{e.message}")
 end
@@ -40,10 +41,13 @@ def validate_structure(policy)
   contribution_files = Dir.glob(File.join(ROOT, "_contributions/fall-2026/**/*.md"))
   # Additional class sessions may have their own materials page without adding
   # student assignments. Keep every original lecture group required.
-  lecture_groups = lecture_files.map { |file| File.read(file)[/^number: "(\d{2})"$/, 1] }.compact.uniq
-  missing_groups = (1..24).map { |number| format("%02d", number) } - lecture_groups
-  fail_check("missing Fall 2026 lecture groups: #{missing_groups.join(', ')}") unless missing_groups.empty?
+  lecture_groups = lecture_files.flat_map do |file|
+    metadata = front_matter(File.read(file), file, permitted_classes: [Date])
+    [metadata.fetch("number"), metadata["contribution_group"]].compact
+  end
   assigned_groups = (1..24).map { |number| format("%02d", number) } + policy.fetch("additional_lecture_groups", [])
+  missing_groups = assigned_groups - lecture_groups
+  fail_check("missing Fall 2026 lecture groups: #{missing_groups.join(', ')}") unless missing_groups.empty?
   expected_files = assigned_groups.length * required.length
   fail_check("expected #{expected_files} contribution files, found #{contribution_files.length}") unless contribution_files.length == expected_files
 

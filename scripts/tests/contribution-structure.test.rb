@@ -35,6 +35,14 @@ class ContributionStructureTest < Minitest::Test
     assert_includes output, 'missing Fall 2026 lecture groups: 17'
   end
 
+  def test_missing_explicit_contribution_group_is_rejected
+    page = File.join(@root, '_lectures/fall-2026/16-rnns.md')
+    File.write(page, File.read(page).sub(/^contribution_group: "18"$/, ''))
+    output, status = validate
+    refute status.success?
+    assert_includes output, 'missing Fall 2026 lecture groups: 18'
+  end
+
   def test_missing_contribution_is_rejected
     FileUtils.rm(Dir.glob(File.join(@root, '_contributions/fall-2026/**/*.md')).first)
     output, status = validate
