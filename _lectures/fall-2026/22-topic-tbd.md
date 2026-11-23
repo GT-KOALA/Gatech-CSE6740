@@ -3,7 +3,7 @@ title: "Model-free RL: Q-learning and SARSA"
 number: "22"
 date: 2026-11-23
 summary: Learning action values and control policies directly from experience.
-status: planned
+status: published
 ---
 ## Learning goals
 
@@ -13,4 +13,4 @@ status: planned
 
 ## Materials
 
-Slides, code, examples, and references will be added after class.
+- [Lecture 23 slides (PDF)]({{ '/assets/semesters/fall-2026/lectures/23/lecture-23.pdf' | relative_url }})
