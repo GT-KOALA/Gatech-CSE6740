@@ -18,8 +18,8 @@ Lecture 19 — Transformers
 The self-attention mechanism discussed in Lecture 19 lets each token combine information from other tokens in a sequence:
 
 $$
-\operatorname{Attention}(Q,K,V)
-=\operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V.
+\mathrm{Attention}(Q,K,V)
+=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V.
 $$
 
 Here, $$Q$$, $$K$$, and $$V$$ are learned projections of the token representations, and $$d_k$$ is the dimension of each key vector. Multi-head attention, a position-wise MLP, residual connections, and layer normalization form a Transformer encoder block.
@@ -63,9 +63,9 @@ Let $$Z_0$$ denote the full sequence of $$N+1$$ tokens. ViT passes this sequence
 $$
 \begin{aligned}
 Z'_\ell &= Z_{\ell-1}
-+\operatorname{MSA}\!\left(\operatorname{LN}(Z_{\ell-1})\right),\\
++\mathrm{MSA}\!\left(\mathrm{LN}(Z_{\ell-1})\right),\\
 Z_\ell &= Z'_\ell
-+\operatorname{MLP}\!\left(\operatorname{LN}(Z'_\ell)\right),
++\mathrm{MLP}\!\left(\mathrm{LN}(Z'_\ell)\right),
 \qquad \ell=1,\ldots,L.
 \end{aligned}
 $$
@@ -93,7 +93,7 @@ The original CLIP experiments use either a modified ResNet or a ViT as the image
 Because the projected vectors are normalized, their dot product equals cosine similarity:
 
 $$
-\operatorname{sim}(I,T)=v^\top t.
+\mathrm{sim}(I,T)=v^\top t.
 $$
 
 The encoders process the two modalities separately; they interact through these similarity scores during training.
@@ -169,5 +169,4 @@ Both extend the Transformer ideas from Lecture 19: ViT changes the tokens that s
 ## AI assistance
 
 ChatGPT assisted with wording revisions and technical checks of this draft. The numerical example above was constructed for illustration and was not obtained by running CLIP.
-
 
