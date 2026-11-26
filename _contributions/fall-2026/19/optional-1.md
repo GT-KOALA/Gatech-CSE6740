@@ -11,7 +11,7 @@ issue: 73
 ---
 # Supplementary Notes: Vision Transformers (ViT) and CLIP
 
-Lecture 19 — Transformers
+Lecture 19 — Transformers: Supplementary Notes
 
 ## From text tokens to images
 
